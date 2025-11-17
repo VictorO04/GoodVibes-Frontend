@@ -6,11 +6,14 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
     width: 100%;
-    height: 12vh;
+    height: 8vh;
     background-color: #CDA4FF;
     display: flex;
     justify-content: space-between;
@@ -22,46 +25,49 @@ header {
     justify-content: center;
     align-items: center;
     gap: 0.8rem;
-    margin-left: 4rem;
+    margin-left: 8%;
 }
 
 .header-logo img {
-    width: 20%;
+    width: 25%;
 }
 
 .header-logo p {
-    font-size: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 .header-links {
     display: flex;
     align-items: center;
-    gap: 3rem;
-    margin-right: 4rem;
+    margin-right: 8rem;
+}
+
+.header-links ol {
+    display: flex;
+    gap: 5rem;
 }
 
 .header-links a {
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: black;
-    transition: transform 0.3s;
 }
 
-.header-links a:hover {
-    transform: scale(1.08);
-}
-
-footer {
-    margin-top: 25vh;
-    width: 100%;
-    height: 12vh;
-    background-color: #8364a9;
-    box-shadow: 0px 0px 10px 5px rgb(146, 146, 146);
+#Sign-in {
+    background-color: #DEC3FF;
+    height: 2rem;
+    width: 4.5rem;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-footer p {
-    font-size: 0.8rem;
+.header-links ul {
+    transition: transform 0.3s;
+}
+
+.header-links ul:hover {
+    transform: scale(1.08);
 }
