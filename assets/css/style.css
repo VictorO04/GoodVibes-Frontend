@@ -33,7 +33,7 @@ header {
 }
 
 .header-logo p {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -45,12 +45,13 @@ header {
 
 .header-links ol {
     display: flex;
+    align-items: center;
     gap: 5rem;
 }
 
 .header-links a {
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: black;
 }
 
@@ -92,18 +93,18 @@ footer {
 }
 
 .footer-nav p {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .footer-nav ol {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .footer-nav a {
     text-decoration: none;
     color: black;
-    font-size: 1rem;
+    font-size: 0.8rem;
     transition: color 0.3s;
 }
 
@@ -112,7 +113,7 @@ footer {
 }
 
 #linha {
-    width: 18%;
+    width: 22rem;
     height: 2px;
     background-color: #CDA4FF;
 }

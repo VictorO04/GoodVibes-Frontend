@@ -1,0 +1,13 @@
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.direita {
+    height: 98vh;
+    width: 50%;
+    background-color: #BE88FF;
+}
