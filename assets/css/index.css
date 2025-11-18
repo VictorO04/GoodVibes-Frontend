@@ -1,0 +1,47 @@
+main {
+    margin-top: 20vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+}
+
+.bem-vindo {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.bem-vindo h1 {
+    color: #4E1D89;
+    font-size: 3.5rem;
+}
+
+.bem-vindo p {
+    color: #9f7bca;
+    font-size: 2rem;
+    width: 30rem;
+    letter-spacing: 1.6px;
+}
+
+.bem-vindo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    background-color: #CDA4FF;
+    width: 25%;
+    height: 2.5rem;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.bem-vindo a:hover {
+    background-color: #DEC3FF;
+}
+
+main img {
+    height: 40vh;
+    width: 20vw;
+}
