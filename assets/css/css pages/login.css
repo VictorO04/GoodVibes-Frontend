@@ -1,0 +1,112 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    margin: 0px;
+}
+
+
+.tela-login{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/*caixa de imagem*/
+#imagem-box{
+    height: 100%;
+    width: 45vw;
+}
+
+/*texto login*/
+
+.login-texto{
+    background-color:rgb(221, 192, 255);
+    width: 55vw;
+    height: 100%;
+}
+/*titulo*/
+.titulo{
+    display: flex;
+    justify-content: center;
+    margin-top: 12%;
+}
+
+#titulo-texto{
+    color: rgb(78, 29, 137);
+    font-size: 60px;
+}
+/*email*/
+.email-caixa{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    align-items: center;
+}
+
+#label{
+    display: flex;
+    align-items: start;
+    width: 45%;
+    margin-top: 130px;
+    color: rgb(78, 29, 137);
+}
+#email{
+    padding: 15px 10px;
+    width: 45%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+/*senha*/
+.senha-caixa{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    align-items: center;
+}
+
+#label-2{
+    display: flex;
+    align-items: start;
+    width: 45%;
+    margin-top: 20px;
+    color: rgb(78, 29, 137);
+}
+#senha{
+    padding: 15px 10px;
+    width: 45%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+/*botão cadastro*/
+
+.caixa-botao{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    height: 13%;
+    align-items: center;
+}
+
+.texto-interno{
+    background-color:rgb(78, 29, 137);;
+    height: 100px;
+    width: 30%;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
