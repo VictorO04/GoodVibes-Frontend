@@ -95,6 +95,12 @@ header {
   align-items: center;
 }
 
+.botao-enviar {
+  background-color: lightgray;
+  color: #997dbd;
+  width: 10vh;
+  height: 5vh;
+  border: 
 
 .titulo-escrita {
     margin-bottom: 15px; 
