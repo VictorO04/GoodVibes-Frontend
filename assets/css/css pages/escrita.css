@@ -12,12 +12,14 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 header {
   width: 100%;
   height: 8vh;
   background-color: #cda4ff;
   display: flex;
   justify-content: space-between;
+  padding: 0.2rem;
 }
 
 .header-logo {
@@ -29,7 +31,8 @@ header {
 }
 
 .header-logo img {
-  width: 25%;
+  width: 2rem;
+  height: auto;
 }
 
 .header-logo p {
@@ -46,6 +49,7 @@ header {
 .header-links ol {
   display: flex;
   gap: 5rem;
+  
 }
 
 .header-links a {
@@ -57,53 +61,38 @@ header {
 /*titulo da pagina */
 .perfil {
   color: #4e1d89;
-  width: 16vh;
-  height: 3vh;
+  width: 8rem;
+  height: 2rem;
   background-color: #ffffff6e;
-  border-radius: 1vh;
+  border-radius: 0.5rem;
   margin-top: 2vh;
-  margin-right: 10vh;
+  margin-right: 37vh;
   text-align: center;
-
 }
 
 /*fundo da tela*/
 .blococentral {
-    width: 100%;
-    height: 92vh;
-    margin-top: 1vh;
-    background-color: #cda4ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 92vh;
+  margin-top: 1vh;
+  background-color: #cda4ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*fundo claro*/
 .bloco-centro {
-    width: 199.5vh;
-    height: 810px;
-    background-color: #ffffff6e;
-    margin: 2vh;
-    margin-left: 2vh;
-    border-radius: 1vh;
-
-}
-
-.post-it{
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    background-color: rgba(171, 255, 255, 0.795);
-    width: 40vh;
-    height: 46vh;
-    margin-top: 15vh;
-    margin-left: 80vh;
-    text-align: center;
-}
-
-.texto {
-    margin-right:20vh;
-    margin-top: 3vh;
+  width: 90vw;
+  max-width: 1000px;
+  height: 80vh;
+  background-color: #ffffff6e;
+  margin: 0;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .botao-enviar {
@@ -112,4 +101,170 @@ header {
   width: 10vh;
   height: 5vh;
   border: 
+
+.titulo-escrita {
+    margin-bottom: 15px; 
+    text-align: center;
+}
+
+#campo-escrita {
+    width: 50vh; 
+    height: 25vw;
+    padding: 10px;
+    border-radius: 5px;
+    border: rgba(171, 255, 255, 0.795);
+    background-color: rgba(171, 255, 255, 0.795); 
+    resize: none; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-it {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+  background-color: rgba(171, 255, 255, 0.795);
+  width: 20rem;
+  height: 24rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.texto {
+  margin-right: 1rem;
+  margin-top: 1.1rem;
+}
+
+/* =======================================
+   RESPONSIVIDADE OTIMIZADA
+   ======================================= */
+
+/* --- Tablet e Telas Médias (max-width: 992px) --- */
+@media (max-width: 992px) {
+    /* Ajusta o espaçamento do Header */
+    header {
+        padding: 0.5rem 1rem;
+    }
+    .header-logo {
+        margin-left: 1rem;
+    }
+    .header-links {
+        margin-right: 1rem;
+    }
+    .header-links ol {
+        gap: 2rem; /* Reduz o espaçamento do menu */
+    }
+    
+    /* Ajusta o campo de perfil */
+    .perfil {
+        width: 7rem;
+        height: 1.8rem;
+    }
+
+    /* Ajusta o container central */
+    .bloco-centro {
+        width: 90vw;
+        height: 80vh;
+    }
+}
+
+/* --- Mobile (max-width: 600px) --- */
+@media (max-width: 600px) {
+    header {
+        /* Muda para coluna em telas pequenas para evitar quebras */
+        flex-direction: column;
+        height: auto; 
+        padding: 1rem 0;
+        gap: 0.5rem;
+    }
+    
+    .header-logo {
+        margin-left: 0;
+        justify-content: space-around;
+        width: 100%;
+    }
+    
+    .header-links {
+        margin-right: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .header-links ol {
+        gap: 1rem; /* Compacta o menu ainda mais */
+        padding: 0;
+    }
+    
+    .header-links a {
+        font-size: 1rem;
+    }
+    
+    /* Perfil */
+    .perfil {
+        margin: 0.5rem auto; /* Centraliza o perfil abaixo do logo */
+        width: 6rem;
+        height: 1.5rem;
+    }
+
+    /* Área de Escrita */
+    .blococentral {
+        padding: 1rem;
+    }
+
+    .bloco-centro {
+        width: 95vw;
+        height: 90vh; /* Usa mais altura da tela */
+        padding: 0.5rem;
+    }
+    
+    #campo-escrita {
+        width: 95%; /* Ocupa quase toda a largura do bloco central */
+        height: 70vh; /* Ajusta a altura de forma mais agressiva */
+        font-size: 0.9rem;
+        /* Allow height to be dynamic for content */
+        height: auto; 
+        width: 100%; 
+    }
+
+    .perfil {
+        /* Ensure profile title centers and fits */
+        width: 10rem;
+        margin: 0 auto;
+    }
+
+    .post-it {
+        width: 100%; /* Full width of its parent (.bloco-centro) */
+        height: 20rem; 
+    }
+}
+
+/* --- Mobile Portrait (Max width 480px) --- */
+@media (max-width: 480px) {
+    .header-links ol {
+        /* Stack links vertically on the smallest screens */
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .header-logo p {
+        font-size: 1.1rem;
+    }
+    
+    .post-it {
+        /* Use smaller dimensions for smaller screens */
+        height: 15rem; 
+    }
+    
+    .texto {
+        font-size: 1rem;
+    }
 }
