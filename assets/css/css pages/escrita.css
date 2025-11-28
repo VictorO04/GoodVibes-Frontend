@@ -55,6 +55,7 @@ header {
   color: black;
 }
 
+/*titulo da pagina */
 .perfil {
   color: #4e1d89;
   width: 16vh;
@@ -66,6 +67,7 @@ header {
   text-align: center;
 }
 
+/*fundo da tela*/
 .blococentral {
   width: 100%;
   height: 92vh;
@@ -76,6 +78,7 @@ header {
   align-items: center;
 }
 
+/*fundo claro*/
 .bloco-centro {
   width: 199.5vh;
   height: 810px;
@@ -241,5 +244,119 @@ header {
   .texto {
     margin-right: 0;
     margin-top: 1rem;
+  }
+}
+
+
+/* ============================
+        RESPONSIVIDADE
+=============================== */
+
+/* --- Telas até 1200px --- */
+@media (max-width: 1200px) {
+  .header-logo {
+    margin-left: 4%;
+  }
+
+  .header-links {
+    margin-right: 2rem;
+  }
+
+  .header-links ol {
+    gap: 2rem;
+  }
+
+  .bloco-centro {
+    width: 90%;
+    height: auto;
+  }
+
+  .post-it {
+    margin-left: 0;
+    margin-top: 5vh;
+    width: 50vh;
+    height: 40vh;
+  }
+
+  .texto {
+    margin-right: 5vh;
+  }
+}
+
+/* --- Telas até 900px --- */
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+
+  .header-logo img {
+    width: 35%;
+  }
+
+  .header-links ol {
+    gap: 1.5rem;
+  }
+
+  .bloco-centro {
+    width: 95%;
+  }
+
+  .post-it {
+    width: 40vh;
+    height: 36vh;
+  }
+}
+
+/* --- Telas até 600px (mobile) --- */
+@media (max-width: 600px) {
+  body {
+    justify-content: flex-start;
+  }
+
+  header {
+    padding: 1rem;
+  }
+
+  .header-logo {
+    margin-left: 0;
+    gap: 0.5rem;
+  }
+
+  .header-logo p {
+    font-size: 1rem;
+  }
+
+  .header-links ol {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-links a {
+    font-size: 1rem;
+  }
+
+  .perfil {
+    width: 30vh;
+    margin: 1rem auto;
+  }
+
+  .bloco-centro {
+    width: 90%;
+    height: auto;
+  }
+
+  .post-it {
+    width: 90%;
+    height: auto;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+
+  .texto {
+    margin: 1rem;
+    text-align: center;
   }
 }

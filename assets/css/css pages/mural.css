@@ -53,6 +53,7 @@ header {
   color: black;
 }
 
+/*titulo da pagina*/
 .perfil {
   color: #4e1d89;
   width: 16vh;
@@ -64,6 +65,7 @@ header {
   text-align: center;
 }
 
+/*fundo da tela*/
 .blococentral {
   width: 100%;
   height: 92vh;
@@ -71,6 +73,7 @@ header {
   background-color: #cda4ff;
 }
 
+/*fundo da tela*/
 .bloco-centro {
   width: 199.5vh;
   height: 810px;
@@ -79,6 +82,19 @@ header {
   margin-left: 2vh;
   border-radius: 1vh;
 }
+
+/*container dos post-its*/
+.blocos-container {
+    display: grid;
+    grid-template-columns: repeat(5,16vh);
+    grid-template-rows: repeat(2, 28vh);
+    justify-content: space-between;
+    gap: 15vh;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20%;
+    left:15% ;
 
 .blocos-container {
   display: grid;
@@ -93,6 +109,7 @@ header {
   left: 15%;
 }
 
+/*post-its*/
 .bloco-1,
 .bloco-2,
 .bloco-3,
@@ -148,6 +165,56 @@ header {
   background-color: #ffb671;
 }
 
+
+/* --- Telas até 1500px --- */
+@media (max-width: 1500px) {
+  .header-logo {
+    margin-left: 5%;
+  }
+
+  .header-links {
+    margin-right: 4rem;
+  }
+
+  .bloco-centro {
+    width: 90%;
+  }
+
+  .blocos-container {
+    left: 10%;
+    gap: 10vh;
+  }
+}
+
+/* --- Telas até 1200px --- */
+@media (max-width: 1200px) {
+  .header-links ol {
+    gap: 3rem;
+  }
+
+  .blocos-container {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 6vh;
+    left: 5%;
+  }
+}
+
+/* --- Telas até 992px (tablet) --- */
+@media (max-width: 992px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  .header-logo {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+
+  .header-links {
+    margin-right: 0;
 /* Responsividade para telas grandes (max-width: 1200px) */
 @media screen and (max-width: 1200px) {
   .header-logo {
