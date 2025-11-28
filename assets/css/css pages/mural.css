@@ -52,7 +52,8 @@ header {
   color: black;
 }
 
-/*titulo da pagina*/
+/* titulo do perfil*/
+
 .perfil {
   color: #4e1d89;
   width: 16vh;
@@ -65,7 +66,8 @@ header {
 
 }
 
-/*fundo da tela*/
+/* fundo da tela*/
+
 .blococentral {
     width: 100%;
     height: 92vh;
@@ -73,7 +75,7 @@ header {
     background-color: #cda4ff;
 }
 
-/*fundo da tela*/
+/* fundo claro da tela*/
 .bloco-centro {
     width: 199.5vh;
     height: 810px;
@@ -83,8 +85,7 @@ header {
     border-radius: 1vh;
 }
 
-/*container dos post-its*/
-
+/* container dos post its*/
 .blocos-container {
     display: grid;
     grid-template-columns: repeat(5,16vh);
@@ -99,7 +100,7 @@ header {
 
 }
 
-/*post-its*/
+/* post its*/
 .bloco-1,
 .bloco-2,
 .bloco-3,
@@ -161,146 +162,4 @@ header {
  
 .bloco-10 {
     background-color: #ffb671;
-}
-
-
-
-/* ===================================
-            RESPONSIVIDADE
-==================================== */
-
-/* --- Telas até 1500px --- */
-@media (max-width: 1500px) {
-  .header-logo {
-    margin-left: 5%;
-  }
-
-  .header-links {
-    margin-right: 4rem;
-  }
-
-  .bloco-centro {
-    width: 90%;
-  }
-
-  .blocos-container {
-    left: 10%;
-    gap: 10vh;
-  }
-}
-
-/* --- Telas até 1200px --- */
-@media (max-width: 1200px) {
-  .header-links ol {
-    gap: 3rem;
-  }
-
-  .blocos-container {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    gap: 6vh;
-    left: 5%;
-  }
-}
-
-/* --- Telas até 992px (tablet) --- */
-@media (max-width: 992px) {
-  header {
-    flex-direction: column;
-    height: auto;
-    padding: 1rem 0;
-  }
-
-  .header-logo {
-    margin-left: 0;
-    margin-bottom: 1rem;
-  }
-
-  .header-links {
-    margin-right: 0;
-  }
-
-  .header-links ol {
-    gap: 2rem;
-  }
-
-  .bloco-centro {
-    width: 95%;
-    height: auto;
-  }
-
-  .blocos-container {
-    position: relative;
-    top: auto;
-    left: auto;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5vh;
-    margin-top: 5vh;
-  }
-}
-
-/* --- Telas até 768px (mobile grande) --- */
-@media (max-width: 768px) {
-  .header-logo img {
-    width: 40%;
-  }
-
-  .header-links a {
-    font-size: 1rem;
-  }
-
-  .blocos-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4vh;
-  }
-
-  .bloco-1,
-  .bloco-2,
-  .bloco-3,
-  .bloco-4,
-  .bloco-5,
-  .bloco-6,
-  .bloco-7,
-  .bloco-8,
-  .bloco-9,
-  .bloco-10 {
-    width: 25vh;
-    height: 33vh;
-  }
-}
-
-/* --- Telas até 500px (mobile médio/pequeno) --- */
-@media (max-width: 500px) {
-  .header-links ol {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .perfil {
-    margin-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .blocos-container {
-    grid-template-columns: 1fr;
-    margin-top: 4vh;
-  }
-
-  .bloco-1,
-  .bloco-2,
-  .bloco-3,
-  .bloco-4,
-  .bloco-5,
-  .bloco-6,
-  .bloco-7,
-  .bloco-8,
-  .bloco-9,
-  .bloco-10 {
-    width: 80%;
-    height: 30vh;
-    margin: 0 auto;
-  }
 }
