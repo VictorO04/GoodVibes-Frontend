@@ -1,8 +1,8 @@
 * {
     box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  }
+    padding: 0;
+    margin: 0;
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -66,8 +66,8 @@ header {
     margin-top: 2vh;
     margin-right: 10vh;
     text-align: center;
-  }
-/*tela de fundo*/
+}
+
 .container {
     width: 100%;
     height: 92vh;
@@ -78,8 +78,7 @@ header {
     align-items: center;
 }
 
-/*fundo claro*/
-.bloco-central{
+.bloco-central {
     width: 199.5vh;
     height: 810px;
     background-color: #ffffff6e;
@@ -88,7 +87,7 @@ header {
     border-radius: 1vh;
 }
 
-.post-it{
+.post-it {
     display: flex;
     justify-content: center;
     font-weight: bold;
@@ -100,15 +99,6 @@ header {
     text-align: center;
 }
 
-/*texto do post it*/
-.post-it p{
-    margin: 2vh;
-}
-
-
-/* ===============================
-          RESPONSIVIDADE
-================================ */
 
 /* --- Telas até 1400px --- */
 @media (max-width: 1400px) {
@@ -235,4 +225,133 @@ header {
   .post-it {
     width: 95%;
   }
+.post-it p {
+    margin: 2vh;
+}
+
+/* Responsividade para telas grandes (entre 1200px e 1500px) */
+@media screen and (max-width: 1200px) {
+    .header-logo {
+        margin-left: 10%;
+    }
+
+    .header-logo img {
+        width: 20%;
+    }
+
+    .header-links ol {
+        gap: 3rem;
+    }
+
+    .header-links a {
+        font-size: 1.1rem;
+    }
+
+    .perfil {
+        margin-right: 8vh;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .bloco-central {
+        width: 80%;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .post-it {
+        width: 30vh;
+        height: 40vh;
+        margin-left: 50vh;
+    }
+}
+
+/* Responsividade para telas médias (800px a 1200px) */
+@media screen and (max-width: 800px) {
+    .header-logo {
+        margin-left: 5%;
+    }
+
+    .header-logo img {
+        width: 15%;
+    }
+
+    .header-links ol {
+        gap: 2rem;
+    }
+
+    .header-links a {
+        font-size: 1rem;
+    }
+
+    .perfil {
+        margin-right: 5vh;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .bloco-central {
+        width: 85%;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .post-it {
+        width: 25vh;
+        height: 35vh;
+        margin-left: 30vh;
+    }
+}
+
+/* Responsividade para telas pequenas (abaixo de 800px) */
+@media screen and (max-width: 500px) {
+    .header-logo {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .header-logo img {
+        width: 30%;
+    }
+
+    .header-links {
+        margin-right: 0;
+        margin-top: 1rem;
+    }
+
+    .header-links ol {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .header-links a {
+        font-size: 1rem;
+    }
+
+    .perfil {
+        margin-right: 0;
+        margin-top: 1rem;
+    }
+
+    .container {
+        padding: 1rem;
+        flex-direction: column;
+    }
+
+    .bloco-central {
+        width: 100%;
+        height: auto;
+    }
+
+    .post-it {
+        width: 20vh;
+        height: 30vh;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
 }
