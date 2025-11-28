@@ -10,7 +10,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 header {
   width: 100%;
   height: 8vh;
@@ -53,6 +52,8 @@ header {
   color: black;
 }
 
+/* titulo do perfil*/
+
 .perfil {
   color: #4e1d89;
   width: 16vh;
@@ -62,37 +63,44 @@ header {
   margin-top: 2vh;
   margin-right: 10vh;
   text-align: center;
+
 }
+
+/* fundo da tela*/
 
 .blococentral {
-  width: 100%;
-  height: 92vh;
-  margin-top: 1vh;
-  background-color: #cda4ff;
+    width: 100%;
+    height: 92vh;
+    margin-top: 1vh;
+    background-color: #cda4ff;
 }
 
+/* fundo claro da tela*/
 .bloco-centro {
-  width: 199.5vh;
-  height: 810px;
-  background-color: #ffffff6e;
-  margin: 2vh;
-  margin-left: 2vh;
-  border-radius: 1vh;
+    width: 199.5vh;
+    height: 810px;
+    background-color: #ffffff6e;
+    margin: 2vh;
+    margin-left: 2vh;
+    border-radius: 1vh;
 }
 
+/* container dos post its*/
 .blocos-container {
-  display: grid;
-  grid-template-columns: repeat(5, 16vh);
-  grid-template-rows: repeat(2, 28vh);
-  justify-content: space-between;
-  gap: 15vh;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 20%;
-  left: 15%;
+    display: grid;
+    grid-template-columns: repeat(5,16vh);
+    grid-template-rows: repeat(2, 28vh);
+    justify-content: space-between;
+    gap: 15vh;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20%;
+    left:15% ;
+
 }
 
+/* post its*/
 .bloco-1,
 .bloco-2,
 .bloco-3,
@@ -103,47 +111,55 @@ header {
 .bloco-8,
 .bloco-9,
 .bloco-10 {
-  width: 27vh;
-  height: 37vh;
-  border-radius: 1vh;
+    width: 27vh;
+    height: 37vh;
+    border-radius: 1vh;
 }
 
 .bloco-1 {
-  background-color: #849DFF;
+    background-color: #849DFF;
 }
+ 
 
-.bloco-2 {
-  background-color: #F68DCF;
+.bloco-2{
+    background-color: #F68DCF;
 }
+ 
 
 .bloco-3 {
-  background-color: #F8BA63;
+    background-color: #F8BA63;
 }
+ 
 
 .bloco-4 {
-  background-color: #9FD377;
+    background-color: #9FD377;
 }
+ 
 
 .bloco-5 {
-  background-color: #F6D86B;
+    background-color: #F6D86B;
 }
+ 
 
 .bloco-6 {
-  background-color: #8EC054;
+    background-color: #8EC054;
 }
+ 
 
 .bloco-7 {
-  background-color: #FF7271;
+    background-color: #FF7271;
 }
+ 
 
 .bloco-8 {
-  background-color: #7CE2E9;
+    background-color: #7CE2E9;
 }
-
+ 
 .bloco-9 {
-  background-color: #af71ff;
+    background-color: #af71ff;
 }
 
+ 
 .bloco-10 {
-  background-color: #ffb671;
+    background-color: #ffb671;
 }
