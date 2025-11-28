@@ -6,6 +6,7 @@
 body{
     background-color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
+    height: 10vh;
 }
 
 
@@ -52,3 +53,6 @@ header{
 .test:hover{
     color: white;
 }
+
+/*imagem central*/
+
