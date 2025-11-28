@@ -84,6 +84,7 @@ header {
 }
 
 /*container dos post-its*/
+
 .blocos-container {
     display: grid;
     grid-template-columns: repeat(5,16vh);
