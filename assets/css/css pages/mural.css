@@ -95,7 +95,7 @@ header{
     grid-template-columns: repeat(5,14rem);
     grid-template-rows: repeat(2, 37vh);
     justify-content: space-between;
-    gap: 1rem;
+    gap: 1%;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -115,9 +115,10 @@ header{
 .bloco-8,
 .bloco-9,
 .bloco-10 {
-    width: 10rem;
-    height: 14rem;
+    width: 14rem;
+    height: 10rem;
     border-radius: 0.5rem;
+    border: 0;
     transform: translateY(100px);
       opacity: 0;
       animation: levantar 1s ease-out forwards;
@@ -179,96 +180,5 @@ header{
   100% {
     transform: translateY(0);
     opacity: 1;
-  }
-}
-
-/* --- Tablet Devices (Max width 1200px) --- */
-@media (max-width: 1200px) {
-  
-  /* Adjust the grid for tablets: change from 5 columns to 4 columns */
-  .blocos-container {
-    /* Now 4 columns, which helps prevent horizontal scroll on tablets */
-    grid-template-columns: repeat(4, 10rem); 
-    /* The blocks themselves are 10rem x 14rem, so use that in the grid template if possible
-       (I'm using 10rem here, but the block width is 10rem, which is correct) */
-    
-    /* Ensure the container is centered relative to the screen width */
-    top: 50%; /* Adjusted for better center, as the grid is now narrower */
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    
-    /* Allow blocks to wrap if necessary */
-    width: auto; 
-    gap: 1rem;
-  }
-
-  /* Adjust the main content block to allow for smaller viewports */
-  .bloco-centro {
-    width: 90vw;
-  }
-
-  /* Reduce header link gap for space */
-  .cabecalho {
-    gap: 1rem;
-    margin-right: 20px;
-  }
-}
-
-/* --- Mobile Devices (Max width 768px) --- */
-@media (max-width: 768px) {
-  
-  /* Adjust the grid for mobile: change from 4 columns to 2 columns */
-  .blocos-container {
-    /* Only 2 columns wide */
-    grid-template-columns: repeat(2, 10rem); 
-    grid-template-rows: auto; /* Allow rows to auto-adjust */
-    gap: 0.8rem;
-    
-    /* Keep centering but remove the high 'top' value from the original code */
-    position: static; /* Switch from absolute to static for normal flow */
-    transform: none; /* Reset transform */
-    margin: 1rem auto; /* Center with margins */
-    
-    /* Ensure all blocks fit and the container wraps */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  /* Make sure the post-it blocks are still the same size */
-  .bloco-1, .bloco-2, .bloco-3, .bloco-4, .bloco-5,
-  .bloco-6, .bloco-7, .bloco-8, .bloco-9, .bloco-10 {
-    width: 9rem; /* Slightly smaller width for tight screens */
-    height: 12rem; /* Slightly smaller height */
-  }
-
-  /* Adjust header layout */
-  header {
-    height: auto;
-    flex-direction: column;
-    padding: 0.5rem;
-  }
-  
-  .cabecalho {
-    /* Stack links vertically or center them */
-    flex-direction: column; 
-    align-items: center;
-    gap: 0.5rem;
-    margin-right: 0;
-    padding-bottom: 0.5rem;
-  }
-  
-  .perfil {
-    margin: 0.5rem auto; /* Center the profile title */
-  }
-
-  .blococentral {
-    height: auto; /* Allow the central block to grow with the content */
-  }
-
-  .bloco-centro {
-    width: 95vw;
-    height: auto; /* Allow the content to define the height */
   }
 }
