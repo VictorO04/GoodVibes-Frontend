@@ -5,13 +5,14 @@
 }
 body{
     background-color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
 /*header*/
 
 header{
-    background-color: #CDA4FF;;
+    background-color: #CDA4FF;
     height: 10vh;
     display: flex;
     justify-content: end;
@@ -34,16 +35,18 @@ header{
 
 .logo{
     height: 50px;
-    width: 58px;
+    width: 62px;
 }
 .imagem{
     width: 100%;
     margin-left: 5%;
+    justify-content: center;
 }
 
 .test{
     color: rgb(31, 30, 30);
     text-decoration: none;
+    padding: 10px;
 }
 
 .test:hover{
