@@ -95,7 +95,7 @@ header {
     position: absolute;
     top: 20%;
     left:15% ;
-
+}
 .blocos-container {
   display: grid;
   grid-template-columns: repeat(5, 16vh);
@@ -215,6 +215,7 @@ header {
 
   .header-links {
     margin-right: 0;
+  }
 /* Responsividade para telas grandes (max-width: 1200px) */
 @media screen and (max-width: 1200px) {
   .header-logo {
@@ -357,4 +358,5 @@ header {
     width: 16vh;
     height: 22vh;
   }
+}
 }
