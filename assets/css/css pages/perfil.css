@@ -5,6 +5,7 @@
 }
 body{
     background-color: rgb(255, 255, 255);
+    height: 10vh;
 }
 
 
@@ -49,3 +50,6 @@ header{
 .test:hover{
     color: white;
 }
+
+/*imagem central*/
+
