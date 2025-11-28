@@ -116,94 +116,106 @@ header {
   margin-top: 1.1px;
 }
 
-/* --- Tablet Devices (Max width 1024px) --- */
-@media (max-width: 1024px) {
-    .header-links ol {
-        gap: 1.5rem;
-    }
-    
-    .header-links a {
-        font-size: 1rem;
-    }
+/* ========================================================== */
+/* Media Queries para Responsividade                */
+/* ========================================================== */
 
-    .bloco-centro {
-        width: 95vw;
-        height: 70vh;
-    }
-
-    .post-it {
-        width: 18rem;
-        height: 22rem;
-    }
-}
-
-/* --- Small Tablet / Mobile Landscape (Max width 768px) --- */
+/* Para telas menores que 768px (ideal para tablets e smartphones) */
 @media (max-width: 768px) {
+    
     header {
-        /* Stack header content vertically for small screens */
-        flex-direction: column;
-        height: auto;
-        padding: 1rem;
-        gap: 0.5rem;
-    }
-
-    .header-links {
-        margin-top: 0.5rem;
-        margin-right: 0;
-        width: 100%;
+        /* Aumentar um pouco a altura do header em mobile para acomodar os itens, se necessário */
+        height: 10vh; 
+        /* Alinhar os itens do header de forma diferente, se o espaço estiver apertado */
+        padding: 0.5rem 1rem;
     }
     
-    .header-links ol {
-        /* Distribute links across the row */
-        justify-content: space-around;
+    .header-logo {
+        /* Ajustar a margem e o tamanho da fonte do logo */
+        margin-left: 0;
         gap: 0.5rem;
-        width: 100%;
     }
-
-    .blococentral {
-        /* Adjust height since the header grew */
-        height: auto; 
-        min-height: 92vh;
-        padding: 1rem;
-    }
-
-    .bloco-centro {
-        /* Allow height to be dynamic for content */
-        height: auto; 
-        width: 100%; 
-    }
-
-    .perfil {
-        /* Ensure profile title centers and fits */
-        width: 10rem;
-        margin: 0 auto;
-    }
-
-    .post-it {
-        width: 100%; /* Full width of its parent (.bloco-centro) */
-        height: 20rem; 
-    }
-}
-
-/* --- Mobile Portrait (Max width 480px) --- */
-@media (max-width: 480px) {
-    .header-links ol {
-        /* Stack links vertically on the smallest screens */
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-    }
-
+    
     .header-logo p {
         font-size: 1.1rem;
     }
-    
-    .post-it {
-        /* Use smaller dimensions for smaller screens */
-        height: 15rem; 
+
+    .header-logo img {
+        width: 1.5rem;
     }
     
-    .texto {
-        font-size: 1rem;
+    .header-links {
+        /* Ocultar links ou reestruturá-los em um menu sanduíche é o ideal, mas para este exemplo, vamos reposicioná-los */
+        margin-left: 10;
+        /* Remover o display flex para permitir que o .perfil se ajuste melhor */
+    }
+
+    .header-links ol {
+        /* Em telas menores, os links podem ser empilhados ou o espaçamento reduzido drasticamente */
+        display: flex; /* Geralmente links são movidos para um menu sanduíche */
+    }
+
+    /* .perfil fica como o elemento visível principal além do logo */
+    .perfil {
+        width: auto; /* Ajustar largura automaticamente */
+        padding: 0.3rem 0.6rem;
+        margin-right: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Container Principal */
+    .container {
+        /* Ajustar a altura para o restante da tela */
+        height: calc(100vh - 10vh); 
+    }
+
+    /* Bloco Central */
+    .bloco-central {
+        width: 95vw; /* Ocupar mais largura em mobile */
+        height: 90vh; /* Ocupar mais altura em mobile */
+        padding: 1rem;
+    }
+
+    /* Post-it */
+    .post-it {
+        /* Ocupar mais espaço dentro do bloco central */
+        width: 90%; 
+        height: auto; /* Deixar a altura flexível */
+        padding: 1.5rem;
+    }
+}
+
+
+/* Para telas muito pequenas (Smartphones) - como 390px */
+@media (max-width: 480px) {
+
+    header {
+        height: 12vh;
+        /* Alinhar itens para o topo/fundo para economizar espaço se necessário */
+        align-items: flex-start;
+        flex-wrap: wrap; /* Permitir quebra de linha se o espaço acabar */
+    }
+
+    .header-logo {
+        width: 50%;
+        margin-top: 0.5rem;
+    }
+
+    .perfil {
+        width: auto;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .header-links {
+        /* Remover o elemento de links completamente, assumindo um menu sanduíche em JS */
+        display: flex; 
+    }
+    
+    /* Post-it */
+    .post-it {
+        width: 100%; /* Ocupar toda a largura disponível no bloco central */
+        font-size: 0.9rem;
+        padding: 1rem;
     }
 }
