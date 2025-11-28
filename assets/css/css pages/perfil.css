@@ -8,6 +8,7 @@ body{
 }
 
 
+/*header*/
 
 header{
     background-color: #CDA4FF;;
@@ -23,15 +24,12 @@ header{
     gap: 200px;
     list-style: none;
     margin-right: 50px;
+    
 }
 
 .cabecalho-box{
     display: flex;
 }
-
-
-
-
 
 
 .logo{
@@ -41,4 +39,13 @@ header{
 .imagem{
     width: 100%;
     margin-left: 5%;
+}
+
+.test{
+    color: rgb(31, 30, 30);
+    text-decoration: none;
+}
+
+.test:hover{
+    color: white;
 }
