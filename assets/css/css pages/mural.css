@@ -12,46 +12,48 @@ body {
 }
 /*header*/
 
+/*header*/
+
 header{
-  background-color: #CDA4FF;;
-  height: 10vh;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  
+    background-color: #CDA4FF;
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
 }
 .cabecalho{
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 2rem;
-  list-style: none;
-  margin-right: 50px;
-  
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 200px;
+    list-style: none;
+    margin-right: 50px;
+    
 }
 
 .cabecalho-box{
-  display: flex;
+    display: flex;
 }
 
 
 .logo{
-  height: 3.125rem;
-  width: 3.625rem;
+    height: 50px;
+    width: 62px;
 }
 .imagem{
-  width: 100%;
-  margin-left: 0.5;
+    width: 100%;
+    margin-left: 5%;
+    justify-content: center;
 }
 
 .test{
-  color: rgb(31, 30, 30);
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+    color: rgb(31, 30, 30);
+    text-decoration: none;
+    padding: 10px;
 }
 
 .test:hover{
-  color: white;
+    color: white;
 }
 
 /* titulo do perfil*/
@@ -184,16 +186,19 @@ header{
 }
 
 
-
-body.claro{
-  background-color: white;
-}
-body.escuro{
-  background-color: black;
+.header.claro {
+    transition: 1s;
+    background-color: #CDA4FF;
+    color: #000000;
 }
 
+/* Tema Escuro */
+.header.escuro {
+    transition: 1s;
+    background-color: #53199a;
+    color: white;
+}
 
-.btn-modo{
-  width: 40px;
-  height: 40px;
+.header.escuro .test{
+  color: white;
 }

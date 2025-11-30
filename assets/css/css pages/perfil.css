@@ -56,3 +56,25 @@ header{
 
 /*imagem central*/
 
+
+
+
+
+
+/*botão tema*/
+
+.btn-tema{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}
+
+.header.claro{
+    transition: 1s;
+    background-color: #CDA4FF;
+}
+
+.header.escuro{
+    transition: 1s;
+    background-color: #7301ff;
+}
