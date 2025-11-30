@@ -1,32 +1,36 @@
+// pega os elementos
+const btn = document.getElementById("btn-tema");
+const header = document.getElementById("header");
+const container = document.getElementById("container");
 
-const btn = document.getElementById("btn-tema")
-const header = document.getElementById("header")
-const temaSalvo = localStorage.getItem("tema");
+function aplicarTema(tema) {
+    if (header) {
+        header.classList.remove("claro", "escuro");
+        header.classList.add(tema);
+    }
 
-if (temaSalvo) {
-    header.classList.remove("claro", "escuro"); 
-    header.classList.add(temaSalvo);
+    if (container) {
+        container.classList.remove("white", "dark");
+        if (tema === "claro") {
+            container.classList.add("white");
+        } else {
+            container.classList.add("dark");
+        }
+    }
 }
 
-
-
-
-
-
-
-
+document.addEventListener("DOMContentLoaded", () => {
+    const temaSalvo = localStorage.getItem("temaHeader") || "claro";
+    aplicarTema(temaSalvo);
+});
 
 if (btn) {
     btn.addEventListener("click", () => {
-        if (header.classList.contains("claro")) {
-            header.classList.replace("claro", "escuro");
-            localStorage.setItem("tema", "escuro"); 
-        } else {
-            header.classList.replace("escuro", "claro");
-            localStorage.setItem("tema", "claro");
-        }
+        const temaAtual = header.classList.contains("claro") ? "claro" : "escuro";
+        const novoTema = temaAtual === "claro" ? "escuro" : "claro";
+        localStorage.setItem("temaHeader", novoTema);
+        aplicarTema(novoTema);
     });
 }
-
 
 

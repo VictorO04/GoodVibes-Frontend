@@ -1,109 +1,124 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-/*header*/
 
 /*header*/
 
-header{
-    background-color: #CDA4FF;
+header {
     height: 10vh;
     display: flex;
     justify-content: end;
     align-items: center;
-    
+    flex-shrink: 0;
+
 }
-.cabecalho{
+
+.cabecalho {
     display: flex;
     flex-direction: row-reverse;
     gap: 200px;
     list-style: none;
     margin-right: 50px;
-    
+
 }
 
-.cabecalho-box{
+.cabecalho-box {
     display: flex;
 }
 
 
-.logo{
+.logo {
     height: 50px;
     width: 62px;
 }
-.imagem{
+
+.imagem {
     width: 100%;
     margin-left: 5%;
     justify-content: center;
 }
 
-.test{
+.test {
     color: rgb(31, 30, 30);
     text-decoration: none;
     padding: 10px;
 }
 
-.test:hover{
+.test:hover {
     color: white;
 }
 
 /* titulo do perfil*/
 
 .perfil {
-  color: #4e1d89;
-  width: 8rem;
-  height: 2rem;
-  background-color: #ffffff6e;
-  border-radius: 1vh;
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-  text-align: center;
-  font-size: 0.9rem;
+    color: #4e1d89;
+    width: 8rem;
+    height: 2rem;
+    background-color: #ffffff6e;
+    border-radius: 1vh;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
 
 }
 
 /* fundo da tela*/
 
-.blococentral {
+.container {
     width: 100%;
-    height: 89vh;
-    margin-top: 1vh;
+    height: 90vh;
     background-color: #cda4ff;
+    display: flex;
+    justify-content: center;
 }
 
-/* fundo claro da tela*/
+
+/*modo*/
+
+.container.white {
+    background-color: #f4a2f7;
+}
+
+.container.dark {
+    background-color: rgb(118, 83, 118);
+}
+
+.container.dark .blocos-container {
+    filter: invert(1);
+    filter: brightness(1);
+}
+/*blocos*/
 .bloco-centro {
     width: 96vw;
     height: 85vh;
     background-color: #ffffff6e;
-    margin: 1rem auto;
     border-radius: 0.5rem;
     padding: 1rem;
-     animation: levantar 1s ease-out forward
+    animation: levantar 1s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1%;
 }
 
-/* container dos post its*/
 .blocos-container {
     display: grid;
-    grid-template-columns: repeat(5,14rem);
+    grid-template-columns: repeat(5, 14rem);
     grid-template-rows: repeat(2, 37vh);
-    justify-content: space-between;
-    gap: 1%;
+    gap: 1rem;
     justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 20%;
-    left:5% ;
-
+    align-items: start;
+    margin-top: 8rem;
 }
 
 /* post its*/
@@ -122,83 +137,90 @@ header{
     border-radius: 0.5rem;
     border: 0;
     transform: translateY(100px);
-      opacity: 0;
-      animation: levantar 1s ease-out forwards;
+    opacity: 0;
+    animation: levantar 1s ease-out forwards;
 }
 
 .bloco-1 {
     background-color: #849DFF;
 }
- 
 
-.bloco-2{
+
+.bloco-2 {
     background-color: #F68DCF;
 }
- 
+
 
 .bloco-3 {
     background-color: #F8BA63;
 }
- 
+
 
 .bloco-4 {
     background-color: #9FD377;
 }
- 
+
 
 .bloco-5 {
     background-color: #F6D86B;
 }
- 
+
 
 .bloco-6 {
     background-color: #8EC054;
 }
- 
+
 
 .bloco-7 {
     background-color: #FF7271;
 }
- 
+
 
 .bloco-8 {
     background-color: #7CE2E9;
 }
- 
+
 .bloco-9 {
     background-color: #af71ff;
 }
 
- 
+
 .bloco-10 {
     background-color: #ffb671;
 }
 
 @keyframes levantar {
-  0% {
-    transform: translateY(-100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-
+/*tema*/
 .header.claro {
     transition: 1s;
-    background-color: #CDA4FF;
+    background-color: #b093ff;
     color: #000000;
 }
 
-/* Tema Escuro */
 .header.escuro {
     transition: 1s;
     background-color: #53199a;
     color: white;
 }
 
-.header.escuro .test{
-  color: white;
+.header.escuro .test {
+    color: white;
+    transition: 1s;
+}
+
+.header.escuro .imagem {
+    color: white;
+    filter: invert(1);
+    transition: 1s;
 }

@@ -69,12 +69,28 @@ header{
     background-color: red;
 }
 
-.header.claro{
+.header.claro {
     transition: 1s;
     background-color: #CDA4FF;
+    color: #000000;
 }
 
-.header.escuro{
+/* Tema Escuro */
+.header.escuro {
     transition: 1s;
-    background-color: #7301ff;
+    background-color: #53199a;
+    color: white;
+}
+
+.header.escuro .test{
+  color: white;
+  transition: 1s;
+}
+.header.escuro .test:hover{
+  color: rgb(0, 0, 0);
+}
+.header.escuro .imagem{
+  color: white;
+  filter: invert(1);
+  transition: 1s;
 }
