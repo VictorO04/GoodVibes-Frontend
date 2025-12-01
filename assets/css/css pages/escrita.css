@@ -15,10 +15,11 @@ body {
 .container {
     width: 100vw;
     height: 90vh;
-    background-color: #cda4ff;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 /*header*/
@@ -70,14 +71,13 @@ header {
 
 .header.claro {
   transition: 1s;
-  background-color: #febe56e7;
+  background-color: #f5c577e7;
   color: #000000;
   box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
 }
 
 /* Tema Escuro */
 .header.escuro {
-  transition: 1s;
   background-color: #53199a;
   color: white;
   box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
@@ -85,27 +85,21 @@ header {
 
 .header.escuro .test{
   color: white;
-  transition: 1s;
 }
 .header.escuro .imagem{
   color: white;
   filter: invert(1);
-  transition: 1s;
 }
 .container.white {
-  background-color: #ffff8ab5;
-  transition: 1s;
+    background-color: #f5efbb;
 }
 
 .container.dark {
   background-color: #451580;
-  transition: 1s;
 }
 .container.dark .texto{
   color:rgb(209, 209, 209)
 }
-
-
 
 
 

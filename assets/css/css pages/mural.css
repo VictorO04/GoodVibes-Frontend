@@ -194,24 +194,20 @@ header {
 
 /*tema*/
 .header.claro {
-    transition: 1s;
     background-color: #f5c577e7;
     color: #000000;
 }
 
 .header.escuro {
-    transition: 1s;
     background-color: #53199a;
     color: white;
 }
 
 .header.escuro .test {
     color: white;
-    transition: 1s;
 }
 
 .header.escuro .imagem {
     color: white;
     filter: invert(1);
-    transition: 1s;
 }
