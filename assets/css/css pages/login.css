@@ -30,17 +30,31 @@ body{
     width: 55vw;
     height: 100%;
 }
+
+.container.dark .login-texto{
+    background-color:#451580;
+    width: 55vw;
+    height: 100%;
+}
 /*titulo*/
+
 .titulo{
     display: flex;
     justify-content: center;
     margin-top: 12%;
 }
 
+.container.dark #titulo-texto {
+        color: rgb(192, 141, 255);
+    font-size: 60px;
+}
+
 #titulo-texto{
     color: rgb(78, 29, 137);
     font-size: 60px;
 }
+
+
 /*email*/
 .email-caixa{
     display: flex;
@@ -55,6 +69,10 @@ body{
     width: 45%;
     margin-top: 130px;
     color: rgb(78, 29, 137);
+}
+
+.container.dark #label {
+    color:  rgb(192, 141, 255);
 }
 #email{
     padding: 15px 10px;
@@ -73,6 +91,9 @@ body{
     align-items: center;
 }
 
+.container.dark #label-2 {
+        color:  rgb(192, 141, 255);
+}
 #label-2{
     display: flex;
     align-items: start;
@@ -95,6 +116,11 @@ body{
     padding-bottom: 50px;
     height: 13%;
     align-items: center;
+}
+
+.container.dark .texto-interno {
+   background-color: rgb(136, 65, 223);
+   color: #e2c8ff;
 }
 
 .texto-interno{
