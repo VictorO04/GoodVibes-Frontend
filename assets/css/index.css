@@ -34,14 +34,36 @@ main {
     width: 25%;
     height: 2.5rem;
     border-radius: 10px;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .bem-vindo a:hover {
     background-color:   #ec9a16e7;
+    box-shadow: 0 0 45px #ffe604;
+    color: #fff065;
 }
 
 main img {
     height: 40vh;
     width: 20vw;
 }
+
+.link {
+    margin-top: 1%;
+}
+
+.texto-flutuar {
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.texto-flutuar:hover {
+    animation: floating 1s ease-in-out infinite;
+    transform: translateY(-10px);
+    transition: 100ms;
+}
+
+
+
