@@ -47,10 +47,6 @@ function mostrarLista(array) {
         divPostIt.innerHTML = `
             <h3>${u.emoji} ${u.titulo}</h3>
             <p>${u.conteudo}</p>
-            <div style="margin-top: 15px; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 5px;">
-                <small><strong>Humor:</strong> ${u.humor}</small> <br>
-                <small><strong>Tipo:</strong> ${u.tipo}</small>
-            </div>
         `;
         
         containerMsg.appendChild(divPostIt);
