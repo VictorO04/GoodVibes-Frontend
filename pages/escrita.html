@@ -4,37 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escreva o seu</title>
-    <link rel="stylesheet" href="/assets/css/css pages/escrita.css">
+    <link rel="stylesheet" href="./../assets/css/css pages/escrita.css">
+    <script src="./../assets/js/modo.js" defer></script>
 </head>
-<body>
-    <header>
-        <div class="header-logo">
-            <img src="./../assets/img/imagem.png" alt="">
-            <p>GoodVibes</p>
-        </div>
-        <div class="perfil">
-            <h2>Mensagem</h2>
-        </div>
-        <nav class="header-links">
 
+<body>
+    <header class="header claro" id="header">
+        <div class="imagem">
+            <img src="./../assets/img/imagem.png" alt="logo" class="logo">
+        </div>
+
+        <nav class="cabecalho-box">
+            <ol class="cabecalho">
+                <li><a href="perfil.html" class="test">Perfil</a></li>
+                <li><a href="mensagem.html" class="test">Mensagens</a></li>
+                <li><a href="mural.html" class="test">Início</a></li>
+            </ol>
         </nav>
     </header>
 
-<div class="blococentral">
-    <div class="bloco-centro">
-        <div class="post-it">
-            <label for="campo-escrita" class="titulo-escrita">
-               
-            </label>
-            <textarea 
-                id="campo-escrita" 
-                name="mensagem" 
-                rows="10" 
-                placeholder=" Escreva o seu..."
-                autofocus
-            ></textarea>
+    <main>
+        <div class="container white" id="container">
+            <div class="bloco-centro">
+                <div class="post-it">
+                    <label for="campo-escrita" class="titulo-escrita">Escreva o seu recado:</label>
+
+                    <textarea 
+                        id="campo-escrita" 
+                        name="mensagem" 
+                        rows="10" 
+                        placeholder=" Escreva o seu..."
+                        autofocus
+                    ></textarea>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </main>
 </body>
 </html>
