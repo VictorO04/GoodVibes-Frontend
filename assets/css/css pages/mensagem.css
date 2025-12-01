@@ -137,8 +137,14 @@ header{
 }
 
 .container.dark {
-    background-color: rgb(118, 83, 118);
+    background-color: #451580;
+;
 }
 .container.container.dark .texto{
-  color:rgb(209, 209, 209)
+  color:rgb(0, 0, 0)
+}
+
+.container.dark .bloco-central {
+    background-color: #c18fff30;
+
 }
