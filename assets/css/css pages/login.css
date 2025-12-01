@@ -119,3 +119,8 @@ body{
     font-size: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.texto-interno:hover {
+    transition: 100ms;
+    background-color: #eec34e;
+}
