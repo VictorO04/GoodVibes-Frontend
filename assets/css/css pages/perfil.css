@@ -13,7 +13,7 @@ body{
 /*header*/
 
 header{
-    background-color: #CDA4FF;
+    background-color: #ffffff;
     height: 10vh;
     display: flex;
     justify-content: end;
@@ -58,7 +58,7 @@ header{
 /*header modo*/
 .header.claro {
     transition: 1s;
-    background-color: #febe56e7;
+    background-color: #f5c577e7;
     color: #000000;
     box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
 }
@@ -75,7 +75,7 @@ header{
   transition: 1s;
 }
 .header.escuro .test:hover{
-  color: rgb(0, 0, 0);
+  color: rgb(205, 174, 255);
 }
 .header.escuro .imagem{
   color: white;
@@ -144,7 +144,7 @@ header{
 .container {
     width: 100%;
     height: 90vh;
-    background-color: #fcffa4;
+    background-color: #ffffff;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -154,12 +154,12 @@ header{
 /*modo*/
 
 .container.white {
-    background-color: #ffff8ab5;
+    background-color: #f5efbb;
     transition: 1s;
 }
 
 .container.dark {
-    background-color: #451580;
+    background-color: #370d69;
     transition: 1s;
 }
 
@@ -189,7 +189,7 @@ header{
 }
 
 .formulario {
- background-color: #febe56e7;
+ background-color: #f5c577e7;
  padding: 30px 40px;
  border-radius: 20px;
  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -202,7 +202,7 @@ header{
 
 
 .formulario label {
-    color: #ffeb7b;
+    color: #020202;
     font-weight: bold;
     margin-bottom: 5px;
   }
@@ -219,8 +219,8 @@ header{
   }
 
   .escuro-box {
-    background-color: #febe56e7;
-    border-top: 2px solid #ffeb7b;
+    background-color: #f5c577e7;
+    border-top: 2px solid #ffffff;
     border-radius: 20px;
     padding: 15px 20px;
     text-align: center;
@@ -249,14 +249,14 @@ header{
   }
 
   .container.dark .formulario label {
-    color: #d9b9ff;
+    color: #000000;
   }
 
   .container.dark .escuro-box {
     background-color: #a36ce6;
-    border-top: 2px solid #d9b9ff;
+    border-top: 2px solid #ffffff;
   }
 
   .container.dark .escuro-box p {
-    color: white;
+    color: rgb(0, 0, 0);
 }
