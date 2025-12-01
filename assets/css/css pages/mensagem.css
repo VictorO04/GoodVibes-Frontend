@@ -111,26 +111,22 @@ header{
 /*header js*/
 
 .header.claro {
-    transition: 1s;
     background-color:rgb(221, 192, 255);
     color: #000000;
 }
 
 /* Tema Escuro */
 .header.escuro {
-    transition: 1s;
     background-color: #53199a;
     color: white;
 }
 
 .header.escuro .test{
   color: white;
-  transition: 1s;
 }
 .header.escuro .imagem{
   color: white;
   filter: invert(1);
-  transition: 1s;
 }
 .container.white {
     background-color: #cda4ff;

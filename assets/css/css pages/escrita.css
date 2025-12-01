@@ -78,7 +78,6 @@ header {
 
 /* Tema Escuro */
 .header.escuro {
-  transition: 1s;
   background-color: #53199a;
   color: white;
   box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
@@ -86,21 +85,17 @@ header {
 
 .header.escuro .test{
   color: white;
-  transition: 1s;
 }
 .header.escuro .imagem{
   color: white;
   filter: invert(1);
-  transition: 1s;
 }
 .container.white {
     background-color: #f5efbb;
-    transition: 1s;
 }
 
 .container.dark {
   background-color: #451580;
-  transition: 1s;
 }
 .container.dark .texto{
   color:rgb(209, 209, 209)
