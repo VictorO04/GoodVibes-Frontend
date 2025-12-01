@@ -69,16 +69,18 @@ header {
 /*header js*/
 
 .header.claro {
-    transition: 1s;
-    background-color:rgb(221, 192, 255);
-    color: #000000;
+  transition: 1s;
+  background-color: #febe56e7;
+  color: #000000;
+  box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
 }
 
 /* Tema Escuro */
 .header.escuro {
-    transition: 1s;
-    background-color: #53199a;
-    color: white;
+  transition: 1s;
+  background-color: #53199a;
+  color: white;
+  box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
 }
 
 .header.escuro .test{
@@ -91,11 +93,13 @@ header {
   transition: 1s;
 }
 .container.white {
-    background-color: #cda4ff;
+  background-color: #ffff8ab5;
+  transition: 1s;
 }
 
 .container.dark {
-    background-color: rgb(118, 83, 118);
+  background-color: #451580;
+  transition: 1s;
 }
 .container.dark .texto{
   color:rgb(209, 209, 209)
@@ -173,8 +177,8 @@ header {
 }
 
 #campo-escrita {
-    width: 50vh; 
-    height: 25vw;
+    width: 20vw; 
+    height: 50vh;
     padding: 10px;
     border-radius: 5px;
     border: rgba(171, 255, 255, 0.795);
@@ -187,21 +191,6 @@ header {
   align-items: center;
 }
 
-.post-it {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  font-weight: bold;
-  background-color: rgba(171, 255, 255, 0.795);
-  width: 20rem;
-  height: 24rem;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin: 0;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
-  text-align: center;
-}
 
 .texto {
   margin-right: 1rem;
