@@ -54,28 +54,14 @@ header{
     color: white;
 }
 
-/*imagem central*/
 
-
-
-
-
-
-/*botão tema*/
-
-.btn-tema{
-    height: 100px;
-    width: 100px;
-    background-color: red;
-}
-
+/*header modo*/
 .header.claro {
     transition: 1s;
     background-color: #CDA4FF;
     color: #000000;
 }
 
-/* Tema Escuro */
 .header.escuro {
     transition: 1s;
     background-color: #53199a;
@@ -93,4 +79,68 @@ header{
   color: white;
   filter: invert(1);
   transition: 1s;
+}
+
+/*botão tema*/
+
+.btn-tema{
+    height: 50px;
+    width: 120px;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.9s;
+    appearance: none;
+    background-image: linear-gradient(91deg, rgb(11, 194, 250), rgb(132, 0, 255));
+    transition: 1s;
+
+}
+.btn-tema::before{
+    content:"" ;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    top: 15%;
+    left: 10%;
+    transition: 1s;
+}
+.btn-tema::after{
+    content:"";
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    top: 15%;
+    left: 10%;
+    transition: 1s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-tema:checked{
+    background-image: linear-gradient(91deg, rgb(255, 230, 1), rgb(255, 0, 0));
+    transition: 1s;
+}
+.btn-tema:checked::before{
+    background-color: white;
+    left: 70px;
+}
+.btn-tema:checked::after{
+    background-color: rgb(245, 234, 234);
+    left: 70px;
+    content: "";
+    display: grid;
+    place-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main{
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center;
+    height: 90vh;
 }
