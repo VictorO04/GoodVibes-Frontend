@@ -12,12 +12,12 @@ main {
 }
 
 .bem-vindo h1 {
-    color: #4E1D89;
+    color: #f0a834e7;
     font-size: 3.5rem;
 }
 
 .bem-vindo p {
-    color: #9f7bca;
+    color:#f5bc60e7;
     font-size: 2rem;
     width: 30rem;
     letter-spacing: 1.6px;
@@ -30,7 +30,7 @@ main {
     text-decoration: none;
     color: black;
     font-size: 1.5rem;
-    background-color: #CDA4FF;
+    background-color:  #f5c577e7;
     width: 25%;
     height: 2.5rem;
     border-radius: 10px;
@@ -38,7 +38,7 @@ main {
 }
 
 .bem-vindo a:hover {
-    background-color: #DEC3FF;
+    background-color:   #ec9a16e7;
 }
 
 main img {
