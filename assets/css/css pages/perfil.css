@@ -182,11 +182,81 @@ header{
 
 
 
+.container {
+ display: flex;
+ align-items: center;
+ gap: 50px;
+}
+
+.formulario {
+ background-color: #febe56e7;
+ padding: 30px 40px;
+ border-radius: 20px;
+ box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+ display: flex;
+ flex-direction: column;
+ width: 14vw;
+ position: relative; 
+ margin-right: 2rem;
+}
 
 
+.formulario label {
+    color: #ffeb7b;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .formulario input {
+    border: none;
+    background: white;
+    border-radius: 15px;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    outline: none;
+    font-size: 14px;
+  
+  }
 
+  .escuro-box {
+    background-color: #febe56e7;
+    border-top: 2px solid #ffeb7b;
+    border-radius: 20px;
+    padding: 15px 20px;
+    text-align: center;
+    width: 200px;
+    margin-right: 50rem;
+  }
+  
+  .escuro-box p {
+    margin: 0 0 10px 0;
+    color: #000;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin-right: 4rem;
+  }
+  
+  .container.dark .formulario {
+    background-color: #a36ce6;
+  }
 
+  .container.dark .formulario label {
+    color: #d9b9ff;
+  }
 
+  .container.dark .escuro-box {
+    background-color: #a36ce6;
+    border-top: 2px solid #d9b9ff;
+  }
 
-
-
+  .container.dark .escuro-box p {
+    color: white;
+}
