@@ -15,11 +15,10 @@ body {
 /*header*/
 
 header {
-    height: 10vh;
+   height: 10vh;
     display: flex;
     justify-content: end;
     align-items: center;
-    flex-shrink: 0;
 }
 
 .cabecalho {
@@ -57,36 +56,22 @@ header {
     color: white;
 }
 
-/* titulo do perfil*/
-
-.perfil {
-    color: #4e1d89;
-    width: 8rem;
-    height: 2rem;
-    background-color: #ffffff6e;
-    border-radius: 1vh;
-    margin-top: 0.5rem;
-    margin-right: 0.5rem;
-    text-align: center;
-    font-size: 0.9rem;
-
-}
-
 /* fundo da tela*/
 
 .container {
     width: 100%;
-    height: 90vh;
-    background-color: #cda4ff;
+    height: 92.4vh;
+    background-color:rgb(230, 210, 255);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 
 /*modo*/
 
 .container.white {
-    background-color: #cda4ff;
+    background-color: #f5efbb;
 }
 
 .container.dark {
@@ -106,14 +91,16 @@ header {
 .bloco-centro {
     width: 96vw;
     height: 85vh;
-    background-color:rgb(230, 210, 255);
+    background-color:#fdfbda;
     border-radius: 0.5rem;
-    padding: 1rem;
+    padding: 7rem;
     animation: levantar 1s ease-out forwards;
     display: flex;
     flex-direction: column;
-    margin-top: 1%;
+    align-items: center;
 }
+
+
 
 .blocos-container {
     display: grid;
@@ -208,7 +195,7 @@ header {
 /*tema*/
 .header.claro {
     transition: 1s;
-    background-color:rgb(221, 192, 255);
+    background-color: #f5c577e7;
     color: #000000;
 }
 
