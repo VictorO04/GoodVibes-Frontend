@@ -70,7 +70,7 @@ header {
 
 .header.claro {
     transition: 1s;
-    background-color: #CDA4FF;
+    background-color:rgb(221, 192, 255);
     color: #000000;
 }
 
@@ -91,7 +91,7 @@ header {
   transition: 1s;
 }
 .container.white {
-    background-color: #f4a2f7;
+    background-color: #cda4ff;
 }
 
 .container.dark {

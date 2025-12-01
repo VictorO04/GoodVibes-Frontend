@@ -20,7 +20,6 @@ header {
     justify-content: end;
     align-items: center;
     flex-shrink: 0;
-
 }
 
 .cabecalho {
@@ -87,7 +86,7 @@ header {
 /*modo*/
 
 .container.white {
-    background-color: #f4a2f7;
+    background-color: #cda4ff;
 }
 
 .container.dark {
@@ -107,7 +106,7 @@ header {
 .bloco-centro {
     width: 96vw;
     height: 85vh;
-    background-color: #ffffff6e;
+    background-color:rgb(230, 210, 255);
     border-radius: 0.5rem;
     padding: 1rem;
     animation: levantar 1s ease-out forwards;
@@ -209,7 +208,7 @@ header {
 /*tema*/
 .header.claro {
     transition: 1s;
-    background-color: #b093ff;
+    background-color:rgb(221, 192, 255);
     color: #000000;
 }
 
