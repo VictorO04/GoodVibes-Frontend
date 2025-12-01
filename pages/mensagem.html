@@ -7,6 +7,7 @@
     <title>Mensagem</title>
     <link rel="stylesheet" href="./../assets/css/css pages/mensagem.css">
     <script src="./../assets/js/modo.js" defer></script>
+    <script src="./../assets/js/mensagem.js" defer></script>
 </head>
 
 <body>
@@ -27,25 +28,31 @@
             </div>
         </div>
     </header>
-<main>
-    <div class="container white" id="container">
-        <div class="bloco-central">
-            <div class="post-it">
-                <p class="texto"> Para: Ana — @anacremasco
+    <main>
+        <div class="container white" id="container">
+            <div id="bloco-central" class="bloco-central">
+                <div class="post-it">
+                    <p class="texto"> Para: Ana — @anacremasco
 
-                    Respira um pouco. Nem tudo precisa ser resolvido agora. A vida já é complicada o bastante, então
-                    pega leve consigo. Você não precisa ser perfeito, só precisa continuar.
-                    Cada avanço, por menor que pareça, ainda é avanço. Você está construindo algo — e construção é
-                    bagunça mesmo. O importante é não se perder de vista no meio do processo.
-                    Confia no que você já aprendeu, ajusta o que for preciso e segue. Você tem mais recursos, mais
-                    maturidade e mais firmeza do que tinha ontem. Isso já é motivo suficiente pra continuar.
-                    No fim das contas, você vai encontrar o seu ritmo. E quando encontrar, tudo começa a encaixar com
-                    mais naturalidade do que parece agora.
-                    Vai com calma. Mas vai.
-                </p>
+                        Respira um pouco. Nem tudo precisa ser resolvido agora. A vida já é complicada o bastante, então
+                        pega leve consigo. Você não precisa ser perfeito, só precisa continuar.
+                        Cada avanço, por menor que pareça, ainda é avanço. Você está construindo algo — e construção é
+                        bagunça mesmo. O importante é não se perder de vista no meio do processo.
+                        Confia no que você já aprendeu, ajusta o que for preciso e segue. Você tem mais recursos, mais
+                        maturidade e mais firmeza do que tinha ontem. Isso já é motivo suficiente pra continuar.
+                        No fim das contas, você vai encontrar o seu ritmo. E quando encontrar, tudo começa a encaixar
+                        com
+                        mais naturalidade do que parece agora.
+                        Vai com calma. Mas vai.
+                    </p>
+                </div>
             </div>
+            <form type="text" method="get" id="Pesquisa">
+                <input type="text" name="Pesquisa" id="search">
+                <button onclick="preencherPostIts(mensagem)" type="submit">Buscar</button>
+            </form>
         </div>
-    </div>
-</main>
+    </main>
 </body>
+
 </html>
