@@ -12,12 +12,13 @@ const getAllmensagens = (req,res) => {
 }
 const getAllByid = (req,res)=>{
     let id = req.params.id;
+    id = parseInt(id)
     let resultado = mensagens;
     const msg = resultado.find(b => b.id === id)
 
     if(!msg){
         res.status(404).json({
-            sucess:false,
+            success:false,
             message:"Nenhuma mensagem foi encontrada com esse id"
         })
     }else{

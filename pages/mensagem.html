@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensagem</title>
     <link rel="stylesheet" href="./../assets/css/css pages/mensagem.css">
-    <script src="./../assets/js/modo.js" defer></script>
+    <script src="./../backEnd/src/data/dados.js"></script>
+    <script src="./../assets/js/modo.js"></script>
     <script src="./../assets/js/mensagem.js" defer></script>
 </head>
 
@@ -14,7 +15,6 @@
     <header class="header claro" id="header">
         <div class="imagem">
             <img src="./../assets/img/imagem.png" alt="logo" class="logo">
-            <h1></h1>
         </div>
         <div class="teste">
             <div class="cabecalho-box">
@@ -30,27 +30,17 @@
     </header>
     <main>
         <div class="container white" id="container">
-            <div id="bloco-central" class="bloco-central">
-                <div class="post-it">
-                    <p class="texto"> Para: Ana — @anacremasco
-
-                        Respira um pouco. Nem tudo precisa ser resolvido agora. A vida já é complicada o bastante, então
-                        pega leve consigo. Você não precisa ser perfeito, só precisa continuar.
-                        Cada avanço, por menor que pareça, ainda é avanço. Você está construindo algo — e construção é
-                        bagunça mesmo. O importante é não se perder de vista no meio do processo.
-                        Confia no que você já aprendeu, ajusta o que for preciso e segue. Você tem mais recursos, mais
-                        maturidade e mais firmeza do que tinha ontem. Isso já é motivo suficiente pra continuar.
-                        No fim das contas, você vai encontrar o seu ritmo. E quando encontrar, tudo começa a encaixar
-                        com
-                        mais naturalidade do que parece agora.
-                        Vai com calma. Mas vai.
-                    </p>
-                </div>
+            
+            <div class="busca-box" style="margin: 20px 0; text-align: center;">
+                <input id="inputBuscar" type="text" placeholder="Buscar por título..." />
+                <button id="btnBuscar">Buscar</button>
             </div>
-            <form type="text" method="get" id="Pesquisa">
-                <input type="text" name="Pesquisa" id="search">
-                <button onclick="preencherPostIts(mensagem)" type="submit">Buscar</button>
-            </form>
+
+            <div id="bloco-central" class="bloco-central">
+                <div id="msg" class="lista-mensagens">
+                    </div>
+            </div>
+
         </div>
     </main>
 </body>
