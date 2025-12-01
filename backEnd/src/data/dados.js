@@ -160,5 +160,3 @@ const mensagens = [
         humor: "Visionário",
     }
 ];
-
-export default {mensagens}
