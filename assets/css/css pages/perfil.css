@@ -146,11 +146,19 @@ header{
     height: 90vh;
     background-color: #ffffff;
     display: flex;
+    flex-direction: column;
+    align-items: start;
     justify-content: end;
-    align-items: center;
 }
 
-
+.container-perfil{
+    margin-bottom: 8%;
+    margin-left: 9%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    
+}
 /*modo*/
 
 .container.white {
@@ -181,13 +189,6 @@ header{
 }
 
 
-
-.container {
- display: flex;
- align-items: center;
- gap: 50px;
-}
-
 .formulario {
  background-color: #f5c577e7;
  padding: 30px 40px;
@@ -196,8 +197,9 @@ header{
  display: flex;
  flex-direction: column;
  width: 14vw;
- position: relative; 
- margin-right: 2rem;
+ position: relative;
+ margin-bottom: 50px;
+ margin: 0%  50px 50px auto;
 }
 
 
@@ -220,20 +222,16 @@ header{
 
   .escuro-box {
     background-color: #f5c577e7;
-    border-top: 2px solid #ffffff;
     border-radius: 20px;
     padding: 15px 20px;
     text-align: center;
     width: 200px;
-    margin-right: 50rem;
   }
   
   .escuro-box p {
     margin: 0 0 10px 0;
     color: #000;
     font-size: 14px;
-    margin-left: auto;
-    margin-right: auto;
   }
   
   .switch {
@@ -259,4 +257,12 @@ header{
 
   .container.dark .escuro-box p {
     color: rgb(0, 0, 0);
+}
+
+
+/*imagem perfil*/
+
+.img{
+    height: 200px;
+    margin: 0% auto;
 }
