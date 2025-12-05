@@ -25,7 +25,7 @@ body {
 }
 
 
-/*modo*/
+/*modo claro e escuro*/
 
 .container.white {
     background-color: #f5efbb;
@@ -44,7 +44,9 @@ body {
     background-color: #c18fff30;
 
 }
+
 /*blocos*/
+
 .bloco-centro {
     width: 96vw;
     height: 85vh;
@@ -57,7 +59,7 @@ body {
     align-items: center;
 }
 
-
+/*bloco central dos post-its*/
 
 .blocos-container {
     display: grid;
@@ -69,7 +71,7 @@ body {
     margin-top: 0vh;
 }
 
-/* post its*/
+/* post-its com as cores diferentes e com os temanhos definidos*/
 .bloco-1,
 .bloco-2,
 .bloco-3,

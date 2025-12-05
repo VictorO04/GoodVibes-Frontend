@@ -173,9 +173,10 @@ body{
     font-size: larger;
     margin-left: 25%;
 }
-
+/*imagem do perfil*/
 .texto-direito7 {
     margin-left: 6%;
+    filter: invert(1);
 }
 
 .texto-direito8 {
