@@ -10,46 +10,149 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #E0E0E0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*header*/
+
+header {
+  background-color: #ffffff;
+  height: 10vh;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100vw;
+}
+
+.cabecalho {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 150px;
+  list-style: none;
+  margin-right: 50px;
+  align-items: center;
+
+}
+
+.cabecalho-box {
+  display: flex;
+}
+
+
+.logo {
+  height: 50px;
+  width: 62px;
+}
+
+.imagem {
+  width: 100%;
+  margin-left: 30%;
+  justify-content: center;
+}
+
+.test {
+  color: rgb(31, 30, 30);
+  text-decoration: none;
+  padding: 10px;
+}
+
+.test:hover {
+  color: white;
+}
+
+.img-header {
+  height: 60px;
+  width: 60px;
+  position: relative;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/*header modo*/
+.header.claro {
+  background-color: #f5c577e7;
+  color: #000000;
+  box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
+}
+
+.header.escuro {
+  background-color: #53199a;
+  color: white;
+  box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
+}
+
+.header.escuro .test {
+  color: white;
+  transition: 1s;
+}
+
+.header.escuro .test:hover {
+  color: rgb(205, 174, 255);
+}
+
+.header.escuro .imagem {
+  color: white;
+  filter: invert(1);
+  transition: 1s;
+}
+
+main {
+  margin-left: 2%;
 }
 
 .container {
-    width: 100vw;
-    height: 90vh;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 98vw;
+  height: 90vh;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 
 }
 
 
 .test:hover {
-    color: white;
+  color: white;
 }
+
 /*tema*/
 
 .container.white {
-    background-color: #f5efbb;
+  background-color: #f5efbb;
 }
 
 .container.dark {
   background-color: #451580;
 }
-.container.dark .texto{
-  color:rgb(209, 209, 209)
+
+.container.dark .texto {
+  color: rgb(209, 209, 209)
 }
 
+.container.dark.p {
+  background-color: #451580;
+  ;
+}
 
-/*titulo da pagina */
-.perfil {
-  color: #4e1d89;
-  width: 8rem;
-  height: 2rem;
-  background-color: #ffffff6e;
-  border-radius: 0.5rem;
-  margin-top: 2vh;
-  margin-right: 37vh;
-  text-align: center;
+.container.dark .painel-inspiracao-fixo {
+  background-color: #53199a;
+}
+
+.container.dark .inspiracao-bloco {
+  background-color: #cda4ff;
+  ;
+}
+
+.container.white .painel-inspiracao-fixo {
+  background-color: #f5c577;
 }
 
 /*fundo da tela*/
@@ -65,7 +168,7 @@ body {
 
 /*fundo claro*/
 .bloco-centro {
-  width: 90vw;
+  width: 80vw;
   height: 80vh;
   background-color: #ffffff6e;
   margin: 0;
@@ -76,28 +179,22 @@ body {
   align-items: center;
 }
 
-.botao-enviar {
-  background-color: lightgray;
-  color: #997dbd;
-  width: 10vh;
-  height: 5vh;
-  border: none
-}
+
 .titulo-escrita {
-    margin-bottom: 15px; 
-    text-align: center;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 #campo-escrita {
-    width: 20vw; 
-    height: 50vh;
-    padding: 10px;
-    border-radius: 5px;
-    border: rgba(171, 255, 255, 0.795);
-    background-color: rgba(171, 255, 255, 0.795); 
-    resize: none; 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
+  width: 20vw;
+  height: 50vh;
+  padding: 10px;
+  border-radius: 5px;
+  border: rgba(171, 255, 255, 0.795);
+  background-color: rgba(171, 255, 255, 0.795);
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,4 +207,48 @@ body {
 }
 
 
+.painel-inspiracao-fixo {
+  width: 25vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0vw;
+  z-index: 10;
+  padding: 20px;
+  padding-left: 25px;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.4);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
 
+.painel-title {
+  color: #000000;
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+}
+
+.inspiracao-bloco:hover {
+  transition: 100ms;
+  transform: scale(1.1);
+}
+
+.inspiracao-bloco {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #f5efbb;
+  border-left: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.inspiracao-bloco h4 {
+  color: #000000;
+}
+
+.inspiracao-bloco p {
+  font-size: 0.9em;
+  color: #000000;
+}
