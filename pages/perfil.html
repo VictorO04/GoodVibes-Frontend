@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="./../assets/css/css pages/perfil.css">
     <script src="./../assets/js/modo.js" defer></script>
     <script src="./../assets/js/mensagem.js" defer></script>
+    <script src="./../assets/js/perfil.js" defer></script>
 </head>
-<body">
+<body>
     <header class="header claro" id="header">
         <div class="imagem">
             <img src="./../assets/img/imagem.png" alt="logo" class="logo">
@@ -29,9 +30,17 @@
     </header>
     <main>
         <div class="container white" id="container">
-
+            <div class="background-configuracoes">
+                <div class="container-configurações">
+                    <p></p>
+                </div>
+            </div>
             <div class="container-perfil">
-                <img src="./../assets/img/imgPerfil.png" alt="" class="img">
+                <div class="perfil">
+    <img id="preview" src="default.png" alt=""class="img-header">
+    <input type="file" id="upload" accept="image/*" class="upload">
+</div>
+
                 <form class="formulario">
                     <label>Apelido</label>
                     <input type="text" name="apelido">

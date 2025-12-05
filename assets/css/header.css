@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*header*/
+
+header{
+    background-color: #ffffff;
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+}
+.cabecalho{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 200px;
+    list-style: none;
+    margin-right: 50px;
+    align-items: center;
+    
+}
+
+.cabecalho-box{
+    display: flex;
+}
+
+
+.logo{
+    height: 50px;
+    width: 62px;
+}
+.imagem{
+    width: 100%;
+    margin-left: 5%;
+    justify-content: center;
+}
+
+.test{
+    color: rgb(31, 30, 30);
+    text-decoration: none;
+    padding: 10px;
+}
+
+.test:hover{
+    color: white;
+}
+.img-header{
+    height: 60px;
+    position: relative;
+    border-radius: 50px;
+}
+
+/*header modo*/
+.header.claro {
+    transition: 1s;
+    background-color: #f5c577e7;
+    color: #000000;
+    box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
+}
+
+.header.escuro {
+    transition: 1s;
+    background-color: #53199a;
+    color: white;
+    box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
+}
+
+.header.escuro .test{
+  color: white;
+  transition: 1s;
+}
+.header.escuro .test:hover{
+  color: rgb(205, 174, 255);
+}
+.header.escuro .imagem{
+  color: white;
+  filter: invert(1);
+  transition: 1s;
+}
