@@ -179,7 +179,7 @@ body{
 }
 
 .texto-direito8 {
-    
+
 }
 
 /*modo*/
@@ -211,6 +211,11 @@ body{
 }
 .container.white .container-configurações{
     background-color: #f5c577e7;
+}
+
+.container.dark .texto-bloco{
+    background-color: #682fad;
+    color: #ffffff;
 }
 
 /*pesquisa*/
