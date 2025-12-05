@@ -1,52 +1,106 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mural</title>
-    <link rel="stylesheet" href="./../assets/css/css pages/mural.css">
-    <link rel="stylesheet" href="./../assets/css/header.css">
-    <script src="./../assets/js/modo.js" defer></script>
-    <script src="./../assets/js/perfil.js" defer></script>
+    <title>Dashboard Turtle Design</title>
+    <!-- Link externo para o CSS melhorado -->
+    <link rel="stylesheet" href="../assets/css/css pages/mural.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
 </head>
-
 <body>
-    <header class="header claro" id="header">
-        <div class="imagem">
-            <img src="./../assets/img/imagem.png" alt="logo" class="logo">
-            <h1></h1>
+
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 100 60" fill="none" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M30,40 Q20,40 10,45 M30,40 Q20,30 25,20 M35,40 L85,40 Q95,40 95,30 Q95,20 85,20 L35,20 M35,20 Q30,10 40,10 L80,10 Q90,10 85,20" />
+                <circle cx="25" cy="20" r="2" fill="black" />
+            </svg>
         </div>
-        <div class="teste">
-            <div class="cabecalho-box">
-                <nav>
-                    <ol class="cabecalho">
-                        <a href="./perfil.html" class="img-header"><img id="preview" src="default.png" alt=""class="img-header"></a>
-                        <li><a href="escrita.html" class="test">Escreva</a></li>
-                        <li><a href="mensagem.html" class="test">Mensagens</a></li>
-                        <li><a href="mural.html" class="test">Inicio</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+        <nav>
+            <ul>
+                <li><a href="mural.html">Início</a></li>
+                <li><a href="mensagem.html">Mensagens</a></li>
+                <li><a href="escrita.html">Escreva</a></li>
+            </ul>
+        </nav>
+        <div class="user-menu">
+            &#9776; </div>
     </header>
-<main>
-    <div class="container white" id="container">
-        <div class="bloco-centro">
-            <div class="blocos-container">
-                <div class="bloco-1"></div>
-                <div class="bloco-2"></div>
-                <div class="bloco-3"></div>
-                <div class="bloco-4"></div>
-                <div class="bloco-5"></div>
-                <div class="bloco-6"></div>
-                <div class="bloco-7"></div>
-                <div class="bloco-8"></div>
-                <div class="bloco-9"></div>
-                <div class="bloco-10"></div>
+
+    <main>
+        <div class="card-grid">
+            <div class="card blue">
+                <div class="card-content">
+                    <div class="card-title">Bem-vindo ao Mural</div>
+                    <div class="card-desc">Espaço para boas vibrações — clique para abrir</div>
+                </div>
+            </div>
+
+            <div class="card pink">
+                <div class="card-content">
+                    <div class="card-title">Elogios</div>
+                    <div class="card-desc">Diga algo de bom sobre alguém</div>
+                </div>
+            </div>
+
+            <div class="card orange-light">
+                <div class="card-content">
+                    <div class="card-title">Inspiração</div>
+                    <div class="card-desc">Pequenas mensagens que motivam o dia</div>
+                </div>
+            </div>
+
+            <div class="card green">
+                <div class="card-content">
+                    <div class="card-title">Gratidão</div>
+                    <div class="card-desc">Agradeça alguém especial</div>
+                </div>
+            </div>
+
+            <div class="card yellow">
+                <div class="card-content">
+                    <div class="card-title">Boas notícias</div>
+                    <div class="card-desc">Compartilhe conquistas</div>
+                </div>
+            </div>
+
+            <div class="card green-dark">
+                <div class="card-content">
+                    <div class="card-title">Anúncios</div>
+                    <div class="card-desc">Informações da comunidade</div>
+                </div>
+            </div>
+
+            <div class="card red">
+                <div class="card-content">
+                    <div class="card-title">Saudades</div>
+                    <div class="card-desc">Mensagens que aquecem o coração</div>
+                </div>
+            </div>
+
+            <div class="card teal">
+                <div class="card-content">
+                    <div class="card-title">Conselhos</div>
+                    <div class="card-desc">Dicas rápidas e úteis</div>
+                </div>
+            </div>
+
+            <div class="card purple">
+                <div class="card-content">
+                    <div class="card-title">Arte</div>
+                    <div class="card-desc">Criações e inspirações visuais</div>
+                </div>
+            </div>
+
+            <div class="card orange-dark">
+                <div class="card-content">
+                    <div class="card-title">Eventos</div>
+                    <div class="card-desc">Próximos encontros e datas</div>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+
 </body>
 </html>
