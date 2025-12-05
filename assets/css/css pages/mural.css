@@ -148,23 +148,3 @@ body {
         opacity: 1;
     }
 }
-
-/*tema*/
-.header.claro {
-    background-color: #f5c577e7;
-    color: #000000;
-}
-
-.header.escuro {
-    background-color: #53199a;
-    color: white;
-}
-
-.header.escuro .test {
-    color: white;
-}
-
-.header.escuro .imagem {
-    color: white;
-    filter: invert(1);
-}
