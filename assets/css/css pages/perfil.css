@@ -111,13 +111,18 @@ body{
 .bloco-central-esquerdo {
     width: 250px;
     list-style-type: none;
-    gap: 5%;
+    gap: 50px;
     height: 500px;
+    display: flex;
+    flex-direction: column;
 }
 
 .bloco-central-direito {
     flex: 1;
     min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
 
 
@@ -142,18 +147,18 @@ body{
 
 .texto-direito1 {
    font-size: x-large;
-   margin-left: 15vh;
+   text-align: center;
 }
 
 .texto-direito2 {
-    width: 30vh;
+    width: 100%;
     height: 2px;
     background-color: #f9a11be7;
 }
 
 .texto-direito3 {
     font-size: larger;
-    margin-left: 8%;
+    text-align: center;
 }
 
 .texto-direito4,
@@ -162,6 +167,7 @@ body{
     flex-direction: column;
     gap: 5px;
     width: 100%;
+    text-align: center;
 }
 
 .texto-direito4 input,
@@ -175,7 +181,7 @@ body{
 
 .texto-direito6 {
     font-size: larger;
-    margin-left: 25%;
+    text-align: center;
 }
 /*imagem do perfil*/
 .texto-direito7 {
