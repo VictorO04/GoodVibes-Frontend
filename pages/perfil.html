@@ -10,6 +10,7 @@
     <script src="./../assets/js/mensagem.js" defer></script>
     <script src="./../assets/js/perfil.js" defer></script>
 </head>
+
 <body>
     <header class="header claro" id="header">
         <div class="imagem">
@@ -32,14 +33,34 @@
         <div class="container white" id="container">
             <div class="background-configuracoes">
                 <div class="container-configurações">
-                    <p></p>
+                    <div class="bloco-central-esquerdo">
+                        <p class="texto-bloco">Conta</p>
+                        <p class="texto-bloco">Notificações</p>
+                        <p class="texto-bloco">Privacidade</p>
+                        <p class="texto-bloco">Configurações avançadas</p>
+                        <p class="texto-bloco">E-mail</p>
+                    </div>
+                    <div class="bloco-central-direito">
+                        <p class="texto-direito1">Conta</p>
+                        <p class="texto-direito2"></p>
+                        <p class="texto-direito3">Informações pessoais</p>
+                        <p class="texto-direito4">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="exemplodeemail@gmail.com" name="email" required>
+                        </p>
+                        <p class="texto-direito5">
+                            <label for="senha" id="label-2">Senha</label>
+                            <input type="password" id="senha" placeholder="....................">
+                        </p>
+                        <p class="texto-direito2"></p>
+                    </div>
                 </div>
             </div>
             <div class="container-perfil">
                 <div class="perfil">
-    <img id="preview" src="default.png" alt=""class="img-header">
-    <input type="file" id="upload" accept="image/*" class="upload">
-</div>
+                    <img id="preview" src="default.png" alt="" class="img-header">
+                    <input type="file" id="upload" accept="image/*" class="upload">
+                </div>
 
                 <form class="formulario">
                     <label>Apelido</label>
@@ -62,6 +83,6 @@
             </div>
         </div>
     </main>
-    </body>
+</body>
 
 </html>
