@@ -1,100 +1,284 @@
+/* =========================================
+   1. VARIÁVEIS E RESET GERAL
+   ========================================= */
+:root {
+    --accent-color: #F3CD88; /* Amarelo/Laranja Tartaruga */
+    --text-color: #333;
+    --btn-bg: rgba(255, 255, 255, 0.25);
+    --btn-hover: rgba(255, 255, 255, 0.5);
+}
+
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-/*header*/
-
-header {
-    background-color: #ffffff;
-    height: 10vh;
+/* =========================================
+   2. CORPO COM FUNDO ANIMADO
+   ========================================= */
+body {
+    font-family: 'Segoe UI', Inter, Roboto, sans-serif;
+    min-height: 100vh;
     display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 100vw;
+    flex-direction: column;
+    overflow-x: hidden; /* Evita rolagem lateral */
 
+    /* Gradiente Animado */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
 }
 
-/*cabeçalho com os botões de inicio, mensagem, escrever e perfil */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================================
+   3. HEADER CENTRALIZADO (CORRIGIDO)
+   ========================================= */
+header {
+    background: rgba(255, 255, 255, 0.25); /* Vidro */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    height: 90px;
+    width: 100%;
+    
+    position: sticky; /* Menu fixo no topo */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    /* O SEGREDO DA CENTRALIZAÇÃO: */
+    display: flex;
+    justify-content: center; /* Centraliza os botões no meio da tela */
+    align-items: center;
+    padding: 0 40px;
+}
+
+/* --- LOGO (Fixa na Esquerda) --- */
+.imagem {
+    position: absolute; /* Retira do fluxo para não empurrar os botões */
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+}
+
+.logo { 
+    width: 60px; 
+    height: auto; 
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.logo:hover { transform: scale(1.1); }
+
+/* --- BOTÕES CENTRAIS --- */
+/* A classe .cabecalho-box ou .teste */
+.cabecalho-box, .teste {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .cabecalho {
     display: flex;
-    flex-direction: row-reverse;
-    gap: 200px;
+    flex-direction: row-reverse; /* Inverte a ordem (Inicio na esquerda) */
+    gap: 20px; /* Espaço correto entre botões (não use 200px!) */
     list-style: none;
-    margin-right: 50px;
     align-items: center;
-
 }
 
-.cabecalho-box {
-    display: flex;
-}
-
-/*logo do site "tartaruga"*/
-
-.logo {
-    height: 50px;
-    width: 62px;
-}
-
-.imagem {
-    width: 100%;
-    margin-left: 5%;
-    justify-content: center;
-}
-
-/*hover para os botões*/
-
+/* Estilo dos Botões (Links) */
 .test {
-    color: rgb(31, 30, 30);
     text-decoration: none;
-    padding: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+    /* Visual de Botão */
+    background-color: var(--btn-bg);
+    padding: 10px 25px;
+    border-radius: 30px; /* Pílula */
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: all 0.3s ease;
 }
 
 .test:hover {
-    color: white;
+    background-color: var(--btn-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    color: #fff;
 }
 
-/*imagem para a tela de perfil */
-
-.img-header {
-    height: 60px;
-    width: 60px;
-    position: relative;
+/* --- PERFIL (Fixo na Direita) --- */
+/* Seleciona a imagem dentro da lista e joga pro canto */
+.cabecalho .img-header, .img-header {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente e TRAVA aqui */
+    
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     object-fit: cover;
-    display: block;
+    border: 2px solid rgba(255,255,255,0.8);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    
+    /* Transição suave apenas na borda/sombra, sem mover a posição */
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; 
+    cursor: pointer;
 }
 
-
-/*header modo claro e escuro*/
-.header.claro {
-    transition: 0.5s;
-    background-color: #f5c577e7;
-    color: #000000;
-    box-shadow: 1px 1px 7px 1px rgba(255, 255, 255, 0.2);
+/* Efeito Hover no Perfil */
+.cabecalho .img-header:hover {
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+    /* Removemos o scale daqui para ele não pular */
 }
 
-.header.escuro {
-    transition: 1s;
-    background-color: #53199a;
-    color: white;
-    box-shadow: 1px 1px 7px 1px rgba(255, 255, 255, 0.2);
+/* =========================================
+   4. CONTEÚDO PRINCIPAL (MENSAGENS)
+   ========================================= */
+main {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.header.escuro .test {
-    color: white;
-    transition: 1s;
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.header.escuro .test:hover {
-    color: rgb(205, 174, 255);
+/* --- Barra de Busca --- */
+.busca-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 600px;
 }
 
-.header.escuro .imagem {
-    color: white;
-    filter: invert(1);
-    transition: 1s;
+#selectFiltro {
+    border: none;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 20px;
+    color: #555;
+    outline: none;
+    cursor: pointer;
+}
+
+#inputBuscar {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    outline: none;
+    background: transparent;
+}
+
+#btnBuscar {
+    background-color: var(--accent-color);
+    color: #5a4b20;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#btnBuscar:hover { filter: brightness(0.95); transform: scale(1.05); }
+
+/* --- Área Quadrada das Mensagens --- */
+.bloco-central {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9); /* Branco translúcido */
+    height: 70vh; /* Altura fixa */
+    overflow-y: auto; /* Scroll se encher */
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+.lista-mensagens {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+/* --- Card Post-it --- */
+.post-it {
+    background: white;
+    border-left: 6px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    
+    /* Configuração para o texto não quebrar o layout */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word;
+}
+
+.post-it:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.post-type {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #666;
+    background: #f4f4f4;
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.post-body {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* =========================================
+   5. RESPONSIVIDADE (Celular)
+   ========================================= */
+@media (max-width: 768px) {
+    header { justify-content: space-between; padding: 0 20px; }
+    
+    /* No celular, removemos a posição absoluta para fluir normal */
+    .imagem { position: static; transform: none; }
+    .cabecalho .img-header { position: static; transform: none; }
+    
+    /* Esconde os botões no celular (pode fazer um menu sanduíche depois) */
+    .cabecalho li { display: none; }
+    .cabecalho { gap: 0; }
 }
