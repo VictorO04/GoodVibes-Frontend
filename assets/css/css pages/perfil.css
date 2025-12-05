@@ -103,7 +103,7 @@ body{
     align-items: center;
 }
 
-/*container da*/
+/*container do bloco de configurações*/
 
 .container-configurações{
     display: flex;
@@ -117,6 +117,8 @@ body{
 
 }
 
+/*divisão das caixas de configurações conta, notificação, privacidade, configurações avançados e E-mail*/
+
 .texto-bloco {
  width: 30vh;
  height: 8vh;
@@ -128,14 +130,17 @@ body{
  margin-top: 3%;
  font-size: large;
  font-family: Arial, Helvetica, sans-serif;
- text-box-edge: 10px;
 }
+
+/*hover para muar o tamanho dos botões*/
 
 .texto-bloco:hover {
     transform: scale(1.1);
     transition: 100ms;
     background-color: #fdd99fe7;
 }
+
+/*divisão do lado esquerdo das informações da conta*/
 
 .bloco-central-esquerdo {
     display: flex;
@@ -144,6 +149,8 @@ body{
     margin-left: 5vh;
     margin-top: 2%;
 }
+
+/*divisão do lado direito das informações da conta*/
 
 .bloco-central-direito {
    display: flex;
@@ -154,10 +161,14 @@ body{
    margin-top: 4%;
 }
 
+/*texto da grande da conta "titulo" */
+
 .texto-direito1 {
    font-size: x-large;
    margin-left: 15vh;
 }
+
+/*barra de divisão   */
 
 .texto-direito2 {
     width: 45vh;
@@ -165,31 +176,36 @@ body{
     background-color: #f9a11be7;
 }
 
+/*informações pessoais*/
+
 .texto-direito3 {
     font-size: larger;
     margin-left: 8%;
 }
+
+/*E-mail e senah*/
 
 .texto-direito4 {
     width: 45vh;
     height: 2vh;
 }
 
+/*texto de perfil*/
+
 .texto-direito6 {
     font-size: larger;
     margin-left: 25%;
 }
+
 /*imagem do perfil*/
+
 .texto-direito7 {
     margin-left: 6%;
     filter: invert(1);
 }
 
-.texto-direito8 {
 
-}
-
-/*modo*/
+/*modo claro e escuro*/
 
 .container.white {
     background-color: #f5efbb;
