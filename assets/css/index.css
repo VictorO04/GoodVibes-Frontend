@@ -5,16 +5,22 @@ main {
     flex: 1;
 }
 
+/*primeira section da tela de login */
+
 .bem-vindo {
     display: flex;
     flex-direction: column;
     gap: 3rem;
 }
 
+/*titulo*/
+
 .bem-vindo h1 {
     color: #f0a834e7;
     font-size: 3.5rem;
 }
+
+/*texto sobre o que se trata o site, subtitulo*/
 
 .bem-vindo p {
     color:#f5bc60e7;
@@ -22,6 +28,8 @@ main {
     width: 30rem;
     letter-spacing: 1.6px;
 }
+
+/*botão funcional para a página de login*/
 
 .bem-vindo a {
     display: flex;
@@ -38,10 +46,14 @@ main {
     transition: box-shadow 0.3s ease-in-out;
 }
 
+/*criaçaõ do houver para fazero texto do botão mudar de cor*/
+
 .bem-vindo a:hover {
     background-color:   #ec9a16e7;
     color: #fff065;
 }
+
+/*imagem do lado direito do */
 
 main img {
     height: 40vh;
@@ -51,6 +63,8 @@ main img {
 .link {
     margin-top: 1%;
 }
+
+/*criaçaõ do houver para fazero texto flutuar*/
 
 .texto-flutuar {
     text-align: center;

@@ -1,79 +1,52 @@
-// 1. Pegamos a referência do novo Select
-const selectFiltro = document.getElementById('selectFiltro'); // <--- NOVO
+// Referências dos elementos de controle
+const selectFiltro = document.getElementById('selectFiltro');
 const btnBuscar = document.getElementById('btnBuscar');
 const inputBuscar = document.getElementById('inputBuscar');
 const containerMsg = document.getElementById('msg');
 
+// Funções de Inicialização e Renderização
 function iniciar() {
-    containerMsg.innerHTML = '<p style="text-align:center; color:#666;">Selecione o filtro e digite para pesquisar...</p>';
+    containerMsg.innerHTML = 'Selecione o filtro e digite para pesquisar...';
 }
 
 function renderizarMensagens(dados) {
-    containerMsg.innerHTML = '';
+    containerMsg.innerHTML = '';  // Limpa qualquer mensagem anterior
 
-    // 1. Verificações se veio vazio
-    if (!dados) {
-        containerMsg.innerHTML = '<p>Erro ou nenhuma mensagem encontrada.</p>';
+    if (!dados || dados.length === 0) {
+        containerMsg.innerHTML = 'Nenhum resultado encontrado.';
         return;
     }
 
-    // 2. Garante que seja sempre uma lista
-    let array;
-    if (Array.isArray(dados)) {
-        array = dados;
-    } else {
-        array = [dados];
-    }
+    let array = Array.isArray(dados) ? dados : [dados];  // Garante que o retorno seja sempre um array
 
-    if (array.length === 0) {
-        containerMsg.innerHTML = '<p>Nenhum resultado encontrado para essa busca.</p>';
-        return;
-    }
-
-    // 3. Cria os Post-its
     array.forEach((termo) => {
         const divPostIt = document.createElement('div');
         divPostIt.className = 'post-it';
-
-        // Estilização simples direto aqui (ou use seu CSS)
-        // Aqui mostramos: O ID, O Tipo e A MENSAGEM PRINCIPAL
-        divPostIt.innerHTML = `
-            <div style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px; font-size: 0.8em; color: #555;">
-                <strong>#${termo.id}</strong> • <span style="text-transform: uppercase;">${termo.tipoMensagem || 'Confissão'}</span>
-            </div>
-            
-            <p style="font-size: 1.1em; font-weight: bold; color: #000;">
-                "${termo.mensagem}"
-            </p>
-        `;
-
+        divPostIt.innerHTML = `*#${termo.id || 'N/A'}* • ${termo.tipoMensagem || 'Confissão'}
+            "${termo.mensagem || 'Mensagem não disponível'}"`;
         containerMsg.appendChild(divPostIt);
     });
 }
+
+// Funções de Busca
 async function executarBusca() {
     const termo = inputBuscar.value;
-    
-    // Pegamos o valor escolhido no dropdown ('tipo' ou 'id')
-    const tipoFiltro = selectFiltro.value; 
+    const tipoFiltro = selectFiltro.value;
 
     if (termo.trim() === '') {
-        alert("Digite algo para buscar!");
+        containerMsg.innerHTML = 'Por favor, digite um termo de pesquisa.';
         return;
     }
 
-    containerMsg.innerHTML = '<p>Carregando...</p>';
-    
-    // Passamos o termo e o tipo de filtro para a função
+    containerMsg.innerHTML = 'Carregando...';  // Exibe mensagem de carregamento
     const msgs = await carregarMensagens(termo, tipoFiltro);
     renderizarMensagens(msgs);
 }
 
-// Atualizamos a função para receber o tipoFiltro
 async function carregarMensagens(termo, tipoFiltro) {
     try {
         let url;
 
-        // 1. Define a URL correta
         if (tipoFiltro === 'id') {
             url = `http://localhost:3000/confissoes/${termo}`;
             console.log(`--> Buscando ID: ${termo}`);
@@ -84,43 +57,51 @@ async function carregarMensagens(termo, tipoFiltro) {
         }
 
         const res = await fetch(url);
-        
-        if (res.status === 404) return [];
-        if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`);
-        
+
+        if (res.status === 404) return [];  // Caso não encontre, retorna um array vazio
+
+        if (!res.ok) {
+            const errorText = await res.text();
+            console.error(`Erro HTTP ${res.status}:`, errorText);
+            throw new Error(`Erro de Servidor: Status ${res.status}`);
+        }
+
         const respostaBackend = await res.json();
-        console.log("--> O QUE O BACKEND RESPONDEU:", respostaBackend); // Olhe aqui no F12 se der erro
+        console.log("--> O QUE O BACKEND RESPONDEU:", respostaBackend);
 
-        // 2. O DESEMBRULHO (A correção mágica) 
-        // Verifica onde os dados reais estão escondidos dentro do pacote
-
-        // Caso 1: Estão dentro de "confissoes" (Plural - comum na busca por tipo)
-        if (respostaBackend.confissoes) {
-            return respostaBackend.confissoes;
+        // Verifica as chaves de resposta possíveis
+        const validKeys = ['confissoes', 'confissao', 'dados', 'data'];
+        for (let key of validKeys) {
+            if (respostaBackend[key]) {
+                return respostaBackend[key];
+            }
         }
 
-        // Caso 2: Estão dentro de "confissao" (Singular - comum na busca por ID)
-        if (respostaBackend.confissao) {
-            return respostaBackend.confissao;
+        // Caso o backend envie um objeto único, retorna ele como um array
+        if (respostaBackend.id) {
+            return [respostaBackend]; 
         }
 
-        // Caso 3: O backend usa nomes genéricos como "dados" ou "data"
-        if (respostaBackend.dados) return respostaBackend.dados;
-        if (respostaBackend.data) return respostaBackend.data;
-
-        // Caso 4: O backend já mandou os dados direto (sem envelope)
-        // Verificamos se tem um ID ou uma mensagem real
-        if (respostaBackend.id || (respostaBackend.mensagem && respostaBackend.tipoMensagem)) {
-             return respostaBackend;
-        }
-
-        // Se chegou aqui, retornamos null ou lista vazia para não exibir o envelope errado
-        return null;
+        return [];  // Retorna um array vazio caso nada válido seja encontrado
 
     } catch (e) {
-        console.error("Erro:", e);
-        return null;
+        console.error("Erro na requisição:", e);
+        containerMsg.innerHTML = `🛑 Erro ao carregar dados. Detalhes: ${e.message}`;
+        return [];  // Retorna um array vazio em caso de erro
     }
 }
 
+// Vincula a função executarBusca ao clique do botão
+if (!btnBuscar) throw new Error("Elemento 'btnBuscar' não encontrado. Verifique o ID no HTML.");
+btnBuscar.addEventListener('click', executarBusca);
+
+// Permite buscar ao pressionar "Enter" no campo de input
+if (!inputBuscar) throw new Error("Elemento 'inputBuscar' não encontrado. Verifique o ID no HTML.");
+inputBuscar.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        executarBusca();
+    }
+});
+
+// Inicia a mensagem de boas-vindas
 iniciar();
