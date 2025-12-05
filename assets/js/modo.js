@@ -1,4 +1,4 @@
-// pega os elementos
+
 const btn = document.getElementById("btn-tema");
 const header = document.getElementById("header");
 const container = document.getElementById("container");

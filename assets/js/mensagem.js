@@ -2,24 +2,24 @@ const btnBuscar = document.getElementById('btnBuscar');
 const inputBuscar = document.getElementById('inputBuscar');
 const containerMsg = document.getElementById('msg');
 
-/* A variável 'mensagens' vem do arquivo dados.js */
+
 
 function iniciar() {
-    // ALTERAÇÃO: Começa vazio ou com uma mensagem de instrução
+    
     containerMsg.innerHTML = '<p style="text-align:center; color:#666;">Digite algo acima para pesquisar as mensagens...</p>';
 }
 
-// Lógica do Botão BUSCAR
+
 btnBuscar.onclick = () => {
     const termo = inputBuscar.value.toLowerCase();
     
-    // 1. Se o campo estiver vazio, não faz nada ou avisa o usuário
+    
     if (termo === "") {
         containerMsg.innerHTML = '<p>Por favor, digite algum termo para pesquisar.</p>';
-        return; // Para a execução aqui
+        return; 
     }
 
-    // 2. Se digitou algo, faz a busca
+
     const filtrados = mensagens.filter((u) => {
         const noTitulo = u.titulo && u.titulo.toLowerCase().includes(termo);
         const noConteudo = u.conteudo && u.conteudo.toLowerCase().includes(termo);
@@ -53,5 +53,5 @@ function mostrarLista(array) {
     });
 }
 
-// Inicia a aplicação (mostrando apenas a instrução)
+
 iniciar();
