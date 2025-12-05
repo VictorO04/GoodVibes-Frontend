@@ -248,6 +248,7 @@ body{
     width: 50px;
 }
 
+/* container do formulario apelido, usuario e E-mail*/
 
 .formulario {
  background-color: #f5c577e7;
@@ -261,6 +262,7 @@ body{
  
 }
 
+/*titulo dos formularios*/
 
 .formulario label {
     color: #020202;
@@ -268,6 +270,8 @@ body{
     margin-bottom: 5px;
   }
   
+/*areas de escrita do formulario*/
+
   .formulario input {
     border: none;
     background: white;
@@ -335,11 +339,13 @@ body{
     margin: 0 auto;
 }
 
+/*foto do perfil*/
+
 .upload{
     padding-left: 100px;
-    
-
 }
+
+/*escolha do arquivo para a foto de perfil*/
 
 #upload{
     cursor:pointer;
@@ -356,7 +362,7 @@ body{
     margin: 0;
     box-sizing: border-box;
 }
-/*header*/
+/*header já usada*/
 
 header{
     background-color: #ffffff;
@@ -409,7 +415,7 @@ header{
     margin-bottom: 10px;
 }
 
-/*header modo*/
+/*header modo claro e escuro*/
 .header.claro {
     transition: 1s;
     background-color: #f5c577e7;
