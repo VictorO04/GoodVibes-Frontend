@@ -16,6 +16,8 @@ header {
 
 }
 
+/*cabeçalho com os botões de inicio, mensagem, escrever e perfil */
+
 .cabecalho {
     display: flex;
     flex-direction: row-reverse;
@@ -30,6 +32,7 @@ header {
     display: flex;
 }
 
+/*logo do site "tartaruga"*/
 
 .logo {
     height: 50px;
@@ -42,6 +45,8 @@ header {
     justify-content: center;
 }
 
+/*hover para os botões*/
+
 .test {
     color: rgb(31, 30, 30);
     text-decoration: none;
@@ -51,6 +56,8 @@ header {
 .test:hover {
     color: white;
 }
+
+/*imagem para a tela de perfil */
 
 .img-header {
     height: 60px;
@@ -62,7 +69,7 @@ header {
 }
 
 
-/*header modo*/
+/*header modo claro e escuro*/
 .header.claro {
     transition: 0.5s;
     background-color: #f5c577e7;

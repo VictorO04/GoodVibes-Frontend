@@ -33,7 +33,7 @@ body {
   align-items: center;
 }
 
-/*fundo claro*/
+/*bloco central da tela com os post-its */
 .bloco-central {
   width: 90vw;
   max-width: 1000px;
@@ -46,6 +46,8 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/*post-it filtrado na busca */
 
 .post-it {
   display: flex;
@@ -63,6 +65,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/*texto do bloco central*/
 
 .post-it p {
   margin-right: 1px;
@@ -78,6 +81,8 @@ body {
   background-color: red;
 
 }
+
+/*modo claro e escuro*/
 
 .container.white {
   background-color: #f5efbb;
