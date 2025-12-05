@@ -220,14 +220,16 @@ body{
     align-items: center;
     
 }
-.img{
-    width:150px;
-    height: 150px;
-    border-radius:50%;
-    object-fit:cover;
-    display:block;
-    margin-bottom:10px;
+.img-header {
+    width: 150px;        
+    height: 180px;       
+    border-radius: 50%;  
+    object-fit: cover;   
+    object-position: center;
+    display: block;
+    margin: 0 auto;
 }
+
 .upload{
     padding-left: 100px;
     
