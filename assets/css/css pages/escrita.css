@@ -19,7 +19,7 @@ body {
   box-sizing: border-box;
 }
 
-/*header*/
+/*header descrito no header.css*/
 
 header {
   background-color: #ffffff;
@@ -76,7 +76,7 @@ header {
 }
 
 
-/*header modo*/
+/*header modo claro e escuro*/
 .header.claro {
   background-color: #f5c577e7;
   color: #000000;
@@ -108,6 +108,8 @@ main {
   margin-left: 2%;
 }
 
+/*bloco principal da tela */
+
 .container {
   width: 98vw;
   height: 90vh;
@@ -123,7 +125,7 @@ main {
   color: white;
 }
 
-/*tema*/
+/*modo claro e escuro da tela*/
 
 .container.white {
   background-color: #f5efbb;
@@ -186,6 +188,7 @@ main {
   align-items: center;
 }
 
+/**/
 
 .titulo-escrita {
   margin-bottom: 15px;
@@ -213,6 +216,7 @@ main {
   margin-top: 1.1rem;
 }
 
+/*´painel de inspiração para criar frases*/
 
 .painel-inspiracao-fixo {
   width: 25vw;
@@ -229,6 +233,8 @@ main {
   border-bottom-right-radius: 20px;
 }
 
+/*titulo do painel  */
+
 .painel-title {
   font-size: 1.4em;
   margin-bottom: 20px;
@@ -241,6 +247,8 @@ main {
   transform: scale(1.1);
 }
 
+/*blocos dos paineis de inpiração*/
+
 .inspiracao-bloco {
   padding: 15px;
   margin-bottom: 20px;
@@ -250,9 +258,13 @@ main {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+/*tema do post-it*/
+
 .inspiracao-bloco h4 {
   color: #000000;
 }
+
+/*texto escrito*/
 
 .inspiracao-bloco p {
   font-size: 0.9em;
