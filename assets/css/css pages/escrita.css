@@ -157,6 +157,13 @@ main {
   background-color: #f5c577;
 }
 
+.container.white.painel-title {
+  color: #000000;
+}
+
+.container.dark.painel-title {
+  color: #ffffff;
+}
 /*fundo da tela*/
 .blococentral {
   width: 100%;
@@ -229,7 +236,6 @@ main {
 /*titulo do painel  */
 
 .painel-title {
-  color: #000000;
   font-size: 1.4em;
   margin-bottom: 20px;
   padding-bottom: 10px;

@@ -103,7 +103,7 @@ body{
     align-items: center;
 }
 
-/*container das configurações*/
+/*container da*/
 
 .container-configurações{
     display: flex;
@@ -116,8 +116,6 @@ body{
     gap: 5px;
 
 }
-
-/**/
 
 .texto-bloco {
  width: 30vh;
