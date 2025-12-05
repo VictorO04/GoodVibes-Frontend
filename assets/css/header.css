@@ -74,14 +74,14 @@ header {
     transition: 0.5s;
     background-color: #f5c577e7;
     color: #000000;
-    box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 7px 1px rgba(255, 255, 255, 0.2);
 }
 
 .header.escuro {
     transition: 1s;
     background-color: #53199a;
     color: white;
-    box-shadow: 1px 1px 7px 1px rgba(10, 10, 10, 0.2);
+    box-shadow: 1px 1px 7px 1px rgba(255, 255, 255, 0.2);
 }
 
 .header.escuro .test {
