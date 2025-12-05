@@ -112,11 +112,13 @@ body{
 .container.white {
     background-color: #f5efbb;
     transition: 1s;
+    height: 200vh;
 }
 
 .container.dark {
     background-color: #370d69;
     transition: 1s;
+    height: 200vh;
 }
 
 .container.dark .blocos-container {
@@ -259,6 +261,8 @@ header{
     display: flex;
     justify-content: end;
     align-items: center;
+    position: fixed;
+    width: 100vw;
     
 }
 .cabecalho{
@@ -308,6 +312,7 @@ header{
     background-color: #f5c577e7;
     color: #000000;
     box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
+    position: flex;
 }
 
 .header.escuro {
@@ -315,6 +320,7 @@ header{
     background-color: #53199a;
     color: white;
     box-shadow: 1px 1px 7px 1px rgba(255, 0, 0, 0.2);
+    position: fixed;
 }
 
 .header.escuro .test{
