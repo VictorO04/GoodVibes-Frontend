@@ -37,7 +37,12 @@
         <div class="container white" id="container">
             
             <div class="busca-box" style="margin: 20px 0; text-align: center;">
-                <input id="inputBuscar" type="text" placeholder="Buscar por título..." />
+                <select id="selectFiltro" style="padding: 10px; margin-right: 5px;">
+                    <option value="tipo">Buscar por Tipo</option>
+                    <option value="id">Buscar por ID</option>
+                </select>
+
+                <input id="inputBuscar" type="text" placeholder="Digite sua busca..." />
                 <button id="btnBuscar">Buscar</button>
             </div>
             <div id="bloco-central" class="bloco-central">
