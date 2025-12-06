@@ -327,3 +327,73 @@ iframe, video {
         padding: 8px;
     }
 }
+
+/* =========================================================
+   FOOTER RESPONSIVO
+   ========================================================= */
+
+/* Mobile */
+@media (max-width: 480px) {
+    footer {
+        padding: 10px 10px;
+    }
+    
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .footer-socials {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .footer-brand h3 {
+        font-size: 0.75rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 0.6rem;
+    }
+    
+    .copyright {
+        order: 2;
+    }
+}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1023px) {
+    footer {
+        padding: 12px 12px;
+    }
+    
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    footer {
+        padding: 12px 12px;
+    }
+}
+
+
+

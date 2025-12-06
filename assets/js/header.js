@@ -37,11 +37,12 @@
   function syncHeaderAvatar(){
     try{
       const saved = localStorage.getItem('fotoPerfil');
-      if(!saved) return;
+      const defaultSrc = '/assets/img/perfil.png';
       // seleciona imagens que normalmente representam o avatar no header
       const imgs = Array.from(document.querySelectorAll('img#headerAvatar, img#preview, a.img-header img'));
       imgs.forEach(img => {
-        if(img && img.tagName === 'IMG') img.src = saved;
+        if(!img || img.tagName !== 'IMG') return;
+        img.src = saved || defaultSrc;
       });
     }catch(e){/* ignore */}
   }
