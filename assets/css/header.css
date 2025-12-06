@@ -128,20 +128,96 @@ header {
     background: rgba(255,255,255,0.35);
 }
 
-/* --- 5. RESPONSIVIDADE (Celular) --- */
-@media (max-width: 900px) {
+/* --- 5. RESPONSIVIDADE (Tablet) --- */
+@media (max-width: 1024px) {
     header { 
-        justify-content: space-between; 
-        padding: 0 20px; 
+        padding: 0 30px;
+        height: 80px;
     }
     
-    /* No celular, removemos o absoluto para eles fluírem nos cantos */
-    .imagem { position: static !important; transform: none !important; }
-    .cabecalho > a.img-header { position: static !important; transform: none !important; }
+    .test, .nav-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* --- 6. RESPONSIVIDADE (Tablet/Mobile) --- */
+@media (max-width: 900px) {
+    header {
+        height: 75px;
+        padding: 0 16px;
+        justify-content: space-between;
+    }
     
-    /* Esconde o texto do menu no celular */
-    .cabecalho li { display: none; }
+    .imagem { 
+        position: static !important; 
+        transform: none !important;
+        margin: 0;
+    }
     
-    .cabecalho { gap: 0; width: auto; }
-    .teste { width: auto; }
+    .logo {
+        width: 50px;
+    }
+    
+    .cabecalho > a.img-header { 
+        position: static !important; 
+        transform: none !important;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .cabecalho li { 
+        display: none;
+    }
+    
+    .teste, .cabecalho-box, nav {
+        width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 70px;
+        padding: 0 12px;
+    }
+    
+    .logo {
+        width: 45px;
+    }
+    
+    .test {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .cabecalho > a.img-header {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* --- 7. RESPONSIVIDADE (Celular Pequeno) --- */
+@media (max-width: 480px) {
+    header {
+        height: 60px;
+        padding: 0 10px;
+    }
+    
+    .logo {
+        width: 40px;
+    }
+    
+    .test {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+    
+    .cabecalho > a.img-header {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .cabecalho {
+        gap: 0;
+    }
 }

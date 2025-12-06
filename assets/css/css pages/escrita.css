@@ -144,14 +144,285 @@ main { flex: 1; padding: 40px 20px; display: flex; justify-content: center; }
 .inspiracao p { margin: 0; font-size: 0.95rem; color: #555; font-style: italic; }
 
 /* Mobile */
+@media (max-width: 1024px) {
+    .write-grid { 
+        gap: 20px;
+    }
+    
+    #campo-escrita {
+        min-height: 350px;
+    }
+    
+    .editor .controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .field {
+        min-width: 120px;
+    }
+}
+
 @media (max-width: 900px) {
-    .write-grid { grid-template-columns: 1fr; margin-top: 20px; }
-    .panel { order: 2; margin-top: 20px; }
-    .editor .controls { flex-direction: column; align-items: stretch; }
-    header { padding: 0 20px; justify-content: space-between; }
-    .imagem { position: static !important; transform: none !important; }
-    .cabecalho > a.img-header { position: static !important; transform: none !important; }
-    .cabecalho li { display: none; }
+    header {
+        height: 75px;
+        padding: 0 16px;
+    }
+    
+    .write-grid { 
+        grid-template-columns: 1fr; 
+        margin-top: 15px;
+        gap: 15px;
+    }
+    
+    .panel { 
+        order: 2; 
+        margin-top: 15px;
+    }
+    
+    .editor .controls { 
+        flex-direction: column; 
+        align-items: stretch;
+    }
+    
+    .field {
+        min-width: 100%;
+    }
+    
+    #campo-escrita {
+        min-height: 300px;
+    }
+    
+    .imagem { 
+        position: static !important; 
+        transform: none !important;
+    }
+    
+    .cabecalho > a.img-header { 
+        position: static !important; 
+        transform: none !important;
+    }
+    
+    .cabecalho li { 
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 70px;
+        padding: 0 12px;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        width: 45px;
+    }
+    
+    .test {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .cabecalho > a.img-header {
+        width: 45px;
+        height: 45px;
+    }
+    
+    main {
+        padding: 15px 10px;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    .write-grid {
+        width: 100%;
+    }
+    
+    .write-card.bloco-central {
+        padding: 20px;
+        border-radius: 15px;
+        min-height: auto;
+    }
+    
+    .editor .controls {
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+    
+    .field {
+        flex: 1;
+        min-width: 100px;
+    }
+    
+    .field small {
+        font-size: 0.7rem;
+        margin-bottom: 4px;
+    }
+    
+    .input {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+    
+    #campo-escrita {
+        min-height: 250px;
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .actions {
+        gap: 10px;
+    }
+    
+    .btn-primary {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+    }
+    
+    .panel {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    .panel-inner {
+        gap: 12px;
+    }
+    
+    .inspiracao {
+        padding: 12px 12px 12px 16px;
+    }
+    
+    .inspiracao h4 {
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+    }
+    
+    .inspiracao p {
+        font-size: 0.9rem;
+    }
+    
+    .link-muted {
+        font-size: 0.8rem;
+        padding: 8px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 60px;
+        padding: 0 10px;
+    }
+    
+    .logo {
+        width: 40px;
+    }
+    
+    .test {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+        display: none;
+    }
+    
+    .cabecalho > a.img-header {
+        width: 40px;
+        height: 40px;
+    }
+    
+    main {
+        padding: 10px 8px;
+    }
+    
+    .write-card.bloco-central {
+        padding: 16px;
+    }
+    
+    .editor .controls {
+        gap: 8px;
+        padding-bottom: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .field {
+        flex: 1;
+        min-width: 80px;
+    }
+    
+    .field small {
+        font-size: 0.65rem;
+        margin-bottom: 3px;
+    }
+    
+    .input {
+        padding: 9px 12px;
+        font-size: 0.85rem;
+        border-radius: 12px;
+    }
+    
+    #tipoMensagem {
+        min-width: 100%;
+    }
+    
+    #campo-escrita {
+        min-height: 200px;
+        padding: 12px;
+        font-size: 0.95rem;
+        border-radius: 12px;
+    }
+    
+    .actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        flex: 1;
+        min-width: 100%;
+    }
+    
+    .btn-primary.small {
+        flex: 1;
+        min-width: 80px;
+    }
+    
+    .panel {
+        padding: 16px;
+        border-radius: 12px;
+    }
+    
+    .panel-inner {
+        gap: 10px;
+    }
+    
+    .panel-inner h3 {
+        font-size: 0.95rem;
+    }
+    
+    .inspiracao {
+        padding: 10px 10px 10px 14px;
+        border-radius: 8px;
+    }
+    
+    .inspiracao h4 {
+        font-size: 0.75rem;
+        margin-bottom: 3px;
+    }
+    
+    .inspiracao p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    .link-muted {
+        font-size: 0.75rem;
+        padding: 7px 0;
+        border-radius: 15px;
+    }
 }
 
 /* Lógica Javascript */

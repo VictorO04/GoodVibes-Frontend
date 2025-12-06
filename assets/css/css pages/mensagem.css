@@ -280,11 +280,233 @@ main {
 }
 
 /* Responsividade */
+@media (max-width: 1024px) {
+    main {
+        padding: 20px;
+    }
+    
+    .busca-box {
+        max-width: 100%;
+        gap: 8px;
+    }
+    
+    #selectFiltro {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    #inputBuscar {
+        font-size: 0.9rem;
+    }
+    
+    .bloco-central {
+        max-width: 100%;
+        height: 65vh;
+    }
+}
+
 @media (max-width: 768px) {
-    header { justify-content: space-between; padding: 0 20px; }
-    .imagem { position: static; }
-    .cabecalho .img-header { position: static; transform: none; margin-left: auto; }
-    .teste, .cabecalho li { display: none; } /* Menu Hamburguer seria ideal aqui */
+    header { 
+        justify-content: space-between; 
+        padding: 0 16px;
+        height: 70px;
+    }
+    
+    .imagem { 
+        position: static; 
+        transform: none;
+    }
+    
+    .cabecalho {
+        gap: 8px;
+    }
+    
+    .cabecalho li a, a.test {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .cabecalho .img-header, .img-header { 
+        position: static; 
+        transform: none;
+        margin-left: auto;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .teste, .cabecalho li { 
+        display: flex;
+        align-items: center;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    .busca-box {
+        flex-wrap: wrap;
+        max-width: 100%;
+        gap: 8px;
+        padding: 10px;
+    }
+    
+    #selectFiltro {
+        flex: 1;
+        min-width: 100px;
+        padding: 10px;
+        border-radius: 15px;
+    }
+    
+    #inputBuscar {
+        flex: 1;
+        min-width: 150px;
+        padding: 10px;
+    }
+    
+    #btnBuscar {
+        padding: 10px 20px;
+        border-radius: 15px;
+    }
+    
+    .bloco-central {
+        max-width: 100%;
+        width: 100%;
+        height: 60vh;
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    .post-it {
+        padding: 15px;
+        border-left-width: 4px;
+    }
+    
+    .post-header {
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+    
+    .post-type {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+    
+    .post-body {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .post-meta {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 60px;
+        padding: 0 12px;
+    }
+    
+    .imagem {
+        margin: 0;
+    }
+    
+    .cabecalho {
+        gap: 6px;
+    }
+    
+    .cabecalho li a, a.test {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .cabecalho .img-header {
+        width: 40px;
+        height: 40px;
+    }
+    
+    main {
+        padding: 10px;
+    }
+    
+    .busca-box {
+        flex-direction: column;
+        gap: 6px;
+        padding: 8px;
+        margin-bottom: 15px;
+    }
+    
+    #selectFiltro {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    #inputBuscar {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    #btnBuscar {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .bloco-central {
+        height: 55vh;
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
+    .post-it {
+        padding: 12px;
+        border-left-width: 3px;
+        margin-bottom: 12px;
+    }
+    
+    .post-header {
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+    }
+    
+    .post-type {
+        font-size: 0.65rem;
+        padding: 3px 6px;
+    }
+    
+    .post-body {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .post-meta {
+        font-size: 0.7rem;
+    }
+    
+    /* Modal responsivo */
+    .modal-content {
+        width: 95%;
+        max-width: 100%;
+        padding: 16px;
+        border-radius: 12px;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .mensagem-destaque {
+        font-size: 1rem;
+        margin: 12px 0;
+    }
+    
+    .detalhes-tecnicos {
+        font-size: 0.8rem;
+        padding: 12px;
+    }
 }
 /* Fundo escuro atrás do modal */
 .modal-overlay {

@@ -166,8 +166,203 @@
 .lista-mensagens::-webkit-scrollbar { width: 6px; }
 .lista-mensagens::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
 
-/* Mobile */
+/* Responsividade */
+@media (max-width: 1024px) {
+    .profile-grid {
+        gap: 25px;
+    }
+    
+    .profile-activity {
+        height: 450px;
+    }
+}
+
 @media (max-width: 768px) {
-    .profile-grid { flex-direction: column; }
-    .profile-card, .profile-activity { width: 100%; }
+    .perfil-page {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .profile-grid { 
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .profile-card, .profile-activity { 
+        width: 100%;
+    }
+    
+    .profile-card {
+        min-width: auto;
+        padding: 20px;
+    }
+    
+    .avatar-large {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 15px;
+    }
+    
+    .avatar-large img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .upload-label {
+        font-size: 0.75rem;
+    }
+    
+    .input-container {
+        margin-bottom: 12px;
+    }
+    
+    .input-container label {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+    
+    .input-edit {
+        padding: 10px;
+        font-size: 0.95rem;
+        border-radius: 8px;
+    }
+    
+    .profile-actions {
+        margin-top: 15px;
+        gap: 8px;
+    }
+    
+    .btn {
+        padding: 9px 18px;
+        font-size: 0.9rem;
+        border-radius: 15px;
+    }
+    
+    .profile-activity {
+        height: 350px;
+        padding: 20px;
+    }
+    
+    .profile-activity h3 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    .mini-card {
+        padding: 12px;
+        margin-bottom: 8px;
+        border-left-width: 3px;
+    }
+    
+    .mini-card small {
+        font-size: 0.7rem;
+    }
+    
+    .mini-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .perfil-page {
+        padding: 0;
+    }
+    
+    .profile-grid {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+    }
+    
+    .profile-card {
+        padding: 16px;
+        min-width: auto;
+    }
+    
+    .avatar-large {
+        width: 85px;
+        height: 85px;
+        margin: 0 auto 12px;
+    }
+    
+    .avatar-large img {
+        border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .upload-label {
+        font-size: 0.7rem;
+        margin-top: 6px;
+    }
+    
+    .input-container {
+        margin-bottom: 10px;
+    }
+    
+    .input-container label {
+        font-size: 0.7rem;
+        margin-bottom: 3px;
+        margin-left: 2px;
+    }
+    
+    .input-edit {
+        padding: 8px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+    
+    .input-edit::placeholder {
+        font-size: 0.85rem;
+    }
+    
+    .profile-actions {
+        margin-top: 12px;
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        border-radius: 12px;
+        width: 100%;
+    }
+    
+    .profile-activity {
+        width: 100%;
+        height: 300px;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    
+    .profile-activity h3 {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+    
+    .lista-mensagens {
+        padding-right: 4px;
+    }
+    
+    .mini-card {
+        padding: 10px;
+        margin-bottom: 6px;
+        border-left-width: 2px;
+        border-radius: 6px;
+    }
+    
+    .mini-card small {
+        font-size: 0.65rem;
+        margin-bottom: 3px;
+    }
+    
+    .mini-card p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    .lista-mensagens::-webkit-scrollbar {
+        width: 4px;
+    }
 }
