@@ -3,51 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoodVibes</title>
+    <meta name="description" content="GoodVibes - Compartilhe elogios e positividade.">
+    <title>GoodVibes — Bem-vindo</title>
+    
     <link rel="stylesheet" href="./assets/css/common.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/index.css"> 
     <script src="./assets/js/header.js" defer></script>
 </head>
+
 <body>
+    
     <header>
-        <div class="imagem">
-            <img src="./assets/img/logo.png" alt="GoodVibes" class="logo">
+        <div class="header-left">
+            <a href="index.html" class="imagem">
+                <img src="./assets/img/imagem.png" alt="Logo GoodVibes" class="logo">
+            </a>
         </div>
-        <div class="teste">
-            <div class="cabecalho-box">
-                <nav>
-                    <ol class="cabecalho">
-                        <a href="./pages/perfil.html" class="img-header" aria-label="Perfil"><img id="preview" src="./assets/img/imagem.png" alt="Avatar do usuário"></a>
-                        <li><a href="./pages/escrita.html" class="test">Escreva</a></li>
-                        <li><a href="./pages/mensagem.html" class="test">Mensagens</a></li>
-                        <li><a href="./pages/mural.html" class="test">Início</a></li>
-                        <li><a href="./pages/tela_login.html" class="test">Entrar</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </header>
-    <main>
-        <section class="bem-vindo">
-            <h1 class="texto-flutuar">BEM-VINDO!</h1>
-            <p>GoodVibes é o lugar definitivo para compartilhar elogios e confissões para seus colegas.</p>
-            <a href="./pages/tela_login.html">Continue</a>
-        </section>
-        <img src="./assets/img/tela-inicial-img.png" alt="">
-    </main>
-    <footer>
-        <nav class="footer-nav">
-            <p>GoodVibes</p>
-            <ol>
-                <ul><a href="">Sobre</a></ul>
-                <ul><a href="">Contato</a></ul>
-                <ul><a href="">Privacidade</a></ul>
-            </ol>
+
+        <nav class="header-center">
+            <ul class="cabecalho">
+                <li><a href="./pages/mural.html" class="nav-btn">Início</a></li>
+                <li><a href="./pages/mensagem.html" class="nav-btn">Mensagens</a></li>
+                <li><a href="./pages/escrita.html" class="nav-btn">Escreva</a></li>
+            </ul>
         </nav>
+
+        <div class="header-right">
+            <a href="./pages/perfil.html" class="img-header" aria-label="Meu Perfil">
+                <img id="preview" src="./assets/img/imagem.png" alt="Foto de perfil">
+            </a>
+            
+            </div>
+    </header>
+
+    <main>
+        <div class="hero-container">
+            
+            <section class="bem-vindo">
+                <h1 class="texto-flutuar" style="color: white;">BEM-VINDO!</h1>
+                <p style="color: white;">GoodVibes é o lugar definitivo para compartilhar elogios e confissões para seus colegas.</p>
+                
+                <a href="./pages/tela_login.html" class="btn-primary large">Começar Agora</a>
+            </section>
+
+            <div class="hero-image">
+                <img src="./assets/img/tela-inicial-img.png" alt="Ilustração de pessoas se conectando">
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="brand">GoodVibes © 2025</p>
+            
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
         <div id="linha"></div>
-        <p>© 2025</p>
     </footer>
+
 </body>
 </html>
