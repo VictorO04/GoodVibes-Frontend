@@ -159,6 +159,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .container {
@@ -167,6 +169,12 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Botão Primário (Amarelo Tartaruga) */
@@ -219,11 +227,82 @@ main {
 }
 
 /* Responsividade Global */
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    header { 
+        padding: 0 30px; 
+        height: 80px;
+    }
+    nav a, .nav-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Tablet/Mobile (max 768px) */
 @media (max-width: 768px) {
-    header { justify-content: space-between; padding: 0 20px; }
-    .imagem { position: static; transform: none; }
-    .user-menu, .img-header { position: static; transform: none; }
-    nav { display: none; } /* Esconde menu no mobile */
+    header { 
+        justify-content: space-between; 
+        padding: 0 16px;
+        height: 70px;
+    }
+    
+    .imagem { 
+        position: static; 
+        transform: none; 
+        margin: 0;
+    }
+    
+    .logo {
+        width: 45px;
+    }
+    
+    nav {
+        display: none;
+    }
+    
+    .user-menu, .img-header { 
+        position: static; 
+        transform: none;
+        width: 45px;
+        height: 45px;
+    }
+    
+    main {
+        padding: 20px 10px;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Celular Pequeno (max 480px) */
+@media (max-width: 480px) {
+    header {
+        height: 60px;
+        padding: 0 12px;
+    }
+    
+    .logo {
+        width: 40px;
+    }
+    
+    .img-header {
+        width: 40px;
+        height: 40px;
+    }
+    
+    main {
+        padding: 16px 8px;
+    }
+    
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        border-radius: 20px;
+    }
 }
 /* --- Estilização do Dropdown "Tipo" --- */
 #tipoMensagem, #selectFiltro, select.input {

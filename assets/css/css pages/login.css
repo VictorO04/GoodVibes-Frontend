@@ -166,7 +166,103 @@ header { flex-shrink: 0; }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+@media (max-width: 768px) {
+    .login-wrapper {
+        padding: 15px;
+    }
+    
+    .login-card {
+        max-width: 90%;
+        padding: 35px 20px;
+        border-radius: 25px;
+    }
+    
+    .titulo-goodvibes {
+        font-size: 2.2rem;
+    }
+    
+    .subtitulo {
+        font-size: 1.1rem;
+    }
+    
+    .descricao-site {
+        font-size: 0.9rem;
+    }
+    
+    .input-group input {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+    
+    .btn-entrar {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 480px) {
-    .login-card { padding: 30px 20px; }
-    .titulo-goodvibes { font-size: 2.2rem; }
+    body {
+        min-height: 100vh;
+    }
+    
+    .login-wrapper {
+        padding: 10px;
+        min-height: auto;
+    }
+    
+    .login-card {
+        max-width: 100%;
+        padding: 25px 16px;
+        border-radius: 20px;
+        margin: auto;
+    }
+    
+    .titulo-goodvibes {
+        font-size: 1.8rem;
+        margin-bottom: 3px;
+    }
+    
+    .subtitulo {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .descricao-site {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 0;
+    }
+    
+    .input-group {
+        margin-bottom: 15px;
+    }
+    
+    .input-group label {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .input-group input {
+        padding: 11px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .input-group input::placeholder {
+        font-size: 0.9rem;
+    }
+    
+    .actions {
+        gap: 15px;
+    }
+    
+    .btn-entrar {
+        padding: 11px;
+        font-size: 0.95rem;
+        border-radius: 18px;
+    }
+    
+    .links-extras {
+        font-size: 0.8rem;
+        gap: 8px;
+    }
 }

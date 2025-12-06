@@ -1,0 +1,329 @@
+/* =========================================================
+   RESPONSIVE.CSS - MEDIA QUERIES GLOBAIS
+   ========================================================= */
+
+/* Variáveis para breakpoints */
+:root {
+    --mobile: 320px;
+    --mobile-md: 375px;
+    --mobile-lg: 480px;
+    --tablet-sm: 600px;
+    --tablet: 768px;
+    --tablet-lg: 1024px;
+    --desktop: 1200px;
+    --desktop-lg: 1440px;
+}
+
+/* =========================================================
+   RESET RESPONSIVO
+   ========================================================= */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.5;
+}
+
+/* =========================================================
+   COMPONENTES FLEXÍVEIS
+   ========================================================= */
+
+/* Flex Container Responsivo */
+.flex-responsive {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 20px);
+}
+
+/* Grid Responsivo */
+.grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: clamp(15px, 3vw, 25px);
+}
+
+/* Texto Responsivo */
+h1 { font-size: clamp(1.5rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.3rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.1rem, 3vw, 2rem); }
+h4 { font-size: clamp(1rem, 2.5vw, 1.5rem); }
+h5, h6 { font-size: clamp(0.9rem, 2vw, 1.2rem); }
+p, small { font-size: clamp(0.85rem, 1.5vw, 1.1rem); }
+
+/* Padding Responsivo */
+.pad-responsive {
+    padding: clamp(15px, 3vw, 30px);
+}
+
+.pad-vertical {
+    padding-top: clamp(15px, 3vw, 30px);
+    padding-bottom: clamp(15px, 3vw, 30px);
+}
+
+.pad-horizontal {
+    padding-left: clamp(15px, 3vw, 30px);
+    padding-right: clamp(15px, 3vw, 30px);
+}
+
+/* Gap Responsivo */
+.gap-responsive {
+    gap: clamp(10px, 2vw, 20px);
+}
+
+/* Margin Responsivo */
+.margin-responsive {
+    margin: clamp(15px, 3vw, 30px);
+}
+
+/* =========================================================
+   BREAKPOINT: MOBILE (até 480px)
+   ========================================================= */
+@media (max-width: 480px) {
+    main {
+        padding: 12px 8px !important;
+    }
+    
+    .container {
+        padding: 0 8px !important;
+    }
+    
+    /* Texto menor */
+    p { font-size: 0.85rem; }
+    small { font-size: 0.75rem; }
+    
+    /* Espaçamento menor */
+    .pad-responsive { padding: 12px; }
+    .gap-responsive { gap: 8px; }
+    
+    /* Botões em mobile */
+    button, input[type="button"], input[type="submit"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* =========================================================
+   BREAKPOINT: MOBILE MD (481px - 599px)
+   ========================================================= */
+@media (min-width: 481px) and (max-width: 599px) {
+    main {
+        padding: 15px 10px !important;
+    }
+    
+    .container {
+        padding: 0 10px !important;
+    }
+}
+
+/* =========================================================
+   BREAKPOINT: TABLET SMALL (600px - 767px)
+   ========================================================= */
+@media (min-width: 600px) and (max-width: 767px) {
+    main {
+        padding: 20px 15px !important;
+    }
+}
+
+/* =========================================================
+   BREAKPOINT: TABLET (768px - 1023px)
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+    main {
+        padding: 30px 20px !important;
+    }
+    
+    /* Grid em 2 colunas */
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    }
+}
+
+/* =========================================================
+   BREAKPOINT: DESKTOP (1024px+)
+   ========================================================= */
+@media (min-width: 1024px) {
+    main {
+        padding: 40px 30px !important;
+    }
+    
+    /* Grid em 3+ colunas */
+    .grid-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+/* =========================================================
+   BREAKPOINT: DESKTOP GRANDE (1440px+)
+   ========================================================= */
+@media (min-width: 1440px) {
+    main {
+        padding: 40px 60px !important;
+    }
+}
+
+/* =========================================================
+   UTILITÁRIOS DE RESPONSIVIDADE
+   ========================================================= */
+
+/* Esconde em mobile */
+.hide-mobile {
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    .hide-mobile {
+        display: block !important;
+    }
+}
+
+/* Esconde em tablet */
+.hide-tablet {
+    display: none !important;
+}
+
+@media (min-width: 1024px) {
+    .hide-tablet {
+        display: block !important;
+    }
+}
+
+/* Mostrar apenas em mobile */
+.show-mobile {
+    display: block !important;
+}
+
+@media (min-width: 768px) {
+    .show-mobile {
+        display: none !important;
+    }
+}
+
+/* Mostrar apenas em tablet */
+.show-tablet {
+    display: none !important;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .show-tablet {
+        display: block !important;
+    }
+}
+
+/* Mostrar apenas em desktop */
+.show-desktop {
+    display: none !important;
+}
+
+@media (min-width: 1024px) {
+    .show-desktop {
+        display: block !important;
+    }
+}
+
+/* =========================================================
+   ORIENTAÇÃO
+   ========================================================= */
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    header {
+        height: auto;
+        padding: 8px 15px;
+    }
+    
+    main {
+        padding: 10px 15px;
+        min-height: auto;
+    }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+    /* Remover hover effects em touch */
+    button:hover {
+        transform: none;
+    }
+    
+    a:hover {
+        color: inherit;
+    }
+    
+    /* Aumentar tamanho de botões em touch */
+    button, input[type="button"], input[type="submit"], a.btn {
+        min-height: 48px;
+        min-width: 48px;
+        padding: 12px 20px;
+    }
+}
+
+/* =========================================================
+   REDIMENSIONAMENTO DE FONTE FLUIDO
+   ========================================================= */
+
+/* Ajusta dinamicamente com viewport */
+body {
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+/* =========================================================
+   OVERFLOW E SCROLL RESPONSIVO
+   ========================================================= */
+
+/* Previne horizontal scroll */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================================================
+   IMAGENS RESPONSIVAS
+   ========================================================= */
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+picture {
+    display: contents;
+}
+
+/* =========================================================
+   VÍDEOS RESPONSIVOS
+   ========================================================= */
+
+iframe, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================================================
+   TABELAS RESPONSIVAS
+   ========================================================= */
+
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+    
+    table th, table td {
+        padding: 8px;
+    }
+}
