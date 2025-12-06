@@ -1,10 +1,9 @@
 /* =========================================================
-   ESCRITA.CSS - VERSÃO FINAL COMPLETA
+   ESCRITA.CSS - VERSÃO FINAL RESTAURADA
    ========================================================= */
 
-/* --- 1. VARIÁVEIS E RESET --- */
 :root {
-    --accent-color: #F3CD88;       /* Amarelo Tartaruga */
+    --accent-color: #F3CD88;
     --accent-hover: #eebb65;
     --text-color: #333;
     --card-bg: #ffffff;
@@ -22,6 +21,8 @@ body {
     color: var(--text-color);
     display: flex;
     flex-direction: column;
+    overflow-y: auto; /* Garante rolagem */
+    overflow-x: hidden;
 }
 
 @keyframes gradientBG {
@@ -30,282 +31,129 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* --- 2. HEADER BLINDADO (CORREÇÃO DE POSIÇÃO) --- */
+/* --- HEADER FIXO NESTA PÁGINA --- */
 header {
-    height: 90px;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
+    height: 90px; width: 100%; position: sticky; top: 0; z-index: 1000;
+    background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 40px;
+    display: flex; justify-content: center; align-items: center; padding: 0 40px;
 }
 
-/* LOGO: Fixado na esquerda com !important */
-.imagem {
-    position: absolute !important;
-    left: 40px !important;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1002;
-    margin: 0;
-}
+.imagem { position: absolute !important; left: 40px !important; top: 50%; transform: translateY(-50%); z-index: 1002; }
 .logo { width: 60px; height: auto; display: block; transition: 0.3s; }
 .logo:hover { transform: scale(1.1); }
 
-/* MENU CENTRAL */
-.teste, .cabecalho-box, nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
+.teste, .cabecalho-box, nav { display: flex; justify-content: center; align-items: center; width: 100%; }
+.cabecalho { display: flex; flex-direction: row-reverse; gap: 15px; list-style: none; align-items: center; margin: 0; padding: 0; }
 
-.cabecalho {
-    display: flex;
-    flex-direction: row-reverse; /* Início na esquerda */
-    gap: 15px;
-    list-style: none;
-    align-items: center;
-    margin: 0; padding: 0;
+.cabecalho > a.img-header {
+    position: absolute !important; right: 40px !important; top: 50%; transform: translateY(-50%);
+    z-index: 1002; display: block; width: 50px; height: 50px;
 }
-
-/* PERFIL: Fixado na direita com !important */
-.cabecalho > a.img-header, header .img-header {
-    position: absolute !important;
-    right: 40px !important;
-    left: auto !important;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1002;
-    display: block;
-    width: 50px; height: 50px;
-    margin: 0;
-}
-
 .img-header img {
-    width: 50px; height: 50px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.8);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    object-fit: cover;
+    width: 50px; height: 50px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.8); object-fit: cover;
 }
 
-/* BOTÕES DO HEADER */
 .test {
-    text-decoration: none !important;
-    color: white !important;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    background: rgba(255,255,255,0.2);
-    padding: 10px 24px;
-    border-radius: 50px;
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.3s ease;
-    display: inline-block;
-    position: relative;
-    box-shadow: none;
-    outline: none;
+    text-decoration: none !important; color: white !important; font-weight: 700; font-size: 0.95rem; text-transform: uppercase;
+    background: rgba(255,255,255,0.2); padding: 10px 24px; border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s ease;
 }
-/* Limpa pseudo-elementos antigos */
-.test::after, .test::before { display: none !important; content: none !important; }
+.test:hover { background: rgba(255,255,255,0.4); transform: translateY(-2px); color: #fff !important; }
 
-.test:hover {
-    background: rgba(255,255,255,0.4);
-    transform: translateY(-2px);
-    color: #fff !important;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.inicio { color: white !important; background: rgba(255,255,255,0.2) !important; }
-.inicio:hover { background: rgba(255,255,255,0.4) !important; }
-
-
-/* --- 3. LAYOUT DA PÁGINA --- */
-main {
-    flex: 1;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-}
-
+/* --- LAYOUT PRINCIPAL --- */
+main { flex: 1; padding: 40px 20px; display: flex; justify-content: center; }
 .container { width: 100%; display: flex; justify-content: center; }
 
 .write-grid {
-    display: grid;
-    grid-template-columns: 1fr 340px; 
-    gap: 30px;
-    max-width: 1200px;
-    width: 100%;
-    align-items: start;
-    transition: all 0.3s ease; /* Animação suave ao expandir */
+    display: grid; grid-template-columns: 1fr 340px; gap: 30px;
+    max-width: 1200px; width: 100%; align-items: start;
 }
 
-/* --- 4. CARTÃO DO EDITOR --- */
+/* --- EDITOR --- */
 .write-card.bloco-central {
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 20px;
+    background: var(--card-bg); padding: 30px; border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    
-    /* CORREÇÃO: Altura automática para mostrar o botão */
-    height: auto; 
-    min-height: 500px;
-    
-    display: flex;
-    flex-direction: column;
+    height: auto; min-height: 500px; /* Altura automática p/ não cortar */
+    display: flex; flex-direction: column;
 }
 
 .editor .controls {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    padding-bottom: 20px;
-    border-bottom: 1px dashed #eee;
-    margin-bottom: 20px;
-    align-items: flex-end;
+    display: flex; gap: 15px; flex-wrap: wrap; padding-bottom: 20px;
+    border-bottom: 1px dashed #eee; margin-bottom: 20px; align-items: flex-end;
 }
 
 .field { display: flex; flex-direction: column; flex: 1; min-width: 150px; }
 .field small { font-size: 0.75rem; font-weight: 700; color: #888; margin-bottom: 5px; text-transform: uppercase; }
 
 .input {
-    padding: 12px 20px;
-    border-radius: 50px;
-    border: 1px solid #e0e0e0;
-    background: #f9f9f9;
-    font-size: 0.95rem;
-    width: 100%;
-    outline: none;
-    transition: 0.3s;
+    padding: 12px 20px; border-radius: 50px; border: 1px solid #e0e0e0;
+    background: #f9f9f9; font-size: 0.95rem; width: 100%; outline: none; transition: 0.3s;
 }
 .input:focus { background: #fff; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(243, 205, 136, 0.3); }
 
 #campo-escrita {
-    width: 100%;
-    min-height: 400px;
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid #f0f0f0;
-    background: #fff;
+    width: 100%; min-height: 400px; padding: 20px;
+    border-radius: 15px; border: 1px solid #f0f0f0; background: #fff;
     font-family: inherit; font-size: 1.1rem; line-height: 1.6; color: #444;
-    resize: vertical; outline: none;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+    resize: vertical; outline: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
 }
 #campo-escrita:focus { background: #fafafa; }
 
 .actions { margin-top: 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
 
 .btn-primary {
-    background: var(--accent-color);
-    color: #5a4b20;
-    border: none;
-    padding: 12px 40px;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
+    background: var(--accent-color); color: #5a4b20; border: none;
+    padding: 12px 40px; border-radius: 30px; font-weight: bold; font-size: 1rem;
+    cursor: pointer; transition: 0.3s;
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(243, 205, 136, 0.5); background: var(--accent-hover); }
-.btn-primary.small { padding: 8px 20px; font-size: 0.85rem; }
 
-.status-text { color: #177a5b; font-weight: 700; background: #e6f4ea; padding: 5px 12px; border-radius: 10px; }
-
-/* --- 5. PAINEL LATERAL --- */
+/* --- PAINEL LATERAL --- */
 .panel {
     background: linear-gradient(180deg, #fffcf5, #fff8e8);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border: 1px solid rgba(243, 205, 136, 0.3);
+    padding: 25px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(243, 205, 136, 0.3);
     height: auto;
 }
-
-.panel h3 {
-    margin-top: 0; color: #6b3a00; border-bottom: 2px solid var(--accent-color);
-    display: inline-block; padding-bottom: 5px; margin-bottom: 20px;
-}
-
 .panel-inner { display: flex; flex-direction: column; gap: 15px; }
 
-/* --- BOTÃO "INÍCIO" DENTRO DO PAINEL (Ghost Button) --- */
+/* Botão Início Fantasma */
 .link-muted {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    color: #d69e2e;
-    
-    background: transparent;
-    border: 2px solid var(--accent-color);
-    border-radius: 30px;
-    padding: 10px 0;
-    margin-top: 10px;
-    transition: 0.3s;
+    display: block; text-align: center; text-decoration: none;
+    font-weight: 700; font-size: 0.9rem; text-transform: uppercase; color: #d69e2e;
+    background: transparent; border: 2px solid var(--accent-color);
+    border-radius: 30px; padding: 10px 0; margin-top: 10px; transition: 0.3s;
 }
+.link-muted:hover { background: var(--accent-color); color: #fff; transform: translateY(-2px); }
 
-.link-muted:hover {
-    background: var(--accent-color);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(243, 205, 136, 0.4);
-}
-
-/* --- CARDS E LINHA ANIMADA --- */
+/* Cards */
 .inspiracao, .post-it {
-    background: white;
-    padding: 15px 15px 15px 25px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    position: relative; overflow: hidden;
-    transition: transform 0.2s;
-    word-wrap: break-word;
+    background: white; padding: 15px 15px 15px 25px; border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: relative; overflow: hidden;
+    transition: transform 0.2s; word-wrap: break-word;
 }
 .inspiracao:hover { transform: translateX(5px); }
-
-/* Animação da linha lateral */
 .inspiracao::before, .post-it::before {
     content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%; animation: gradientBG 8s ease infinite;
 }
-
 .inspiracao h4 { margin: 0 0 5px 0; font-size: 0.85rem; color: #d69e2e; text-transform: uppercase; }
 .inspiracao p { margin: 0; font-size: 0.95rem; color: #555; font-style: italic; }
 
-.created-header { font-weight: 700; color: #3a2b00; margin-bottom: 8px; display: inline-block; background: #fffdf5; padding: 4px 8px; border-radius: 6px; }
-.created-body { font-size: 1.1rem; color: #333; line-height: 1.5; }
-
-/* --- 6. CLASSES DE CONTROLE (Javascript) --- */
-/* Esconde o painel */
-.panel.collapsed {
-    display: none !important;
-}
-
-/* Expande o grid para 1 coluna */
-.write-grid.one-column {
-    grid-template-columns: 1fr !important;
-}
-
-/* --- 7. RESPONSIVIDADE --- */
+/* Mobile */
 @media (max-width: 900px) {
     .write-grid { grid-template-columns: 1fr; margin-top: 20px; }
     .panel { order: 2; margin-top: 20px; }
     .editor .controls { flex-direction: column; align-items: stretch; }
-    
     header { padding: 0 20px; justify-content: space-between; }
     .imagem { position: static !important; transform: none !important; }
     .cabecalho > a.img-header { position: static !important; transform: none !important; }
     .cabecalho li { display: none; }
 }
+
+/* Lógica Javascript */
+.panel.collapsed { display: none !important; }
+.write-grid.one-column { grid-template-columns: 1fr !important; }

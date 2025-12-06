@@ -1,136 +1,105 @@
-// Elementos da interface
-const selectFiltro = document.getElementById('selectFiltro');
-const btnBuscar = document.getElementById('btnBuscar');
-const btnGetAll = document.getElementById('btnGetAll');
-const inputBuscar = document.getElementById('inputBuscar');
-const containerMsg = document.getElementById('msg');
+// Variável global para guardar os dados na memória do navegador
+let listaGlobalConfissoes = [];
 
-// Mensagem inicial
-function iniciar() {
-    containerMsg.innerHTML = 'Selecione o filtro ou clique em "Ver todas as confissões"...';
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const gridMural = document.getElementById('muralGrid');
+    const loadingMsg = document.getElementById('loading-msg');
+    const API_URL = 'http://localhost:3000/confissoes'; 
 
-// Renderização com animação
-function renderizarMensagens(dados) {
-    containerMsg.innerHTML = '';
+    async function buscarConfissoes() {
+        try {
+            const resposta = await fetch(API_URL);
+            if (!resposta.ok) throw new Error(`Erro: ${resposta.status}`);
+            
+            const dados = await resposta.json();
+            
+            // Salva na variável global para usarmos no modal depois
+            listaGlobalConfissoes = dados.confissoes || []; 
+            
+            renderizarCards(listaGlobalConfissoes);
 
-    if (!dados || dados.length === 0) {
-        containerMsg.innerHTML = 'Nenhuma confissão encontrada.';
-        return;
-    }
-
-    let lista = Array.isArray(dados) ? dados : [dados];
-
-    lista.forEach((confissao) => {
-        const card = document.createElement('div');
-        card.className = 'post-it';
-
-        // build friendly names when available
-    const autor = (confissao.remetente && (confissao.remetente.nome || confissao.remetente.username)) ? (confissao.remetente.nome || confissao.remetente.username) : 'Anônimo';
-    const destinatario = (confissao.destinatario && (confissao.destinatario.nome || confissao.destinatario.username)) ? (confissao.destinatario.nome || confissao.destinatario.username) : 'Comunidade';
-
-        card.innerHTML = `
-            <h3>${autor} <small style="font-weight:400;color:#666">→ ${destinatario}</small></h3>
-            <p style="margin:.4rem 0 .6rem;font-size:.95rem;color:#222"><strong>Tipo:</strong> ${confissao.tipoMensagem || 'Não informado'}</p>
-            <p style="background:rgba(255,255,255,0.6);padding:10px;border-radius:8px;min-height:48px">${confissao.mensagem || 'Sem mensagem'}</p>
-        `;
-
-        // animação suave na entrada
-        card.style.opacity = 0;
-        card.style.transform = "scale(0.97)";
-        containerMsg.appendChild(card);
-
-        setTimeout(() => {
-            card.style.transition = "0.25s cubic-bezier(.2,.9,.3,1)";
-            card.style.opacity = 1;
-            card.style.transform = "scale(1)";
-        }, 60);
-    });
-}
-
-// BUSCA
-async function executarBusca() {
-    const termo = inputBuscar.value;
-    const filtro = selectFiltro.value;
-
-    if (termo.trim() === '') {
-        containerMsg.innerHTML = 'Digite algo para pesquisar.';
-        return;
-    }
-
-    containerMsg.innerHTML = 'Carregando...';
-
-    const dados = await carregarMensagens(termo, filtro);
-    renderizarMensagens(dados);
-}
-
-// BUSCAR POR ID OU TIPO
-async function carregarMensagens(termo, filtro) {
-    try {
-        let url;
-
-        if (filtro === 'id') {
-            url = `http://localhost:3000/confissoes/${termo}`;
-        } else {
-            url = `http://localhost:3000/confissoes/tipo/${encodeURIComponent(termo)}`;
+        } catch (erro) {
+            console.error(erro);
+            loadingMsg.innerText = "Erro ao carregar mensagens.";
         }
-
-        const res = await fetch(url);
-
-        if (res.status === 404) return [];
-
-        const resposta = await res.json();
-
-        const chavesPossíveis = ['confissoes', 'confissao', 'data', 'dados'];
-        for (let key of chavesPossíveis) {
-            if (resposta[key]) return resposta[key];
-        }
-
-        if (resposta.id) return [resposta];
-
-        return [];
-    } catch (e) {
-        containerMsg.innerHTML = `Erro: ${e.message}`;
-        return [];
     }
+
+    function renderizarCards(lista) {
+        loadingMsg.style.display = 'none';
+        gridMural.innerHTML = ''; 
+
+        // Adicionei o parametro 'index' no forEach
+        lista.forEach((item, index) => {
+            const tipo = item.tipoMensagem || 'Geral';
+            const classeCategoria = tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+            
+            // TRATAMENTO DE NOMES
+            const nomeRemetente = item.remetente?.nome || item.remetente?.username || 'Anônimo';
+            const nomeDestinatario = item.destinatario?.nome || item.destinatario?.username || 'Alguém';
+            const dataFormatada = new Date(item.data).toLocaleDateString('pt-BR');
+
+            // Adicionei onclick="abrirModal(${index})" no card
+            const cardHTML = `
+                <div class="card" onclick="abrirModal(${index})" style="cursor: pointer;">
+                    <div class="card-header">
+                        <span class="tag ${classeCategoria}">${tipo.toUpperCase()}</span>
+                        <span class="data">${dataFormatada}</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="mensagem">"${item.mensagem}"</p>
+                    </div>
+                    <div class="card-footer">
+                        <p><strong>De:</strong> ${nomeRemetente}</p>
+                        <p><strong>Para:</strong> ${nomeDestinatario}</p>
+                    </div>
+                </div>
+            `;
+            gridMural.innerHTML += cardHTML;
+        });
+    }
+
+    buscarConfissoes();
+});
+
+// --- FUNÇÕES DO MODAL (FORA DO DOMContentLoaded PARA O HTML ENXERGAR) ---
+
+function abrirModal(index) {
+    // Pega o item específico da lista global usando o index
+    const item = listaGlobalConfissoes[index];
+    if (!item) return;
+
+    // Preenche os dados no HTML do Modal
+    document.getElementById('modal-tipo').innerText = item.tipoMensagem || 'GERAL';
+    document.getElementById('modal-id').innerText = `ID: #${item.id}`;
+    document.getElementById('modal-mensagem').innerText = `"${item.mensagem}"`;
+    
+    // Formata a data completa com hora
+    const dataObj = new Date(item.data);
+    document.getElementById('modal-data').innerText = dataObj.toLocaleString('pt-BR');
+
+    // Preenche nomes e dados técnicos
+    const nomeRemetente = item.remetente?.nome || 'Anônimo';
+    const nomeDestinatario = item.destinatario?.nome || 'Alguém';
+    
+    document.getElementById('modal-remetente').innerText = nomeRemetente;
+    document.getElementById('modal-destinatario').innerText = nomeDestinatario;
+    
+    // Dados técnicos (Debug)
+    document.getElementById('modal-remetente-id').innerText = item.remetenteId;
+    document.getElementById('modal-destinatario-id').innerText = item.destinatarioId;
+
+    // Mostra o Modal (muda display de 'none' para 'flex')
+    document.getElementById('modalDetalhes').style.display = 'flex';
 }
 
-btnBuscar.addEventListener('click', executarBusca);
-inputBuscar.addEventListener('keyup', (e) => e.key === 'Enter' && executarBusca());
-
-// 🔥🔥🔥 GET ALL — LISTAR TODAS AS CONFISSÕES
-async function getAllPizzas() {
-    containerMsg.innerHTML = 'Carregando todas as confissões...';
-
-    try {
-        const res = await fetch("http://localhost:3000/confissoes");
-
-        if (!res.ok) throw new Error(`Erro ao puxar dados: ${res.status}`);
-
-        const resposta = await res.json();
-
-        let dados =
-            resposta.confissoes ||
-            resposta.data ||
-            resposta.dados ||
-            resposta;
-
-        renderizarMensagens(dados);
-    } catch (e) {
-        containerMsg.innerHTML = `Erro ao carregar: ${e.message}`;
-    }
+function fecharModal() {
+    document.getElementById('modalDetalhes').style.display = 'none';
 }
 
-btnGetAll.addEventListener('click', getAllPizzas);
-
-iniciar();
-
-// Toggle confissoes list collapse/expand
-const btnToggleList = document.getElementById('btnToggleList');
-const confissoesBox = document.querySelector('.confissoes-box');
-if (btnToggleList && confissoesBox) {
-    btnToggleList.addEventListener('click', () => {
-        const collapsed = confissoesBox.classList.toggle('collapsed');
-        btnToggleList.textContent = collapsed ? 'Mostrar lista' : 'Ocultar lista';
-    });
+// Fecha o modal se clicar fora da caixinha branca
+window.onclick = function(event) {
+    const modal = document.getElementById('modalDetalhes');
+    if (event.target == modal) {
+        fecharModal();
+    }
 }

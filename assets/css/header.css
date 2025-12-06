@@ -1,142 +1,147 @@
 /* =========================================
-   HEADER.CSS - VERSÃO FINAL (GRID SEM SOBREPOSIÇÃO)
+   HEADER.CSS - VERSÃO BLINDADA (ABSOLUTE)
    ========================================= */
 
-/* Variáveis (caso não tenha no common) */
-:root {
-    --accent-color: #F3CD88;
-    --text-color: #333;
-}
-
+/* Garante que o header ocupe espaço e fique no topo */
 header {
     height: 90px;
     width: 100%;
-    position: sticky;
+    position: sticky; /* Fixo ao rolar */
     top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 9999; /* Fica acima de TUDO */
     
-    /* MÁGICA DO ALINHAMENTO: 3 Colunas Fixas */
-    /* Coluna 1 (Logo): 80px */
-    /* Coluna 2 (Menu): Ocupa todo o espaço do meio (1fr) */
-    /* Coluna 3 (Perfil): 80px */
-    display: grid;
-    grid-template-columns: 100px 1fr 100px;
+    background: rgba(255, 255, 255, 0.35); /* Vidro mais visível */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+    /* Alinhamento Central */
+    display: flex;
+    justify-content: center;
     align-items: center;
     padding: 0 20px;
 }
 
-/* 1. LOGO (Alinhada à Esquerda na sua coluna) */
+/* --- 1. LOGO (Travada na Esquerda) --- */
 .imagem {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* Removemos position: absolute */
+    position: absolute !important;
+    left: 40px !important;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10002;
+    display: block;
 }
 
 .logo { 
     width: 60px; 
     height: auto; 
     display: block; 
-    transition: 0.3s;
+    transition: transform 0.3s;
+    cursor: pointer;
 }
 .logo:hover { transform: scale(1.1); }
 
-/* 2. MENU CENTRAL (Centralizado na sua coluna) */
+/* --- 2. MENU CENTRAL (Botões) --- */
 .teste, .cabecalho-box, nav {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
 
 .cabecalho {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row-reverse; /* Ou 'row' normal */
     gap: 15px;
     list-style: none;
     align-items: center;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
-/* 3. PERFIL (Alinhado à Direita na sua coluna) */
-/* Seletor específico para pegar o link da imagem dentro ou fora da lista */
-.header-right, 
-.cabecalho > a.img-header,
-/* Caso o HTML ainda tenha a imagem dentro da ul, usamos este truque: */
-nav .img-header {
-    /* Retiramos da lista visualmente para colocar na grid */
-    grid-column: 3; 
-    justify-self: end;
+/* --- 3. PERFIL (Travado na Direita) --- */
+/* Seletor específico para pegar o link solto na lista */
+.cabecalho > a.img-header {
+    position: absolute !important;
+    right: 40px !important;
+    left: auto !important; /* Anula qualquer esquerda */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10002;
     
+    /* Tamanho fixo do container da bola */
+    width: 50px; 
+    height: 50px;
     display: block;
-    width: 50px; 
-    height: 50px;
-    position: static; /* Nada de absolute */
-}
-
-/* Se a imagem estiver dentro da UL no HTML, precisamos escondê-la da lista central e forçá-la na direita */
-/* Mas como estamos usando Grid no Header, o ideal é que no HTML o perfil esteja FORA da nav, mas se estiver dentro: */
-.cabecalho .img-header {
-    position: fixed; /* Fallback se o HTML estiver misturado */
-    right: 40px;
-    top: 20px;
-}
-/* SE VOCÊ USAR O HTML CORRIGIDO QUE MANDEI ANTES (COM DIVS SEPARADAS), O CÓDIGO ABAIXO É O QUE VALE: */
-.header-right {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.img-header img, #preview {
-    width: 50px; 
-    height: 50px;
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.8);
+    
+    /* Garante que a imagem não saia */
+    overflow: hidden; 
+    background: #ccc; /* Cor de fundo caso imagem falhe */
+    border: 2px solid rgba(255,255,255,0.9);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    object-fit: cover;
+    transition: 0.3s;
 }
 
-/* BOTÕES */
-.test, .nav-btn {
+.cabecalho > a.img-header:hover {
+    box-shadow: 0 0 15px rgba(255,255,255,0.8);
+    border-color: #fff;
+}
+
+/* A imagem dentro da bolinha */
+.img-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre a bolinha sem distorcer */
+    display: block;
+}
+
+/* --- 4. BOTÕES (.test) --- */
+.test {
     text-decoration: none !important;
-    color: white !important;
+    color: white !important; /* Texto sempre branco */
+    font-family: 'Segoe UI', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
     text-transform: uppercase;
-    font-family: 'Segoe UI', sans-serif;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     
-    background: rgba(255,255,255,0.2);
+    /* Estilo Pílula */
+    background: rgba(255,255,255,0.25);
     padding: 10px 24px;
     border-radius: 50px;
     border: 1px solid rgba(255,255,255,0.3);
     transition: all 0.3s ease;
-    display: inline-block;
+    white-space: nowrap; /* Não quebra linha */
 }
 
-.test:hover, .nav-btn:hover {
-    background: rgba(255,255,255,0.4);
+.test:hover {
+    background: rgba(255,255,255,0.5);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* RESPONSIVIDADE */
+/* Botão Início (Opcional se quiser diferente) */
+.inicio {
+    background: rgba(255,255,255,0.35);
+}
+
+/* --- 5. RESPONSIVIDADE (Celular) --- */
 @media (max-width: 900px) {
-    header {
-        display: flex; /* Volta para flex no celular para espalhar */
-        justify-content: space-between;
+    header { 
+        justify-content: space-between; 
+        padding: 0 20px; 
     }
     
-    .cabecalho li { display: none; } /* Esconde botões de texto */
+    /* No celular, removemos o absoluto para eles fluírem nos cantos */
+    .imagem { position: static !important; transform: none !important; }
+    .cabecalho > a.img-header { position: static !important; transform: none !important; }
     
-    /* Garante que o perfil apareça no canto */
-    .cabecalho .img-header {
-        position: static;
-        margin-left: auto;
-    }
+    /* Esconde o texto do menu no celular */
+    .cabecalho li { display: none; }
+    
+    .cabecalho { gap: 0; width: auto; }
+    .teste { width: auto; }
 }

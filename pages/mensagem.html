@@ -55,6 +55,26 @@
 
         </div>
     </main>
+    <div id="modalDetalhes" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="fecharModal()">&times;</span>
+        
+        <div class="modal-header">
+            <h2 id="modal-tipo">CATEGORIA</h2>
+            <span id="modal-id" class="modal-meta">ID: #000</span>
+        </div>
+
+        <div class="modal-body">
+            <p id="modal-mensagem" class="mensagem-destaque">"..."</p>
+            
+            <div class="detalhes-tecnicos">
+                <p><strong>📅 Data:</strong> <span id="modal-data"></span></p>
+                <p><strong>👤 De:</strong> <span id="modal-remetente"></span></p>
+                <p><strong>🎯 Para:</strong> <span id="modal-destinatario"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
