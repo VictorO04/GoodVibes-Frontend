@@ -1,11 +1,18 @@
 /* =========================================
-   MURAL.CSS - GRADE DE POSTS
+   MURAL.CSS - ESTILO UNIFICADO
    ========================================= */
 
 /* --- 1. CONFIGURAÇÃO GERAL --- */
 :root {
     --accent-color: #F3CD88;
     --text-color: #333;
+    --card-bg: rgba(255, 255, 255, 0.95);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -18,8 +25,9 @@ body {
     animation: gradientBG 15s ease infinite;
     
     color: var(--text-color);
-    overflow-y: auto; /* Permite scroll */
-    overflow-x: hidden;
+    overflow: hidden; /* O scroll será dentro do mural-grid */
+    display: flex;
+    flex-direction: column;
 }
 
 @keyframes gradientBG {
@@ -28,33 +36,41 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-main {
-    padding: 40px 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+header {
+    flex-shrink: 0;
+    /* Adicione estilos específicos do seu header aqui se necessário */
 }
 
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* --- 2. CONTAINER E CABEÇALHO --- */
 .container {
     width: 100%;
     max-width: 1200px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
 }
 
-/* --- 2. CABEÇALHO DO MURAL --- */
 .mural-header {
     text-align: center;
     color: white;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .mural-header h1 {
     font-size: 2.5rem;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .mural-header p {
@@ -62,366 +78,245 @@ main {
     opacity: 0.9;
 }
 
-/* --- 3. GRADE DE CARTÕES (GRID) --- */
+/* --- 3. GRADE DO MURAL (SCROLLÁVEL + FLEX) --- */
 .mural-grid {
-    display: grid;
-    /* Mágica do Grid: Cria colunas automáticas de no mínimo 300px */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Layout dos Cards */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza cards na tela */
+    align-content: flex-start; /* Cards começam do topo */
     gap: 25px;
+    padding: 25px;
+
+    /* Caixa Scrollável (Vidro) */
     width: 100%;
+    height: 70vh;           /* Altura fixa para permitir scroll */
+    min-height: 400px;
+    overflow-y: auto;       /* Scroll vertical */
+    
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1); /* Sombra interna */
 }
 
-/* --- 4. ESTILO DO CARTÃO (POST-IT) --- */
-.post-card {
-    background: rgba(255, 255, 255, 0.95);
+/* Scrollbar Personalizada */
+.mural-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.mural-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.mural-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.mural-grid::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- 4. ESTILO DO CARD --- */
+.card {
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
+    width: 300px; /* Largura fixa para ficar uniforme */
     border-radius: 16px;
-    padding: 25px;
+    padding: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
     
-    /* Borda lateral colorida */
     border-left: 6px solid var(--accent-color);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
+    cursor: pointer;
     
-    /* Quebra de texto */
+    /* Evita que texto vaze */
     word-wrap: break-word;
 }
 
-.post-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     background: #fff;
+    z-index: 2;
 }
 
-/* Cabeçalho do Card (Tag e Data) */
+/* Cabeçalho do Card */
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px dashed #eee;
-    padding-bottom: 10px;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 8px;
 }
 
 .tag {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 800;
     text-transform: uppercase;
     padding: 4px 10px;
     border-radius: 20px;
     letter-spacing: 0.5px;
+    background: #eee; /* Cor padrão caso falhe */
+    color: #555;
 }
 
-/* Cores das Tags */
+/* Cores específicas das tags (baseado no nome da classe gerada pelo JS) */
 .tag.motivacao { background: #e3f2fd; color: #1565c0; }
 .tag.gratidao { background: #e8f5e9; color: #2e7d32; }
-.tag.amizade { background: #fff3e0; color: #ef6c00; }
-.tag.reflexao { background: #f3e5f5; color: #7b1fa2; }
-.tag.comedia { background: #fff8e1; color: #fbc02d; }
+.tag.amor { background: #fce4ec; color: #c2185b; }
+.tag.desabafo { background: #eceff1; color: #455a64; }
+.tag.confissao { background: #fff3e0; color: #ef6c00; }
+.tag.geral { background: #f3e5f5; color: #7b1fa2; }
 
-.date {
-    font-size: 0.8rem;
+.data {
+    font-size: 0.75rem;
     color: #999;
 }
 
-/* Corpo do Texto */
+/* Corpo do Card */
 .card-body {
-    font-size: 1.05rem;
-    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.mensagem {
+    font-size: 1rem;
+    line-height: 1.5;
     color: #444;
-    font-style: italic; /* Estilo de citação */
+    font-style: italic;
+    
+    /* Limita o texto para não esticar demais o card (opcional) */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-/* Rodapé do Card (Autor) */
+/* Rodapé do Card */
 .card-footer {
-    margin-top: auto; /* Empurra para o final */
-    display: flex;
-    flex-direction: column;
+    margin-top: auto;
     font-size: 0.85rem;
-    color: #666;
-    border-top: 1px solid #f0f0f0;
-    padding-top: 10px;
 }
 
-.card-footer strong {
-    color: #333;
-    font-weight: 700;
-}
-
-/* --- 5. RESPONSIVIDADE (Tablet) --- */
-@media (max-width: 1024px) {
-    .mural-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-    
-    .mural-header h1 {
-        font-size: 2.2rem;
-    }
-}
-
-/* --- 6. RESPONSIVIDADE (Tablet/Mobile) --- */
-@media (max-width: 768px) {
-    main {
-        padding: 20px 15px;
-    }
-    
-    .mural-header {
-        margin-bottom: 15px;
-    }
-    
-    .mural-header h1 {
-        font-size: 1.8rem;
-        margin-bottom: 8px;
-    }
-    
-    .mural-header p {
-        font-size: 0.95rem;
-    }
-    
-    .mural-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 18px;
-        height: auto;
-        max-height: none;
-        overflow-y: visible;
-        padding: 15px;
-        width: 100%;
-    }
-    
-    .mural-grid::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .post-card {
-        padding: 20px;
-    }
-    
-    .card-header {
-        padding-bottom: 8px;
-    }
-    
-    .card-body {
-        font-size: 0.95rem;
-    }
-    
-    .card-footer {
-        font-size: 0.8rem;
-        padding-top: 8px;
-    }
-}
-
-/* --- 7. RESPONSIVIDADE (Celular Pequeno) --- */
-@media (max-width: 480px) {
-    main {
-        padding: 12px 8px;
-    }
-    
-    .container {
-        width: 100%;
-    }
-    
-    .mural-header {
-        text-align: center;
-        margin-bottom: 12px;
-    }
-    
-    .mural-header h1 {
-        font-size: 1.4rem;
-        margin-bottom: 6px;
-    }
-    
-    .mural-header p {
-        font-size: 0.85rem;
-        line-height: 1.3;
-    }
-    
-    .mural-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 12px;
-        width: 100%;
-    }
-    
-    .post-card {
-        padding: 16px;
-        border-left-width: 5px;
-    }
-    
-    .card-header {
-        gap: 10px;
-    }
-    
-    .tag {
-        font-size: 0.7rem;
-        padding: 3px 8px;
-    }
-    
-    .date {
-        font-size: 0.75rem;
-    }
-    
-    .card-body {
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-    
-    .card-footer {
-        font-size: 0.75rem;
-        padding-top: 6px;
-    }
-    
-    /* Modal responsivo */
-    .modal-content {
-        width: 95%;
-        max-width: 100%;
-        padding: 20px;
-        border-radius: 12px;
-    }
-    
-    .mensagem-destaque {
-        font-size: 1.1rem;
-        margin: 15px 0;
-    }
-}
-/* No seu mural.css */
-.mural-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center; /* Isso centraliza os cards (arruma aquele buraco na direita) */
-    padding: 20px;
-}
-
-.card {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    width: 300px; /* Ou o tamanho que preferir */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-/* --- A CAIXA SCROLLÁVEL --- */
-.mural-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centraliza os cards */
-    align-content: flex-start; /* Garante que comecem do topo */
-    gap: 20px;
-    padding: 20px;
-
-    /* O Segredo do Scroll */
-    width: 90%;            /* Largura do container na tela */
-    max-width: 1200px;     /* Limite para não ficar gigante em telas wide */
-    height: 70vh;          /* Ocupa 70% da altura da tela */
-    max-height: 600px;     /* Ou uma altura fixa em pixels */
-    overflow-y: auto;      /* Cria o scroll vertical se necessário */
-    
-    /* Estilo da caixa (opcional, para parecer um 'vidro') */
-    background: rgba(255, 255, 255, 0.1); 
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.1); /* Sombra interna dá profundidade */
-}
-
-/* --- ESTILIZANDO A BARRA DE ROLAGEM (SCROLLBAR) --- */
-/* Isso faz a barra ficar fininha e bonita em vez daquela cinza padrão */
-
-/* Largura da barra */
-.mural-grid::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* O fundo por onde a barra corre */
-.mural-grid::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-
-/* A barra em si (o "polegar") */
-.mural-grid::-webkit-scrollbar-thumb {
-    background: white; /* Cor da barra */
-    border-radius: 10px;
-    border: 2px solid transparent; /* Faz ela parecer 'flutuante' */
-    background-clip: content-box;
-}
-
-/* Quando passa o mouse em cima da barra */
-.mural-grid::-webkit-scrollbar-thumb:hover {
-    background-color: #f0f0f0;
-}
-/* Fundo escuro atrás do modal */
+/* --- 5. MODAL --- */
 .modal-overlay {
-    display: none; /* Começa escondido */
+    display: none; /* Controlado pelo JS */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto transparente */
-    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-/* A caixa branca do modal */
+/* Classe para mostrar o modal suavemente */
+.modal-overlay.show {
+    opacity: 1;
+}
+
 .modal-content {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
     width: 90%;
     max-width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    animation: slideDown 0.3s ease-out;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Botão de fechar (X) */
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
 .close-btn {
     position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #aaa;
     cursor: pointer;
-    transition: 0.2s;
+    transition: color 0.2s;
 }
-.close-btn:hover { color: #d63384; }
 
-/* Estilização interna */
+.close-btn:hover {
+    color: #d63384;
+}
+
+/* Estilo interno do Modal */
+.modal-content h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
 .mensagem-destaque {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-style: italic;
-    color: #444;
+    color: #555;
     margin: 20px 0;
-    border-left: 4px solid #d63384;
-    padding-left: 15px;
+    padding: 20px;
+    background: #fdfdfd;
+    border-left: 5px solid #d63384;
+    border-radius: 0 10px 10px 0;
 }
 
 .detalhes-tecnicos {
     background: #f8f9fa;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 0.9rem;
-    color: #555;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .infos-db {
     font-size: 0.75rem;
-    color: #aaa;
-    margin-top: 10px;
+    color: #bbb;
+    margin-top: 15px;
+    text-align: right;
     border-top: 1px solid #eee;
     padding-top: 5px;
 }
 
-/* Animação de entrada */
-@keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+/* --- 6. RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .mural-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .mural-grid {
+        height: auto; /* No mobile, talvez seja melhor rolar a página inteira */
+        max-height: none;
+        overflow-y: visible;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    body {
+        overflow-y: auto; /* Libera scroll do body no mobile */
+    }
+
+    .card {
+        width: 100%; /* Card ocupa largura total no mobile */
+    }
 }

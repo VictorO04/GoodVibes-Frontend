@@ -2,8 +2,10 @@
 let listaGlobalConfissoes = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    const gridMural = document.getElementById('muralGrid');
-    const loadingMsg = document.getElementById('loading-msg');
+    const gridMural = document.getElementById('muralGrid'); // Certifique-se que no HTML o ID é este, ou 'userConfissoes'
+    const loadingMsg = document.getElementById('loading-msg'); // Se existir elemento de loading
+    
+    // Ajuste a URL conforme sua necessidade
     const API_URL = 'http://localhost:3000/confissoes'; 
 
     async function buscarConfissoes() {
@@ -13,32 +15,67 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const dados = await resposta.json();
             
-            // Salva na variável global para usarmos no modal depois
-            listaGlobalConfissoes = dados.confissoes || []; 
+            // Verifica se a API retornou um array direto ou um objeto { confissoes: [] }
+            if (Array.isArray(dados)) {
+                listaGlobalConfissoes = dados;
+            } else {
+                listaGlobalConfissoes = dados.confissoes || dados.data || [];
+            }
             
             renderizarCards(listaGlobalConfissoes);
 
         } catch (erro) {
             console.error(erro);
-            loadingMsg.innerText = "Erro ao carregar mensagens.";
+            if(loadingMsg) loadingMsg.innerText = "Erro ao carregar mensagens.";
         }
     }
 
     function renderizarCards(lista) {
-        loadingMsg.style.display = 'none';
+        if(loadingMsg) loadingMsg.style.display = 'none';
+        
+        // Se o grid não existir (pode ser outra página), para por aqui
+        if(!gridMural) return;
+
         gridMural.innerHTML = ''; 
 
-        // Adicionei o parametro 'index' no forEach
-        lista.forEach((item, index) => {
-            const tipo = item.tipoMensagem || 'Geral';
-            const classeCategoria = tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-            
-            // TRATAMENTO DE NOMES
-            const nomeRemetente = item.remetente?.nome || item.remetente?.username || 'Anônimo';
-            const nomeDestinatario = item.destinatario?.nome || item.destinatario?.username || 'Alguém';
-            const dataFormatada = new Date(item.data).toLocaleDateString('pt-BR');
+        if (lista.length === 0) {
+            gridMural.innerHTML = '<p style="color:white; width:100%; text-align:center;">Nenhuma confissão encontrada.</p>';
+            return;
+        }
 
-            // Adicionei onclick="abrirModal(${index})" no card
+        lista.forEach((item, index) => {
+            const tipo = item.tipoMensagem || item.tipo || 'Geral';
+            // Cria uma classe CSS baseada no tipo (ex: "confissao", "elogio")
+            const classeCategoria = tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+            
+            // --- LÓGICA DE NOMES (Compatível com Tabela Usuario) ---
+            let nomeRemetente = 'Anônimo';
+            let nomeDestinatario = 'Geral';
+
+            // 1. Tenta pegar do objeto 'autor' (Prisma)
+            if (item.autor) {
+                if (item.autor.anonimo === true) {
+                    nomeRemetente = 'Anônimo 🕵️';
+                } else {
+                    nomeRemetente = item.autor.nomeUsuario || 'Anônimo';
+                }
+            } 
+            // 2. Fallback para 'remetente' (caso sua API use esse nome)
+            else if (item.remetente) {
+                nomeRemetente = item.remetente.nome || item.remetente.username || 'Anônimo';
+            }
+
+            // 3. Tenta pegar do objeto 'destinatario'
+            if (item.destinatario) {
+                nomeDestinatario = item.destinatario.nomeUsuario || 'Geral';
+            }
+            // -------------------------------------------------------
+
+            const dataObj = new Date(item.createdAt || item.data);
+            const dataFormatada = isNaN(dataObj) ? 'Data inválida' : dataObj.toLocaleDateString('pt-BR');
+
+            // Renderiza o HTML do Card
+            // Note o onclick chamando a função global com o índice
             const cardHTML = `
                 <div class="card" onclick="abrirModal(${index})" style="cursor: pointer;">
                     <div class="card-header">
@@ -46,11 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="data">${dataFormatada}</span>
                     </div>
                     <div class="card-body">
-                        <p class="mensagem">"${item.mensagem}"</p>
+                        <p class="mensagem">"${item.mensagem || item.texto}"</p>
                     </div>
-                    <div class="card-footer">
-                        <p><strong>De:</strong> ${nomeRemetente}</p>
-                        <p><strong>Para:</strong> ${nomeDestinatario}</p>
+                    <div class="card-footer" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top:10px; margin-top:10px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.85em;">
+                            <span style="color: #d35400;">👤 ${nomeRemetente}</span>
+                            <span style="color: #8e44ad;">💌 ${nomeDestinatario}</span>
+                        </div>
                     </div>
                 </div>
             `;
@@ -61,42 +100,74 @@ document.addEventListener('DOMContentLoaded', () => {
     buscarConfissoes();
 });
 
-// --- FUNÇÕES DO MODAL (FORA DO DOMContentLoaded PARA O HTML ENXERGAR) ---
+// --- FUNÇÕES DO MODAL (GLOBAIS) ---
 
 function abrirModal(index) {
-    // Pega o item específico da lista global usando o index
     const item = listaGlobalConfissoes[index];
     if (!item) return;
 
-    // Preenche os dados no HTML do Modal
-    document.getElementById('modal-tipo').innerText = item.tipoMensagem || 'GERAL';
-    document.getElementById('modal-id').innerText = `ID: #${item.id}`;
-    document.getElementById('modal-mensagem').innerText = `"${item.mensagem}"`;
-    
-    // Formata a data completa com hora
-    const dataObj = new Date(item.data);
-    document.getElementById('modal-data').innerText = dataObj.toLocaleString('pt-BR');
+    // --- REPETE A LÓGICA DE NOMES PARA O MODAL ---
+    let nomeRemetente = 'Anônimo';
+    let nomeDestinatario = 'Geral';
 
-    // Preenche nomes e dados técnicos
-    const nomeRemetente = item.remetente?.nome || 'Anônimo';
-    const nomeDestinatario = item.destinatario?.nome || 'Alguém';
-    
-    document.getElementById('modal-remetente').innerText = nomeRemetente;
-    document.getElementById('modal-destinatario').innerText = nomeDestinatario;
-    
-    // Dados técnicos (Debug)
-    document.getElementById('modal-remetente-id').innerText = item.remetenteId;
-    document.getElementById('modal-destinatario-id').innerText = item.destinatarioId;
+    if (item.autor) {
+        if (item.autor.anonimo === true) nomeRemetente = 'Anônimo 🕵️';
+        else nomeRemetente = item.autor.nomeUsuario || 'Anônimo';
+    } else if (item.remetente) {
+        nomeRemetente = item.remetente.nome || 'Anônimo';
+    }
 
-    // Mostra o Modal (muda display de 'none' para 'flex')
-    document.getElementById('modalDetalhes').style.display = 'flex';
+    if (item.destinatario) {
+        nomeDestinatario = item.destinatario.nomeUsuario || 'Geral';
+    }
+    // ---------------------------------------------
+
+    // Preenche os dados no HTML do Modal (Verifique se os IDs existem no seu HTML)
+    const elTipo = document.getElementById('modal-tipo');
+    if(elTipo) elTipo.innerText = item.tipoMensagem || item.tipo || 'GERAL';
+
+    const elId = document.getElementById('modal-id');
+    const itemId = item.id || item._id;
+    if(elId) elId.innerText = `ID: #${itemId}`;
+
+    const elMsg = document.getElementById('modal-mensagem');
+    if(elMsg) elMsg.innerText = `"${item.mensagem || item.texto}"`;
+    
+    const elData = document.getElementById('modal-data');
+    if(elData) {
+        const d = new Date(item.createdAt || item.data);
+        elData.innerText = d.toLocaleString('pt-BR');
+    }
+
+    // Preenche nomes
+    const elRemetente = document.getElementById('modal-remetente');
+    if(elRemetente) elRemetente.innerText = nomeRemetente;
+
+    const elDestinatario = document.getElementById('modal-destinatario');
+    if(elDestinatario) elDestinatario.innerText = nomeDestinatario;
+    
+    // IDs técnicos (Opcional, só se existirem no HTML)
+    const elRemId = document.getElementById('modal-remetente-id');
+    if(elRemId) elRemId.innerText = item.userId || item.autorId || '-';
+
+    // Mostra o Modal
+    const modal = document.getElementById('modalDetalhes');
+    if(modal) {
+        modal.style.display = 'flex'; // ou 'block', dependendo do seu CSS
+        // Adiciona classe para animação se houver
+        modal.classList.add('show');
+    }
 }
 
 function fecharModal() {
-    document.getElementById('modalDetalhes').style.display = 'none';
+    const modal = document.getElementById('modalDetalhes');
+    if(modal) {
+        modal.style.display = 'none';
+        modal.classList.remove('show');
+    }
 }
 
-// Fecha o modal se clicar fora da caixinha branca
+// Fecha ao clicar fora
 window.onclick = function(event) {
     const modal = document.getElementById('modalDetalhes');
     if (event.target == modal) {
