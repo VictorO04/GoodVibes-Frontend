@@ -1,68 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Escreva — GoodVibes</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/css pages/escrita.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+        <script src="../assets/js/modo.js" defer></script>
+        <script src="../assets/js/perfil.js" defer></script>
+        <script src="../assets/js/escrita.js" defer></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escreva o seu</title>
-    <link rel="stylesheet" href="./../assets/css/css pages/escrita.css">
-    <script src="./../assets/js/modo.js" defer></script>
-    <script src="./../assets/js/perfil.js" defer></script>
-
-     <header class="header claro" id="header">
-        <div class="imagem">
-            <img src="./../assets/img/imagem.png" alt="logo" class="logo">
-            <h1></h1>
-        </div>
-        <div class="teste">
-            <div class="cabecalho-box">
-                <nav>
-                    <ol class="cabecalho">
-                        <a href="./perfil.html" class="img-header"><img id="preview" src="default.png" alt=""class="img-header"></a>
-                        <li><a href="escrita.html" class="test">Escreva</a></li>
-                        <li><a href="mensagem.html" class="test">Mensagens</a></li>
-                        <li><a href="mural.html" class="test">Inicio</a></li>
-                    </ol>
-                </nav>
+    <body>
+        <header>
+            <div class="imagem">
+                <img src="../assets/img/imagem.png" alt="GoodVibes" class="logo">
             </div>
-        </div>
-    </header>
-</head>
-
-<body>
-
-    <main>
-        <div class="container white" id="container">
-            <div class="bloco-centro">
-                   
-                    <textarea id="campo-escrita" name="mensagem" rows="10" placeholder=" Escreva o seu recado..."
-                        autofocus></textarea>
-                     
-            
+            <div class="teste">
+                <div class="cabecalho-box">
+                            <nav>
+                        <ol class="cabecalho">
+                            <a href="perfil.html" class="img-header"><img id="preview" src="../assets/img/default.png" alt="" class="img-header"></a>
+                            <li><a href="escrita.html" class="test">Escreva</a></li>
+                            <li><a href="mensagem.html" class="test">Mensagens</a></li>
+                            <li><a href="mural.html" class="test inicio">Início</a></li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-        
-     <div class="painel-inspiracao-fixo">
-        <h3 class="painel-title"> Inspirações para a Mensagem</h3> 
-        
-        <div class="inspiracao-bloco">
-            <h4>Tema: Gratidão</h4>
-            <p>"Obrigado(a) por ser luz nos dias mais escuros. Sua presença faz toda a diferença."</p>
-        </div>
-        
-        <div class="inspiracao-bloco">
-            <h4>Tema: Motivação</h4>
-            <p>"Não importa o quão devagar você vá, desde que você não pare. Acredite no seu processo!"</p>
-        </div>
+        </header>
 
-        <div class="inspiracao-bloco">
-            <h4>Tema: Saudade</h4>
-            <p>"Mal posso esperar para te ver de novo. Até lá, guardo as lembranças dos nossos melhores momentos."</p>
-        </div>
-   
-        <a href="mural.html" class="painel-link">Início</a>
-    </div>
-    </div>
-</main>
-</body>
+        <main>
+            <div class="container">
+                <section class="write-card bloco-central">
+                    <div class="write-grid">
 
+                        <form id="form-escrita" class="editor" onsubmit="event.preventDefault(); document.getElementById('btnPublicar').click();">
+                            <div class="row controls">
+                                <label class="field" style="display:flex;align-items:center;gap:8px">
+                                    <div style="display:flex;flex-direction:column">
+                                        <small>Seu ID (remetente)</small>
+                                        <input id="remetenteId" class="input" placeholder="seu id (ex: 123)">
+                                    </div>
+                                    <button id="saveRemetenteBtn" type="button" class="btn-primary small" title="Salvar meu ID localmente">Salvar ID</button>
+                                </label>
+
+                                <label class="field">
+                                    <small>Destinatário (id)</small>
+                                    <input id="destinatarioId" class="input" placeholder="id do destinatário (ex: 456)">
+                                </label>
+
+                                <label class="field">
+                                    <small>Tipo</small>
+                                    <select id="tipoMensagem" class="input">
+                                        <option value="motivacional">Motivação</option>
+                                        <option value="romantica">Romântica</option>
+                                        <option value="amizade">Amizade</option>
+                                        <option value="comedia">Comédia</option>
+                                        <option value="reflexiva">Reflexiva</option>
+                                    </select>
+                                </label>
+
+                                <button id="togglePanel" type="button" class="btn-primary small">Ocultar Inspirações</button>
+                            </div>
+
+                            <textarea id="campo-escrita" name="mensagem" placeholder="Escreva o seu recado..."></textarea>
+
+                            <div class="row actions">
+                                <button id="btnPublicar" type="button" class="btn-primary">Publicar</button>
+                                <span id="pubStatus" aria-live="polite" class="status-text"></span>
+                            </div>
+                        </form>
+
+                        <aside class="panel">
+                            <div class="panel-inner">
+                                <h3>Inspirações</h3>
+                                <div id="ultimaMensagem" style="display:none"></div>
+
+                                <div class="inspiracao">
+                                    <h4>Tema: Gratidão</h4>
+                                    <p>"Obrigado(a) por ser luz nos dias mais escuros. Sua presença faz toda a diferença."</p>
+                                </div>
+
+                                <div class="inspiracao">
+                                    <h4>Tema: Motivação</h4>
+                                    <p>"Não importa o quão devagar você vá, desde que você não pare. Acredite no seu processo!"</p>
+                                </div>
+
+                                <div class="inspiracao">
+                                    <h4>Tema: Saudade</h4>
+                                    <p>"Mal posso esperar para te ver de novo. Até lá, guardo as lembranças dos nossos melhores momentos."</p>
+                                </div>
+
+                                <a href="mural.html" class="link-muted">Início</a>
+                            </div>
+                        </aside>
+
+                    </div>
+                </section>
+            </div>
+        </main>
+    </body>
 </html>

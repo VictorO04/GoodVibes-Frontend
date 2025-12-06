@@ -1,0 +1,283 @@
+/* =========================================================
+   COMMON.CSS - ESTILOS GERAIS E HEADER CENTRALIZADO
+   ========================================================= */
+
+:root {
+    --accent: #F3CD88;
+    --accent-hover: #eebb65;
+    --muted: #5b5b5b;
+    --bg-1: #FEFEEA;
+    --glass: rgba(255, 255, 255, 0.25);
+    --text-color: #333;
+    /* Gradiente Global */
+    --bg-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+}
+
+/* --- RESET BÁSICO --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+    font-family: 'Segoe UI', Inter, Roboto, sans-serif;
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    
+    /* Fundo Animado Global */
+    background: var(--bg-gradient);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================================================
+   HEADER GLOBAL (CENTRALIZADO E MODERNO)
+   ========================================================= */
+header {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    height: 90px;
+    width: 100%;
+    padding: 0 40px;
+    
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* Centralização */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGO (Fixa na Esquerda) */
+.imagem, .logo-container {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+}
+
+.logo { 
+    width: 60px; 
+    height: auto; 
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+.logo:hover { transform: scale(1.1); }
+
+/* MENU CENTRAL (Os Botões) */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* BOTÕES DO MENU (Estilo Pílula Limpo) */
+nav a, .nav-btn {
+    text-decoration: none;
+    color: white; /* Texto Branco */
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+    /* Forma do Botão */
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Remove qualquer linha ou detalhe estranho no hover */
+nav a:hover, .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #fff;
+}
+
+/* PERFIL (Fixo na Direita) */
+.user-menu, .img-header {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+}
+
+.img-header {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.8);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.img-header:hover {
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+/* =========================================================
+   ELEMENTOS GERAIS (Botões e Inputs)
+   ========================================================= */
+
+/* Main Container */
+main {
+    flex: 1;
+    /* Ajuste de padding para não ficar colado no header */
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botão Primário (Amarelo Tartaruga) */
+.btn-primary {
+    background: var(--accent);
+    color: #5a4b20;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(16,24,40,0.08);
+    transition: transform .12s ease, filter .12s;
+    font-size: 1rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.95);
+    background: var(--accent-hover);
+}
+
+/* =========================================================
+   DESIGN ESPECÍFICO: BOTÃO INÍCIO (Dentro do Painel)
+   ========================================================= */
+/* Aplica estilo Ghost Button apenas para links dentro de painéis laterais */
+.panel-inner a, .inspiracao a, a.inicio-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #d69e2e; /* Cor escura do tema */
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 24px;
+    margin-top: 15px;
+    
+    /* Estilo Fantasma (Borda colorida, fundo transparente) */
+    background: transparent;
+    border: 2px solid var(--accent);
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.panel-inner a:hover, .inspiracao a:hover, a.inicio-btn:hover {
+    background: var(--accent);
+    color: #fff; /* Texto fica branco */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(243, 205, 136, 0.4);
+}
+
+/* Responsividade Global */
+@media (max-width: 768px) {
+    header { justify-content: space-between; padding: 0 20px; }
+    .imagem { position: static; transform: none; }
+    .user-menu, .img-header { position: static; transform: none; }
+    nav { display: none; } /* Esconde menu no mobile */
+}
+/* --- Estilização do Dropdown "Tipo" --- */
+#tipoMensagem, #selectFiltro, select.input {
+    /* 1. Remove o visual padrão feio do navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    /* 2. Formato e Cores (baseado no seu common.css) */
+    background-color: #ffffff;
+    color: #5b5b5b; /* var(--muted) */
+    font-family: 'Segoe UI', Inter, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    
+    /* Borda arredondada (Pílula) */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    
+    /* Espaçamento */
+    padding: 10px 20px;
+    padding-right: 45px; /* Espaço extra na direita para a seta não ficar em cima do texto */
+    
+    /* 3. Seta Personalizada (SVG embutido) */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b5b5b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    
+    /* 4. Acabamento */
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    min-width: 140px; /* Garante um tamanho mínimo elegante */
+}
+
+/* Efeito ao passar o mouse (Sobe levemente) */
+#tipoMensagem:hover, #selectFiltro:hover, select.input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    border-color: #F3CD88; /* var(--accent) */
+}
+
+/* Efeito ao clicar/focar */
+#tipoMensagem:focus, #selectFiltro:focus, select.input:focus {
+    border-color: #F3CD88; /* var(--accent) */
+    box-shadow: 0 0 0 3px rgba(243, 205, 136, 0.4); /* Brilho externo amarelo */
+    background-color: #fff;
+}
+
+/* Estilo das opções internas (Onde possível) */
+#tipoMensagem option {
+    color: #333;
+    padding: 10px;
+    font-weight: normal;
+}

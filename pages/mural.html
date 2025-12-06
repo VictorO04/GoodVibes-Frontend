@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Turtle Design</title>
     <!-- Link externo para o CSS melhorado -->
+    <link rel="stylesheet" href="../assets/css/common.css">
     <link rel="stylesheet" href="../assets/css/css pages/mural.css">
     <link rel="stylesheet" href="../assets/css/header.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <svg viewBox="0 0 100 60" fill="none" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M30,40 Q20,40 10,45 M30,40 Q20,30 25,20 M35,40 L85,40 Q95,40 95,30 Q95,20 85,20 L35,20 M35,20 Q30,10 40,10 L80,10 Q90,10 85,20" />
-                <circle cx="25" cy="20" r="2" fill="black" />
-            </svg>
+        <div class="imagem">
+            <img src="./../assets/img/imagem.png" alt="GoodVibes" class="logo">
         </div>
-        <nav>
-            <ul>
-                <li><a href="mural.html">Início</a></li>
-                <li><a href="mensagem.html">Mensagens</a></li>
-                <li><a href="escrita.html">Escreva</a></li>
-            </ul>
-        </nav>
-        <div class="user-menu">
-            &#9776; </div>
+        <div class="teste">
+            <div class="cabecalho-box">
+                <nav>
+                    <ol class="cabecalho">
+                        <a href="perfil.html" class="img-header"><img id="preview" src="default.png" alt="" class="img-header"></a>
+                        <li><a href="escrita.html" class="test">Escreva</a></li>
+                        <li><a href="mensagem.html" class="test">Mensagens</a></li>
+                        <li><a href="mural.html" class="test">Início</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -100,6 +101,44 @@
                 </div>
             </div>
         </div>
+
+        <!-- Confissões section: fetch and render confissões from backend -->
+        <section class="confissoes-section" style="padding:24px;">
+            <style>
+                /* local styles for the confissoes box to support collapsing + scroll */
+                .confissoes-box{
+                    border:1px solid rgba(0,0,0,0.06);
+                    background: rgba(255,255,255,0.45);
+                    border-radius:8px;
+                    padding:12px;
+                    max-height:520px; /* maximum visible height */
+                    transition: max-height .28s ease, padding .2s ease;
+                    overflow: hidden;
+                }
+                .confissoes-box.collapsed{ max-height:0; padding:0 12px; }
+                .confissoes-inner{ display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; overflow:auto; max-height:440px; padding-right:6px; }
+            </style>
+
+            <div class="confissoes-header" style="display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
+                <h2 style="margin:0; color:white">Confissões</h2>
+                <input id="inputBuscar" placeholder="Pesquisar por id ou tipo (ex: 21 ou motivacional)" style="flex:1;min-width:220px;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);">
+                <select id="selectFiltro" style="padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);width:140px">
+                    <option value="tipo">Tipo</option>
+                    <option value="id">ID</option>
+                </select>
+                <button id="btnBuscar" class="btn-primary">Buscar</button>
+                <button id="btnGetAll" class="btn-primary">Ver todas as confissões</button>
+                <button id="btnToggleList" class="btn-primary">Ocultar lista</button>
+            </div>
+
+            <div class="confissoes-box">
+                <div id="msg" class="confissoes-inner">
+                    <!-- mensagens serão renderizadas aqui pelo assets/js/mural.js -->
+                </div>
+            </div>
+        </section>
+
+        <script src="../assets/js/mural.js" defer></script>
     </main>
 
 </body>
