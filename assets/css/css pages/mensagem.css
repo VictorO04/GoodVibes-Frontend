@@ -1,30 +1,30 @@
-/* --- Variáveis --- */
+/* =========================================
+   MENSAGEM.CSS - ESTILO FINAL
+   ========================================= */
+
 :root {
-    --accent-color: #F3CD88;
-    --text-white: #ffffff;
-    --btn-bg: rgba(255, 255, 255, 0.2); /* Fundo dos botões */
-    --btn-hover: rgba(255, 255, 255, 0.4);
+    --primary-color: #FFAD33;
+    --secondary-color: #8E44AD;
+    --text-color: #333;
+    --white-glass: rgba(255, 255, 255, 0.9);
 }
 
-/* --- Reset --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* --- Corpo com Gradiente Animado --- */
 body {
     font-family: 'Segoe UI', Inter, Roboto, sans-serif;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    
-    /* Gradiente Animado */
+    /* Gradiente Animado igual ao Mural */
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
 }
 
 @keyframes gradientBG {
@@ -33,549 +33,265 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* --- HEADER CORRIGIDO --- */
+/* Header Ajuste (Caso necessário para fixar no topo) */
 header {
-    height: 90px;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-
-    /* Layout Flex para garantir alinhamento */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centraliza o conteúdo principal (links) */
-    padding: 0 40px;
+    flex-shrink: 0;
 }
 
-/* 1. LOGO (Absoluto na Esquerda) */
-.imagem {
-    position: absolute;
-    left: 40px;
-    display: flex;
-    align-items: center;
-}
-.logo { 
-    width: 60px; 
-    height: auto; 
-    display: block; 
-    transition: transform 0.3s;
-}
-.logo:hover { transform: scale(1.1) rotate(-5deg); }
-
-/* 2. ÁREA DOS BOTÕES (Centralizado) */
-.teste {
-    /* Garante que o container não ocupe largura desnecessária */
-    flex: 0 1 auto;
-}
-
-.cabecalho {
-    list-style: none;
-    display: flex;
-    /* Inverte a ordem para Início ficar na esquerda */
-    flex-direction: row-reverse; 
-    align-items: center;
-    gap: 20px; /* Espaço entre os botões */
-}
-
-/* ESTILO DOS BOTÕES */
-.cabecalho li a, a.test {
-    text-decoration: none;
-    color: var(--text-white);
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    
-    /* Transformando em Botão */
-    background-color: var(--btn-bg);
-    padding: 12px 24px;
-    border-radius: 30px; /* Borda redonda (Pílula) */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Hover dos Botões */
-.cabecalho li a:hover, a.test:hover {
-    background-color: var(--btn-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    color: #fff;
-    border-color: #fff;
-}
-
-/* 3. PERFIL (Absoluto na Direita) */
-.cabecalho .img-header, .img-header {
-    position: absolute;
-    right: 40px;
-    top: 50%;
-    
-    /* A CORREÇÃO DO "CÍRCULO QUEBRANDO": */
-    /* Usamos translateY para centralizar, mas NÃO mexemos nisso no hover */
-    transform: translateY(-50%);
-    
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    overflow: hidden; /* Garante que a imagem não saia da bolinha */
-    z-index: 10;
-}
-
-/* O efeito de zoom vai na IMAGEM interna, não no container posicionado */
-.img-header img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.img-header:hover img {
-    transform: scale(1.15); /* Zoom suave na imagem */
-}
-/* Removemos qualquer transform do container .img-header:hover para ele não pular */
-.img-header:hover {
-    border-color: #fff;
-    box-shadow: 0 0 15px rgba(255,255,255,0.5);
-}
-
-
-/* --- LAYOUT PRINCIPAL (MANTIDO) --- */
 main {
     flex: 1;
-    padding: 30px;
+    padding: 30px 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; /* Alinha ao topo */
 }
 
 .container {
     width: 100%;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 25px;
 }
 
-/* Busca */
+/* --- BARRA DE BUSCA FLUTUANTE --- */
 .busca-box {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 8px 15px;
+    background: var(--white-glass);
+    padding: 10px 15px;
     border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     display: flex;
-    gap: 10px;
     align-items: center;
-    margin-bottom: 30px;
+    gap: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
+    margin: 0 auto; /* Centraliza a barra */
 }
 
 #selectFiltro {
     border: none;
-    background: #f4f4f4;
-    padding: 10px 15px;
-    border-radius: 20px;
-    color: #555;
-    outline: none;
-    cursor: pointer;
+    background: #f0f0f0;
+    padding: 12px 18px;
+    border-radius: 30px;
     font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s;
 }
+
+#selectFiltro:hover { background: #e0e0e0; }
 
 #inputBuscar {
     flex: 1;
     border: none;
-    padding: 10px;
-    font-size: 1rem;
-    outline: none;
     background: transparent;
+    font-size: 1rem;
+    padding: 10px;
+    outline: none;
+    color: #333;
 }
 
 #btnBuscar {
-    background-color: var(--accent-color);
-    color: #5a4b20;
+    background-color: var(--primary-color);
+    color: white;
     border: none;
-    padding: 10px 25px;
-    border-radius: 20px;
+    padding: 12px 30px;
+    border-radius: 30px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-#btnBuscar:hover { transform: scale(1.05); filter: brightness(0.95); }
 
-/* Área Mensagens */
+#btnBuscar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 173, 51, 0.4);
+}
+
+/* --- ÁREA DE RESULTADOS --- */
 .bloco-central {
+    /* Removemos o fundo branco chapado do container principal para usar grid */
     width: 100%;
-    max-width: 800px;
-    background-color: rgba(255, 255, 255, 0.9);
-    height: 70vh;
-    overflow-y: auto;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    
-    scrollbar-width: thin;
-    scrollbar-color: #ccc transparent;
 }
 
 .lista-mensagens {
+    display: grid;
+    /* Cria colunas automáticas (minimo 300px) */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+/* --- CARD DE MENSAGEM --- */
+.card-mensagem {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-left: 5px solid var(--secondary-color);
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Post-it */
-.post-it {
-    background: white;
-    border-left: 5px solid var(--accent-color);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-    transition: transform 0.2s;
-    width: 100%;
-    cursor: pointer; /* Transforma o mouse na mãozinha */
-    user-select: none; /* Opcional: evita selecionar o texto ao clicar rápido */
+.card-mensagem:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    z-index: 2;
 }
 
-.post-it:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.post-header {
+.card-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    border-bottom: 1px dashed #eee;
+    align-items: center;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 8px;
+}
+
+.card-tipo {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: #f3e5f5;
+    color: var(--secondary-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.card-id {
+    font-size: 0.75rem;
+    color: #999;
+    font-weight: 600;
+}
+
+.card-body {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+    font-style: italic;
+    /* Limita a 4 linhas */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.card-autor { color: #d35400; font-weight: 600; }
+.card-dest { color: #8e44ad; font-weight: 600; }
+
+/* Botão "Ver Detalhes" (Escondido, aparece no hover ou clicando no card) */
+.card-button {
+    display: none; 
+}
+
+/* --- MENSAGENS DE ESTADO --- */
+.loading-message, .error-message, .info-message {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    font-weight: bold;
+    color: #555;
+    grid-column: 1 / -1; /* Ocupa toda a largura da grid */
+}
+
+.error-message { color: #e74c3c; }
+
+/* --- MODAL --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+    line-height: 1;
+}
+.close-btn:hover { color: var(--secondary-color); }
+
+.modal-header h2 {
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+    border-bottom: 2px solid #f0f0f0;
     padding-bottom: 10px;
 }
 
-.post-type {
-    background: #f9f9f9;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #888;
-    text-transform: uppercase;
+.modal-meta {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 15px;
 }
 
-.post-body {
-    font-size: 1.1rem;
-    color: #333;
-    line-height: 1.6;
-    word-wrap: break-word; /* Evita quebrar layout */
-}
-
-/* Responsividade */
-@media (max-width: 1024px) {
-    main {
-        padding: 20px;
-    }
-    
-    .busca-box {
-        max-width: 100%;
-        gap: 8px;
-    }
-    
-    #selectFiltro {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-    }
-    
-    #inputBuscar {
-        font-size: 0.9rem;
-    }
-    
-    .bloco-central {
-        max-width: 100%;
-        height: 65vh;
-    }
-}
-
-@media (max-width: 768px) {
-    header { 
-        justify-content: space-between; 
-        padding: 0 16px;
-        height: 70px;
-    }
-    
-    .imagem { 
-        position: static; 
-        transform: none;
-    }
-    
-    .cabecalho {
-        gap: 8px;
-    }
-    
-    .cabecalho li a, a.test {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-    }
-    
-    .cabecalho .img-header, .img-header { 
-        position: static; 
-        transform: none;
-        margin-left: auto;
-        width: 45px;
-        height: 45px;
-    }
-    
-    .teste, .cabecalho li { 
-        display: flex;
-        align-items: center;
-    }
-    
-    main {
-        padding: 15px;
-    }
-    
-    .container {
-        width: 100%;
-    }
-    
-    .busca-box {
-        flex-wrap: wrap;
-        max-width: 100%;
-        gap: 8px;
-        padding: 10px;
-    }
-    
-    #selectFiltro {
-        flex: 1;
-        min-width: 100px;
-        padding: 10px;
-        border-radius: 15px;
-    }
-    
-    #inputBuscar {
-        flex: 1;
-        min-width: 150px;
-        padding: 10px;
-    }
-    
-    #btnBuscar {
-        padding: 10px 20px;
-        border-radius: 15px;
-    }
-    
-    .bloco-central {
-        max-width: 100%;
-        width: 100%;
-        height: 60vh;
-        padding: 15px;
-        border-radius: 15px;
-    }
-    
-    .post-it {
-        padding: 15px;
-        border-left-width: 4px;
-    }
-    
-    .post-header {
-        margin-bottom: 8px;
-        padding-bottom: 8px;
-    }
-    
-    .post-type {
-        font-size: 0.7rem;
-        padding: 4px 8px;
-    }
-    
-    .post-body {
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-    
-    .post-meta {
-        font-size: 0.75rem;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        height: 60px;
-        padding: 0 12px;
-    }
-    
-    .imagem {
-        margin: 0;
-    }
-    
-    .cabecalho {
-        gap: 6px;
-    }
-    
-    .cabecalho li a, a.test {
-        padding: 6px 12px;
-        font-size: 0.75rem;
-    }
-    
-    .cabecalho .img-header {
-        width: 40px;
-        height: 40px;
-    }
-    
-    main {
-        padding: 10px;
-    }
-    
-    .busca-box {
-        flex-direction: column;
-        gap: 6px;
-        padding: 8px;
-        margin-bottom: 15px;
-    }
-    
-    #selectFiltro {
-        width: 100%;
-        padding: 10px;
-    }
-    
-    #inputBuscar {
-        width: 100%;
-        padding: 10px;
-    }
-    
-    #btnBuscar {
-        width: 100%;
-        padding: 10px;
-    }
-    
-    .bloco-central {
-        height: 55vh;
-        padding: 12px;
-        border-radius: 12px;
-    }
-    
-    .post-it {
-        padding: 12px;
-        border-left-width: 3px;
-        margin-bottom: 12px;
-    }
-    
-    .post-header {
-        margin-bottom: 6px;
-        padding-bottom: 6px;
-    }
-    
-    .post-type {
-        font-size: 0.65rem;
-        padding: 3px 6px;
-    }
-    
-    .post-body {
-        font-size: 0.9rem;
-        line-height: 1.4;
-    }
-    
-    .post-meta {
-        font-size: 0.7rem;
-    }
-    
-    /* Modal responsivo */
-    .modal-content {
-        width: 95%;
-        max-width: 100%;
-        padding: 16px;
-        border-radius: 12px;
-    }
-    
-    .modal-header h2 {
-        font-size: 1.2rem;
-    }
-    
-    .mensagem-destaque {
-        font-size: 1rem;
-        margin: 12px 0;
-    }
-    
-    .detalhes-tecnicos {
-        font-size: 0.8rem;
-        padding: 12px;
-    }
-}
-/* Fundo escuro atrás do modal */
-.modal-overlay {
-    display: none; /* Começa escondido */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto transparente */
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
-}
-
-/* A caixa branca do modal */
-.modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    animation: slideDown 0.3s ease-out;
-}
-
-/* Botão de fechar (X) */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.close-btn:hover { color: #d63384; }
-
-/* Estilização interna */
 .mensagem-destaque {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-style: italic;
-    color: #444;
+    background: #fdfdfd;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary-color);
     margin: 20px 0;
-    border-left: 4px solid #d63384;
-    padding-left: 15px;
+    color: #444;
 }
 
 .detalhes-tecnicos {
     background: #f8f9fa;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 10px;
+}
+
+.detalhes-tecnicos p {
+    margin: 8px 0;
     font-size: 0.9rem;
     color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
 }
 
-.infos-db {
-    font-size: 0.75rem;
-    color: #aaa;
-    margin-top: 10px;
-    border-top: 1px solid #eee;
-    padding-top: 5px;
-}
-
-/* Animação de entrada */
-@keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+/* Responsividade */
+@media (max-width: 768px) {
+    .busca-box { flex-direction: column; border-radius: 20px; }
+    #selectFiltro, #inputBuscar, #btnBuscar { width: 100%; }
+    .lista-mensagens { grid-template-columns: 1fr; }
 }
