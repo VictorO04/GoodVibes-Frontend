@@ -1,7 +1,34 @@
 // Variável global para guardar os dados na memória do navegador
 let listaGlobalConfissoes = [];
 
+// ===============================================
+// FUNÇÃO GLOBAL: Carrega o avatar do header (NOVO)
+// ===============================================
+function carregarAvatarHeader() {
+    // 1. Encontra o elemento IMG no cabeçalho (precisa ter id="headerAvatar")
+    const headerAvatar = document.getElementById('headerAvatar'); 
+    if (!headerAvatar) return; // Se não encontrar, para.
+
+    // 2. Tenta obter o URL salvo no navegador (localStorage)
+    // A página de perfil salva a imagem em 'fotoPerfil'
+    const avatarURL = localStorage.getItem('fotoPerfil');
+    
+    // 3. Se um URL foi encontrado, substitui a imagem padrão
+    if (avatarURL) {
+        headerAvatar.src = avatarURL;
+    } else {
+        // Garante um fallback unificado (root-relative) caso não haja foto salva
+        headerAvatar.src = '/assets/img/perfil.png';
+    }
+    // Deixamos a linha acima comentada para usar o src definido no HTML caso o localStorage esteja vazio.
+}
+// ===============================================
+
 document.addEventListener('DOMContentLoaded', () => {
+    // --- CHAME A FUNÇÃO PARA CARREGAR O AVATAR NA PÁGINA ---
+    carregarAvatarHeader(); 
+    // --------------------------------------------------------
+
     const gridMural = document.getElementById('muralGrid'); // Certifique-se que no HTML o ID é este, ou 'userConfissoes'
     const loadingMsg = document.getElementById('loading-msg'); // Se existir elemento de loading
     
