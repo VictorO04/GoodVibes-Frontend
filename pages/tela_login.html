@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="../assets/css/common.css">
-     <link rel="stylesheet" href="../assets/css/css pages/login.css">
-     <link rel="stylesheet" href="../assets/css/header.css">
-         <script src="./../assets/js/modo.js" defer></script>
-         <script src="./../assets/js/header.js" defer></script>
+    <title>Entrar — GoodVibes</title>
+    
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/css pages/login.css">
+    
+    <script src="./../assets/js/modo.js" defer></script>
 </head>
 <body>
     <header>
@@ -19,40 +20,56 @@
             <div class="cabecalho-box">
                 <nav>
                     <ol class="cabecalho">
-                        <a href="perfil.html" class="img-header" aria-label="Perfil"><img id="preview" src="default.png" alt="Avatar do usuário"></a>
+                        <a href="perfil.html" class="img-header" aria-label="Perfil">
+                            <img id="headerAvatar" src="../assets/img/default.png" alt="Avatar">
+                        </a>
                         <li><a href="escrita.html" class="test">Escreva</a></li>
                         <li><a href="mensagem.html" class="test">Mensagens</a></li>
-                        <li><a href="mural.html" class="test">Início</a></li>
+                        <li><a href="mural.html" class="test inicio">Início</a></li>
                     </ol>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main class>
-         <div class="container white" id="container">
-        <div class="tela-login">
-            <div class="imagem-login">
-                <img src="../assets/img/imagem_login.png" alt="imagem login" id="imagem-box">
-            </div>
-            <div class="login-texto">
-                <div class="titulo">
-                    <h1 id="titulo-texto">GoodVibes</h1>
+    <main>
+        <div class="login-wrapper">
+            <div class="login-card glass-effect">
+                
+                <div class="login-header">
+                    <h1 class="titulo-goodvibes">GoodVibes</h1>
+                    
+                    <h2 class="subtitulo">Sua voz, seu espaço.</h2>
+                    
+                    <p class="descricao-site">
+                        Bem-vindo ao seu refúgio anônimo. Aqui você pode desabafar, 
+                        compartilhar segredos e encontrar apoio em uma comunidade 
+                        livre de julgamentos.
+                    </p>
                 </div>
-            <div class="email-caixa">
-                <label for="email" id="label">Email</label>
-                <input type="email" id="email" placeholder="Insira seu email aqui" name="email" required>
+
+                <form class="login-form">
+                    <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="Sua senha secreta" required>
+                    </div>
+
+                    <div class="actions">
+                        <a href="./mural.html" class="btn-entrar">Entrar no Mural</a>
+                        <div class="links-extras">
+                            <a href="#" style="text-decoration: none;">Esqueceu a senha?</a>
+                            <span>•</span>
+                            <a href="#" style="text-decoration: none;">Criar conta</a>
+                        </div>
+                    </div>
+                </form>
+
             </div>
-            <div class="senha-caixa">
-                <label for="senha" id="label-2">Senha</label>
-                <input type="password" id="senha"
-                placeholder="Insira sua senha aqui">
-            </div>
-            <div class="caixa-botao">
-                <a href="./mural.html" class="texto-interno">Cadastrar</a>
-            </div>
-            </div>
-        </div>
         </div>
     </main>
 </body>
