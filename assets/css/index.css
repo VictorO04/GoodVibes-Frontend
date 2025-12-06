@@ -1,82 +1,206 @@
+/* =========================================
+   INDEX.CSS - CORREÇÃO DE SOBREPOSIÇÃO
+   ========================================= */
+
+/* --- 1. CONFIGURAÇÃO DO MAIN --- */
 main {
-    margin-top: 20vh;
-    display: flex;
-    justify-content: space-evenly;
+    /* Garante que o conteúdo ocupe o espaço disponível, empurrando o footer pra baixo */
     flex: 1;
-}
-
-/*primeira section da tela de login */
-
-.bem-vindo {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-/*titulo*/
-
-.bem-vindo h1 {
-    color: #f0a834e7;
-    font-size: 3.5rem;
-}
-
-/*texto sobre o que se trata o site, subtitulo*/
-
-.bem-vindo p {
-    color:#f5bc60e7;
-    font-size: 2rem;
-    width: 30rem;
-    letter-spacing: 1.6px;
-}
-
-/*botão funcional para a página de login*/
-
-.bem-vindo a {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    color: black;
-    font-size: 1.5rem;
-    background-color:  #f5c577e7;
-    width: 25%;
-    height: 2.5rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out;
+    
+    /* Espaçamento para não colar no header ou footer */
+    padding: 40px 5%;
+    width: 100%;
+    
+    /* Previne rolagem horizontal indesejada */
+    overflow-x: hidden;
 }
 
-/*criaçaõ do houver para fazero texto do botão mudar de cor*/
+/* --- 2. HERO CONTAINER (Texto + Imagem) --- */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* AQUI ESTÁ A CORREÇÃO DA SOBREPOSIÇÃO: */
+    gap: 60px; /* Força distância entre texto e imagem */
+    flex-wrap: wrap; /* Se não couber, quebra linha automaticamente */
+    
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Lado Esquerdo (Texto) */
+.bem-vindo {
+    flex: 1; /* Tenta ocupar metade */
+    min-width: 300px; /* Mas nunca fica menor que 300px */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha texto à esquerda */
+    gap: 20px;
+    z-index: 2; /* Garante que fique sobre o fundo */
+}
+
+.bem-vindo h1 {
+    color: #e69118;
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Tamanho adaptável */
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.5); /* Melhora leitura */
+}
+
+.bem-vindo p {
+    color: #8a6a38;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 500px;
+}
+
+/* Botão de Ação */
+.bem-vindo a, .btn-primary.large {
+    display: inline-block;
+    background: linear-gradient(45deg, #f5c577, #f0a834);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(240, 168, 52, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+    white-space: nowrap; /* Impede o texto do botão de quebrar */
+}
 
 .bem-vindo a:hover {
-    background-color:   #ec9a16e7;
-    color: #fff065;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(240, 168, 52, 0.6);
 }
 
-/*imagem do lado direito do */
-
-main img {
-    height: 40vh;
-    width: 20vw;
+/* Lado Direito (Imagem) */
+.hero-image, .lado-direito {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.link {
-    margin-top: 1%;
+/* Controle da Imagem para não estourar */
+main img, .hero-image img {
+    width: 100%;
+    height: auto;
+    max-width: 550px; /* Limite máximo */
+    object-fit: contain;
+    
+    /* Animação suave */
+    animation: floating 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
 
-/*criaçaõ do houver para fazero texto flutuar*/
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
 
-.texto-flutuar {
+/* --- 3. FOOTER (Rodapé) --- */
+footer {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    padding: 20px 0;
+    margin-top: auto; /* Empurra o footer para o final da tela */
+    border-top: 1px solid rgba(255,255,255,0.3);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     text-align: center;
-    display: inline-block;
-    font-weight: bold;
 }
 
-.texto-flutuar:hover {
-    animation: floating 1s ease-in-out infinite;
-    transform: translateY(-10px);
-    transition: 100ms;
+/* Navegação do Footer */
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
+.footer-nav p {
+    font-weight: 800;
+    color: #e69118;
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
 
+/* Lista de Links (Alinhados lado a lado) */
+.footer-nav ul, .footer-nav ol {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas muito pequenas */
+    justify-content: center;
+    gap: 25px; /* Espaço entre os links */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
+/* Links do Footer */
+.footer-nav a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+    color: #d69e2e;
+}
+
+/* Linha decorativa e Copyright */
+#linha {
+    width: 60px;
+    height: 3px;
+    background-color: #F3CD88;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+footer > p:last-child {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0;
+}
+
+/* --- 4. RESPONSIVIDADE (Celular) --- */
+@media (max-width: 900px) {
+    .hero-container {
+        /* Muda para coluna: Imagem em cima, Texto embaixo */
+        flex-direction: column-reverse; 
+        text-align: center;
+        gap: 40px;
+    }
+
+    .bem-vindo {
+        align-items: center; /* Centraliza texto e botão */
+        padding-bottom: 20px;
+    }
+
+    /* Reduz um pouco o título no celular */
+    .bem-vindo h1 {
+        font-size: 2.5rem;
+    }
+    
+    /* Imagem menor no celular */
+    main img, .hero-image img {
+        max-width: 280px; 
+    }
+}
