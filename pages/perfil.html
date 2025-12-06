@@ -21,7 +21,6 @@
             <div class="cabecalho-box">
                 <nav>
                     <ol class="cabecalho">
-                        <!-- avatar no header: o container tem a classe img-header, a img não -->
                         <a href="perfil.html" class="img-header" aria-label="Perfil">
                             <img id="headerAvatar" src="./../assets/img/default.png" alt="Avatar">
                         </a>
@@ -38,48 +37,39 @@
         <div class="container">
             <div class="bloco-central perfil-page">
                 <div class="profile-grid">
+                    
                     <section class="profile-card">
                         <div class="avatar-large">
-                            <!-- elemento usado por `assets/js/perfil.js` -->
                             <img id="preview" src="./../assets/img/default.png" alt="Avatar de usuário">
-                            <label class="upload-label" for="upload">Alterar foto</label>
-                            <input type="file" id="upload" accept="image/*" class="upload" aria-label="Enviar foto de perfil">
+                            <label class="upload-label" for="upload">📷 Alterar foto</label>
+                            <input type="file" id="upload" accept="image/*" class="upload" hidden>
                         </div>
 
-                        <h2 id="nomeUsuario">Seu Apelido</h2>
-                        <p id="userHandle">@seuusuario</p>
-                        <p class="bio">Conte um pouco sobre você — isso aparece no seu perfil público.</p>
+                        <div class="input-container">
+                            <label>Seu ID de Usuário</label>
+                            <input type="text" id="idUsuario" class="input-edit" placeholder="Ex: 123 ou user_99">
+                        </div>
+
+                        <div class="input-container">
+                            <label>Sua Bio</label>
+                            <textarea id="userBio" class="input-edit" rows="3" placeholder="Conte um pouco sobre você..."></textarea>
+                        </div>
+
                         <div class="profile-actions">
-                            <button id="saveProfile" class="btn">Salvar</button>
+                            <button id="saveProfile" class="btn">Salvar ID & Perfil</button>
                             <a href="mural.html" class="btn ghost">Voltar</a>
                         </div>
                     </section>
 
                     <section class="profile-activity">
-                        <h3>Suas confissões</h3>
+                        <h3>Suas confissões recentes</h3>
                         <div id="userConfissoes" class="lista-mensagens">
-                            <!-- confissões do usuário serão renderizadas aqui pelo JS (se implementado) -->
+                            <p style="text-align:center; opacity:0.6; margin-top:20px;">Carregando...</p>
                         </div>
                     </section>
                 </div>
             </div>
         </div>
     </main>
-
-    <script>
-        // se o usuário salvou uma foto em localStorage, atualiza o avatar do header também
-        (function(){
-            try{
-                const saved = localStorage.getItem('fotoPerfil');
-                if(saved){
-                    const headerImg = document.getElementById('headerAvatar');
-                    const preview = document.getElementById('preview');
-                    if(headerImg) headerImg.src = saved;
-                    if(preview) preview.src = saved;
-                }
-            }catch(e){ /* ignorar em ambientes sem localStorage */ }
-        })();
-    </script>
 </body>
-
 </html>
