@@ -245,6 +245,8 @@ main {
     box-shadow: 0 4px 6px rgba(0,0,0,0.04);
     transition: transform 0.2s;
     width: 100%;
+    cursor: pointer; /* Transforma o mouse na mãozinha */
+    user-select: none; /* Opcional: evita selecionar o texto ao clicar rápido */
 }
 
 .post-it:hover {
@@ -283,4 +285,75 @@ main {
     .imagem { position: static; }
     .cabecalho .img-header { position: static; transform: none; margin-left: auto; }
     .teste, .cabecalho li { display: none; } /* Menu Hamburguer seria ideal aqui */
+}
+/* Fundo escuro atrás do modal */
+.modal-overlay {
+    display: none; /* Começa escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto transparente */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+}
+
+/* A caixa branca do modal */
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Botão de fechar (X) */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.close-btn:hover { color: #d63384; }
+
+/* Estilização interna */
+.mensagem-destaque {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #444;
+    margin: 20px 0;
+    border-left: 4px solid #d63384;
+    padding-left: 15px;
+}
+
+.detalhes-tecnicos {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.infos-db {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 5px;
+}
+
+/* Animação de entrada */
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }

@@ -1,146 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Turtle Design</title>
-    <!-- Link externo para o CSS melhorado -->
+    <title>Mural — GoodVibes</title>
+    
     <link rel="stylesheet" href="../assets/css/common.css">
-    <link rel="stylesheet" href="../assets/css/css pages/mural.css">
     <link rel="stylesheet" href="../assets/css/header.css">
-    <script src="../assets/js/header.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/css pages/mural.css">
+    
+    <script src="../assets/js/modo.js" defer></script>
+    <script src="../assets/js/mural.js" defer></script>
 </head>
 <body>
 
     <header>
         <div class="imagem">
-            <img src="./../assets/img/imagem.png" alt="GoodVibes" class="logo">
+            <a href="../index.html"><img src="../assets/img/imagem.png" alt="GoodVibes" class="logo"></a>
         </div>
         <div class="teste">
             <div class="cabecalho-box">
                 <nav>
-                    <ol class="cabecalho">
-                        <a href="perfil.html" class="img-header" aria-label="Perfil"><img id="preview" src="default.png" alt="Avatar do usuário"></a>
+                    <ul class="cabecalho">
+                        <a href="perfil.html" class="img-header" aria-label="Perfil">
+                            <img id="preview" src="../assets/img/perfilfoto.jpg" alt="Avatar">
+                        </a>
                         <li><a href="escrita.html" class="test">Escreva</a></li>
                         <li><a href="mensagem.html" class="test">Mensagens</a></li>
-                        <li><a href="mural.html" class="test">Início</a></li>
-                    </ol>
+                        <li><a href="mural.html" class="test inicio">Mural</a></li>
+                    </ul>
                 </nav>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="card-grid">
-            <div class="card blue">
-                <div class="card-content">
-                    <div class="card-title">Bem-vindo ao Mural</div>
-                    <div class="card-desc">Espaço para boas vibrações — clique para abrir</div>
-                </div>
+        <div class="container">
+            
+            <div class="mural-header">
+                <h1>Mural da Comunidade</h1>
+                <p>Inspire-se com as mensagens positivas deixadas por outros usuários.</p>
+                <p id="loading-msg" style="font-size: 0.9rem; margin-top: 10px; color: white;">Carregando vibrações...</p>
             </div>
 
-            <div class="card pink">
-                <div class="card-content">
-                    <div class="card-title">Elogios</div>
-                    <div class="card-desc">Diga algo de bom sobre alguém</div>
+            <div class="mural-grid" id="muralGrid">
                 </div>
-            </div>
 
-            <div class="card orange-light">
-                <div class="card-content">
-                    <div class="card-title">Inspiração</div>
-                    <div class="card-desc">Pequenas mensagens que motivam o dia</div>
-                </div>
-            </div>
-
-            <div class="card green">
-                <div class="card-content">
-                    <div class="card-title">Gratidão</div>
-                    <div class="card-desc">Agradeça alguém especial</div>
-                </div>
-            </div>
-
-            <div class="card yellow">
-                <div class="card-content">
-                    <div class="card-title">Boas notícias</div>
-                    <div class="card-desc">Compartilhe conquistas</div>
-                </div>
-            </div>
-
-            <div class="card green-dark">
-                <div class="card-content">
-                    <div class="card-title">Anúncios</div>
-                    <div class="card-desc">Informações da comunidade</div>
-                </div>
-            </div>
-
-            <div class="card red">
-                <div class="card-content">
-                    <div class="card-title">Saudades</div>
-                    <div class="card-desc">Mensagens que aquecem o coração</div>
-                </div>
-            </div>
-
-            <div class="card teal">
-                <div class="card-content">
-                    <div class="card-title">Conselhos</div>
-                    <div class="card-desc">Dicas rápidas e úteis</div>
-                </div>
-            </div>
-
-            <div class="card purple">
-                <div class="card-content">
-                    <div class="card-title">Arte</div>
-                    <div class="card-desc">Criações e inspirações visuais</div>
-                </div>
-            </div>
-
-            <div class="card orange-dark">
-                <div class="card-content">
-                    <div class="card-title">Eventos</div>
-                    <div class="card-desc">Próximos encontros e datas</div>
-                </div>
-            </div>
+        </div>
+    </main>
+<div id="modalDetalhes" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="fecharModal()">&times;</span>
+        
+        <div class="modal-header">
+            <h2 id="modal-tipo">CATEGORIA</h2>
+            <span id="modal-id" class="modal-meta">ID: #000</span>
         </div>
 
-        <!-- Confissões section: fetch and render confissões from backend -->
-        <section class="confissoes-section" style="padding:24px;">
-            <style>
-                /* local styles for the confissoes box to support collapsing + scroll */
-                .confissoes-box{
-                    border:1px solid rgba(0,0,0,0.06);
-                    background: rgba(255,255,255,0.45);
-                    border-radius:8px;
-                    padding:12px;
-                    max-height:520px; /* maximum visible height */
-                    transition: max-height .28s ease, padding .2s ease;
-                    overflow: hidden;
-                }
-                .confissoes-box.collapsed{ max-height:0; padding:0 12px; }
-                .confissoes-inner{ display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; overflow:auto; max-height:440px; padding-right:6px; }
-            </style>
-
-            <div class="confissoes-header" style="display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
-                <h2 style="margin:0; color:white">Confissões</h2>
-                <input id="inputBuscar" placeholder="Pesquisar por id ou tipo (ex: 21 ou motivacional)" style="flex:1;min-width:220px;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);">
-                <select id="selectFiltro" style="padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);width:140px">
-                    <option value="tipo">Tipo</option>
-                    <option value="id">ID</option>
-                </select>
-                <button id="btnBuscar" class="btn-primary">Buscar</button>
-                <button id="btnGetAll" class="btn-primary">Ver todas as confissões</button>
-                <button id="btnToggleList" class="btn-primary">Ocultar lista</button>
+        <div class="modal-body">
+            <p id="modal-mensagem" class="mensagem-destaque">"..."</p>
+            
+            <div class="detalhes-tecnicos">
+                <p><strong>📅 Data/Hora:</strong> <span id="modal-data"></span></p>
+                <p><strong>👤 Remetente:</strong> <span id="modal-remetente"></span></p>
+                <p><strong>🎯 Destinatário:</strong> <span id="modal-destinatario"></span></p>
+                <p class="infos-db"><strong>Debug Info:</strong> RemetenteID: <span id="modal-remetente-id"></span> | DestinatarioID: <span id="modal-destinatario-id"></span></p>
             </div>
-
-            <div class="confissoes-box">
-                <div id="msg" class="confissoes-inner">
-                    <!-- mensagens serão renderizadas aqui pelo assets/js/mural.js -->
-                </div>
-            </div>
-        </section>
-
-        <script src="../assets/js/mural.js" defer></script>
-    </main>
-
+        </div>
+    </div>
+</div>
 </body>
-</html>
+</html>     
