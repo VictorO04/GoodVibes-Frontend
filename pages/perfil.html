@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>perfil</title>
+    <title>Perfil — GoodVibes</title>
     <link rel="stylesheet" href="./../assets/css/common.css">
+    <link rel="stylesheet" href="./../assets/css/header.css">
     <link rel="stylesheet" href="./../assets/css/css pages/perfil.css">
     <script src="./../assets/js/modo.js" defer></script>
-    <script src="./../assets/js/mensagem.js" defer></script>
     <script src="./../assets/js/perfil.js" defer></script>
 </head>
 
@@ -21,77 +21,65 @@
             <div class="cabecalho-box">
                 <nav>
                     <ol class="cabecalho">
-                        <a href="perfil.html" class="img-header"><img id="preview" src="default.png" alt="" class="img-header"></a>
+                        <!-- avatar no header: o container tem a classe img-header, a img não -->
+                        <a href="perfil.html" class="img-header" aria-label="Perfil">
+                            <img id="headerAvatar" src="./../assets/img/default.png" alt="Avatar">
+                        </a>
                         <li><a href="escrita.html" class="test">Escreva</a></li>
                         <li><a href="mensagem.html" class="test">Mensagens</a></li>
-                        <li><a href="mural.html" class="test">Início</a></li>
+                        <li><a href="mural.html" class="test inicio">Início</a></li>
                     </ol>
                 </nav>
             </div>
         </div>
     </header>
+
     <main>
-        <div class="container white" id="container">
-            <div class="background-configuracoes">
-                <div class="container-configurações">
-                    <div class="bloco-central-esquerdo">
-                        <ol class="bloco-central-esquerdo">
-                            <li><p class="texto-bloco">Conta</p></li>
-                            <li><p class="texto-bloco">Notificações</p></li>
-                            <li><p class="texto-bloco">Privacidade</p></li>
-                            <li><p class="texto-bloco">Configurações avançadas</p></li>
-                            <li><p class="texto-bloco">E-mail</p></li>
-                        </ol>
-                    </div>
-                    <div class="bloco-central-direito">
-                        <p class="texto-direito1">Conta</p>
-                        <p class="texto-direito2"></p>
-                        <p class="texto-direito3">Informações pessoais</p>
-                        <p class="texto-direito4">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" placeholder="exemplodeemail@gmail.com" name="email" required>
-                        </p>
-                        <p class="texto-direito5">
-                            <label for="senha" id="label-2">Senha</label>
-                            <input type="password" id="senha" placeholder="....................">
-                        </p>
-                        <p class="texto-direito2"></p>
-                        <p class="texto-direito6">foto de perfil</p>
-                        <p class="texto-direito7">
-                            <p></p>
-                        </p>
-                        <p class="texto-direito2"></p>
-                        <p class="texto-direito8"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="container-perfil">
-                <div class="perfil">
-                    <img id="preview" src="default.png" alt="" class="img-header">
-                    <input type="file" id="upload" accept="image/*" class="upload">
-                </div>
-
-                <form class="formulario">
-                    <label>Apelido</label>
-                    <input type="text" name="apelido">
-
-                    <label>Usuário</label>
-                    <input type="text" name="usuario">
-
-                    <label>E-mail</label>
-                    <input type="email" name="email">
-                </form>
-                <div class="escuro-box">
-                    <p><strong>Tema</strong></p>
-                    <label class="switch">
-                        <div>
-                            <input type="checkbox" id="btn-tema" class="btn-tema">
+        <div class="container">
+            <div class="bloco-central perfil-page">
+                <div class="profile-grid">
+                    <section class="profile-card">
+                        <div class="avatar-large">
+                            <!-- elemento usado por `assets/js/perfil.js` -->
+                            <img id="preview" src="./../assets/img/default.png" alt="Avatar de usuário">
+                            <label class="upload-label" for="upload">Alterar foto</label>
+                            <input type="file" id="upload" accept="image/*" class="upload" aria-label="Enviar foto de perfil">
                         </div>
-                    </label>
+
+                        <h2 id="nomeUsuario">Seu Apelido</h2>
+                        <p id="userHandle">@seuusuario</p>
+                        <p class="bio">Conte um pouco sobre você — isso aparece no seu perfil público.</p>
+                        <div class="profile-actions">
+                            <button id="saveProfile" class="btn">Salvar</button>
+                            <a href="mural.html" class="btn ghost">Voltar</a>
+                        </div>
+                    </section>
+
+                    <section class="profile-activity">
+                        <h3>Suas confissões</h3>
+                        <div id="userConfissoes" class="lista-mensagens">
+                            <!-- confissões do usuário serão renderizadas aqui pelo JS (se implementado) -->
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
     </main>
+
+    <script>
+        // se o usuário salvou uma foto em localStorage, atualiza o avatar do header também
+        (function(){
+            try{
+                const saved = localStorage.getItem('fotoPerfil');
+                if(saved){
+                    const headerImg = document.getElementById('headerAvatar');
+                    const preview = document.getElementById('preview');
+                    if(headerImg) headerImg.src = saved;
+                    if(preview) preview.src = saved;
+                }
+            }catch(e){ /* ignorar em ambientes sem localStorage */ }
+        })();
+    </script>
 </body>
 
 </html>

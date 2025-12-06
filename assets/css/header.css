@@ -1,30 +1,24 @@
-/* =========================================
-   1. VARIÁVEIS E RESET GERAL
-   ========================================= */
+/* =========================================================
+   CSS FINAL E DEFINITIVO - SEM CORTES NAS IMAGENS
+   ========================================================= */
+
+/* --- 1. VARIÁVEIS E RESET --- */
 :root {
-    --accent-color: #F3CD88; /* Amarelo/Laranja Tartaruga */
+    --accent-color: #F3CD88;
+    --accent-hover: #eebb65;
     --text-color: #333;
     --btn-bg: rgba(255, 255, 255, 0.25);
     --btn-hover: rgba(255, 255, 255, 0.5);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* =========================================
-   2. CORPO COM FUNDO ANIMADO
-   ========================================= */
 body {
     font-family: 'Segoe UI', Inter, Roboto, sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-
-    /* Gradiente Animado */
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
@@ -36,252 +30,172 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* =========================================
-   3. HEADER CENTRALIZADO (CORRIGIDO)
-   ========================================= */
+/* --- 2. HEADER BLINDADO --- */
 header {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     height: 90px;
     width: 100%;
-    
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    
+    /* Centralização */
     display: flex;
-    justify-content: center; /* Centraliza os botões */
+    justify-content: center;
     align-items: center;
     padding: 0 40px;
 }
 
-/* --- LOGO (Fixa na Esquerda) --- */
+/* LOGO (Esquerda) */
 .imagem {
-    position: absolute; /* Retira do fluxo */
-    left: 40px;
+    position: absolute !important;
+    left: 40px !important;
     top: 50%;
     transform: translateY(-50%);
-    width: auto;
+    z-index: 1002;
+    margin: 0;
 }
-
-.logo { 
-    width: 60px; 
-    height: auto; 
-    display: block;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
+.logo { width: 60px; height: auto; display: block; transition: 0.3s; cursor: pointer; }
 .logo:hover { transform: scale(1.1); }
 
-/* --- BOTÕES CENTRAIS --- */
-.cabecalho-box, .teste {
+/* MENU CENTRAL */
+.cabecalho-box, .teste, nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Garante que o container ocupe o espaço */
+    width: 100%;
 }
-
 .cabecalho {
-    display: flex;
-    flex-direction: row-reverse; /* Início na esquerda */
-    gap: 20px;
-    list-style: none;
-    align-items: center;
+    display: flex; flex-direction: row-reverse; gap: 20px;
+    list-style: none; align-items: center; margin: 0; padding: 0;
 }
 
-/* Estilo dos Botões */
-.test {
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-
-    /* Visual de Botão */
-    background-color: var(--btn-bg);
-    padding: 10px 25px;
-    border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.4);
-    transition: all 0.3s ease;
-}
-
-.test:hover {
-    background-color: var(--btn-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    color: #fff;
-}
-
-/* Destaque opcional para o botão Início */
-.cabecalho .test.inicio {
-    background: white;
-    color: var(--accent-color);
-}
-
-/* --- PERFIL (Fixo na Direita) --- */
-.cabecalho .img-header, .img-header {
-    position: absolute;
-    right: 40px;
+/* --- CORREÇÃO PRINCIPAL DAS IMAGENS CORTADAS (PERFIL) --- */
+/* O container (o link 'a') agora é o responsável pelo círculo perfeito */
+.cabecalho > a.img-header, header a.img-header {
+    position: absolute !important;
+    right: 40px !important;
+    left: auto !important;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1002;
+
+    /* Define o tamanho exato do círculo */
+    width: 54px; 
+    height: 54px;
     
-    width: 55px;
-    height: 55px;
+    /* Garante a forma circular e que nada saia para fora */
     border-radius: 50%;
-    object-fit: cover;
+    overflow: hidden; 
+    
+    /* Borda e Sombra no container */
     border: 2px solid rgba(255,255,255,0.8);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    
-    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; 
+    transition: all 0.3s;
     cursor: pointer;
-}
-
-.cabecalho .img-header:hover {
-    border-color: #fff;
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
-}
-
-/* =========================================
-   4. CONTEÚDO PRINCIPAL
-   ========================================= */
-main {
-    flex: 1;
-    padding: 30px 20px; /* Padding lateral menor para mobile */
+    
+    /* Centraliza a imagem dentro do círculo */
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
+    margin: 0; padding: 0;
 }
 
-.container {
+header a.img-header:hover { border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.6); }
+
+/* A imagem apenas preenche o container */
+.img-header img,
+header a.img-header > img,
+.cabecalho > a.img-header > img {
+    /* Make the image fill its circular container reliably */
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    display: block;
+    object-fit: cover;      /* fill without distortion */
+    object-position: center center; /* center the crop */
+    border: none;
+    border-radius: 0;       /* the container provides the circular mask */
+}
+/* --------------------------------------------------------- */
+
+
+/* Botões do menu */
+.test {
+    text-decoration: none !important; color: white !important; font-weight: 700;
+    font-size: 0.95rem; text-transform: uppercase;
+    background-color: var(--btn-bg); padding: 10px 25px; border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.4); transition: all 0.3s ease; display: inline-block;
+}
+.test::after, .test::before { display: none !important; content: none !important; }
+.test:hover {
+    background-color: var(--btn-hover); transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); color: #fff !important;
 }
 
-/* --- Barra de Busca --- */
+/* --- 3. CONTEÚDO PRINCIPAL --- */
+main { flex: 1; padding: 40px 20px; display: flex; justify-content: center; align-items: flex-start; }
+.container { width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+/* Busca */
 .busca-box {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px 20px;
-    border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 25px;
-    width: 100%;
-    max-width: 600px;
+    background: rgba(255, 255, 255, 0.9); padding: 10px 20px; border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); display: flex; gap: 10px;
+    align-items: center; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 25px; width: 100%; max-width: 800px;
 }
 
-#selectFiltro {
-    border: none;
-    background: #f0f0f0;
-    padding: 10px;
-    border-radius: 20px;
-    color: #555;
-    outline: none;
-    cursor: pointer;
+/* Dropdown Tipo Estilizado */
+#selectFiltro, #tipoMensagem {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-color: #ffffff; color: #555; font-family: inherit; font-size: 0.95rem; font-weight: 700;
+    border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 30px;
+    padding: 10px 20px; padding-right: 40px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat; background-position: right 15px center; background-size: 14px;
+    cursor: pointer; outline: none; transition: all 0.3s ease; min-width: 160px;
 }
+#selectFiltro:hover, #tipoMensagem:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-color: var(--accent-color); }
+#selectFiltro:focus, #tipoMensagem:focus { border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(243, 205, 136, 0.4); }
 
-#inputBuscar {
-    flex: 1;
-    border: none;
-    padding: 10px;
-    font-size: 1rem;
-    outline: none;
-    background: transparent;
-}
+#inputBuscar { flex: 1; border: none; padding: 10px; font-size: 1rem; outline: none; background: transparent; min-width: 150px; }
+#btnBuscar { background-color: var(--accent-color); color: #5a4b20; border: none; padding: 10px 30px; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+#btnBuscar:hover { filter: brightness(0.95); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(243, 205, 136, 0.4); }
 
-#btnBuscar {
-    background-color: var(--accent-color);
-    color: #5a4b20;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-#btnBuscar:hover { filter: brightness(0.95); transform: scale(1.05); }
-
-/* --- BLOCO CENTRAL (CORRIGIDO) --- */
+/* --- BLOCO CENTRAL (CORREÇÃO DE ALTURA) --- */
 .bloco-central {
-    width: 100%;
-    max-width: 800px;
-    background-color: rgba(255, 255, 255, 0.9);
-    
-    /* AQUI ESTÁ A CORREÇÃO: */
-    height: auto;           /* Cresce conforme o conteúdo */
-    min-height: 60vh;       /* Altura mínima inicial */
-    
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    
-    /* Removemos a rolagem interna para usar a da página */
+    width: 100%; max-width: 900px; background-color: rgba(255, 255, 255, 0.95);
+    height: auto; min-height: 60vh; /* Garante que cresça e não corte nada */
+    padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     overflow: visible; 
 }
 
-.lista-mensagens {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-}
+.lista-mensagens { display: flex; flex-direction: column; gap: 20px; width: 100%; }
 
-/* --- Card Post-it --- */
+/* Card Post-it */
 .post-it {
-    background: white;
-    border-left: 6px solid var(--accent-color);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
-    
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    background: white; border-left: 6px solid var(--accent-color); border-radius: 12px;
+    padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.2s;
+    width: 100%; display: flex; flex-direction: column; gap: 10px;
+    word-wrap: break-word; overflow-wrap: break-word; /* Evita texto cortado */
 }
+.post-it:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+.post-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #eee; padding-bottom: 10px; margin-bottom: 5px; }
+.post-type { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #666; background: #f4f4f4; padding: 5px 10px; border-radius: 6px; }
+.post-body { font-size: 1.1rem; color: #333; line-height: 1.6; }
+.post-meta { font-size: 0.85rem; color: #999; align-self: flex-end; }
 
-.post-it:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.post-type {
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #666;
-    background: #f4f4f4;
-    padding: 4px 8px;
-    border-radius: 4px;
-    width: fit-content;
-}
-
-.post-body {
-    font-size: 1.1rem;
-    color: #333;
-    line-height: 1.5;
-}
-
-/* =========================================
-   5. RESPONSIVIDADE
-   ========================================= */
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
     header { justify-content: space-between; padding: 0 20px; }
-    
-    /* Remove posição absoluta no celular */
-    .imagem { position: static; transform: none; }
-    .cabecalho .img-header { position: static; transform: none; }
-    
-    /* Esconde links no celular */
+    .imagem { position: static !important; transform: none !important; }
+    .cabecalho > a.img-header { position: static !important; transform: none !important; }
     .cabecalho li { display: none; }
-    .cabecalho { gap: 0; }
+    .busca-box { flex-direction: column; border-radius: 20px; padding: 20px; }
+    #selectFiltro, #inputBuscar, #btnBuscar { width: 100%; }
 }
