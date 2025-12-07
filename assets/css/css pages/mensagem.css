@@ -1,6 +1,4 @@
-/* =========================================
-   MENSAGEM.CSS - ESTILO FINAL
-   ========================================= */
+
 
 :root {
     --primary-color: #FFAD33;
@@ -33,7 +31,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Header Ajuste (Caso necessário para fixar no topo) */
+
 header {
     flex-shrink: 0;
 }
@@ -43,7 +41,7 @@ main {
     padding: 30px 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinha ao topo */
+    align-items: flex-start; 
 }
 
 .container {
@@ -54,7 +52,7 @@ main {
     gap: 25px;
 }
 
-/* --- BARRA DE BUSCA FLUTUANTE --- */
+
 .busca-box {
     background: var(--white-glass);
     padding: 10px 15px;
@@ -66,7 +64,7 @@ main {
     backdrop-filter: blur(10px);
     width: 100%;
     max-width: 700px;
-    margin: 0 auto; /* Centraliza a barra */
+    margin: 0 auto; 
 }
 
 #selectFiltro {
@@ -109,21 +107,21 @@ main {
     box-shadow: 0 4px 10px rgba(255, 173, 51, 0.4);
 }
 
-/* --- ÁREA DE RESULTADOS --- */
+
 .bloco-central {
-    /* Removemos o fundo branco chapado do container principal para usar grid */
+    
     width: 100%;
 }
 
 .lista-mensagens {
     display: grid;
-    /* Cria colunas automáticas (minimo 300px) */
+    
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
     padding-bottom: 20px;
 }
 
-/* --- CARD DE MENSAGEM --- */
+
 .card-mensagem {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
@@ -174,7 +172,7 @@ main {
     color: #444;
     line-height: 1.5;
     font-style: italic;
-    /* Limita a 4 linhas */
+    
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -193,12 +191,12 @@ main {
 .card-autor { color: #d35400; font-weight: 600; }
 .card-dest { color: #8e44ad; font-weight: 600; }
 
-/* Botão "Ver Detalhes" (Escondido, aparece no hover ou clicando no card) */
+
 .card-button {
     display: none; 
 }
 
-/* --- MENSAGENS DE ESTADO --- */
+
 .loading-message, .error-message, .info-message {
     text-align: center;
     padding: 20px;
@@ -206,12 +204,12 @@ main {
     border-radius: 10px;
     font-weight: bold;
     color: #555;
-    grid-column: 1 / -1; /* Ocupa toda a largura da grid */
+    grid-column: 1 / -1; 
 }
 
 .error-message { color: #e74c3c; }
 
-/* --- MODAL --- */
+
 .modal-overlay {
     display: none;
     position: fixed;
@@ -289,7 +287,7 @@ main {
     padding-bottom: 4px;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
     .busca-box { flex-direction: column; border-radius: 20px; }
     #selectFiltro, #inputBuscar, #btnBuscar { width: 100%; }

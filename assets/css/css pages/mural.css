@@ -1,8 +1,4 @@
-/* =========================================
-   MURAL.CSS - ESTILO UNIFICADO
-   ========================================= */
 
-/* --- 1. CONFIGURAÇÃO GERAL --- */
 :root {
     --accent-color: #F3CD88;
     --text-color: #333;
@@ -25,7 +21,7 @@ body {
     animation: gradientBG 15s ease infinite;
     
     color: var(--text-color);
-    overflow: hidden; /* O scroll será dentro do mural-grid */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
 }
@@ -38,7 +34,7 @@ body {
 
 header {
     flex-shrink: 0;
-    /* Adicione estilos específicos do seu header aqui se necessário */
+    
 }
 
 main {
@@ -50,7 +46,7 @@ main {
     padding: 20px;
 }
 
-/* --- 2. CONTAINER E CABEÇALHO --- */
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -78,29 +74,29 @@ main {
     opacity: 0.9;
 }
 
-/* --- 3. GRADE DO MURAL (SCROLLÁVEL + FLEX) --- */
+
 .mural-grid {
-    /* Layout dos Cards */
+    
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza cards na tela */
-    align-content: flex-start; /* Cards começam do topo */
+    justify-content: center; 
+    align-content: flex-start; 
     gap: 25px;
     padding: 25px;
 
-    /* Caixa Scrollável (Vidro) */
+    
     width: 100%;
-    height: 70vh;           /* Altura fixa para permitir scroll */
+    height: 70vh;           
     min-height: 400px;
-    overflow-y: auto;       /* Scroll vertical */
+    overflow-y: auto;       
     
     background: rgba(255, 255, 255, 0.1); 
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.1); /* Sombra interna */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1); 
 }
 
-/* Scrollbar Personalizada */
+
 .mural-grid::-webkit-scrollbar {
     width: 8px;
 }
@@ -122,11 +118,11 @@ main {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* --- 4. ESTILO DO CARD --- */
+
 .card {
     background: var(--card-bg);
     backdrop-filter: blur(10px);
-    width: 300px; /* Largura fixa para ficar uniforme */
+    width: 300px; 
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -139,7 +135,7 @@ main {
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
     cursor: pointer;
     
-    /* Evita que texto vaze */
+    
     word-wrap: break-word;
 }
 
@@ -150,7 +146,7 @@ main {
     z-index: 2;
 }
 
-/* Cabeçalho do Card */
+
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -166,11 +162,11 @@ main {
     padding: 4px 10px;
     border-radius: 20px;
     letter-spacing: 0.5px;
-    background: #eee; /* Cor padrão caso falhe */
+    background: #eee; 
     color: #555;
 }
 
-/* Cores específicas das tags (baseado no nome da classe gerada pelo JS) */
+
 .tag.motivacao { background: #e3f2fd; color: #1565c0; }
 .tag.gratidao { background: #e8f5e9; color: #2e7d32; }
 .tag.amor { background: #fce4ec; color: #c2185b; }
@@ -183,7 +179,7 @@ main {
     color: #999;
 }
 
-/* Corpo do Card */
+
 .card-body {
     flex-grow: 1;
 }
@@ -194,22 +190,22 @@ main {
     color: #444;
     font-style: italic;
     
-    /* Limita o texto para não esticar demais o card (opcional) */
+    
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* Rodapé do Card */
+
 .card-footer {
     margin-top: auto;
     font-size: 0.85rem;
 }
 
-/* --- 5. MODAL --- */
+
 .modal-overlay {
-    display: none; /* Controlado pelo JS */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -224,7 +220,7 @@ main {
     transition: opacity 0.3s ease;
 }
 
-/* Classe para mostrar o modal suavemente */
+
 .modal-overlay.show {
     opacity: 1;
 }
@@ -259,7 +255,7 @@ main {
     color: #d63384;
 }
 
-/* Estilo interno do Modal */
+
 .modal-content h2 {
     color: var(--text-color);
     margin-bottom: 20px;
@@ -298,14 +294,14 @@ main {
     padding-top: 5px;
 }
 
-/* --- 6. RESPONSIVIDADE --- */
+
 @media (max-width: 768px) {
     .mural-header h1 {
         font-size: 1.8rem;
     }
 
     .mural-grid {
-        height: auto; /* No mobile, talvez seja melhor rolar a página inteira */
+        height: auto; 
         max-height: none;
         overflow-y: visible;
         padding: 15px;
@@ -313,10 +309,10 @@ main {
     }
     
     body {
-        overflow-y: auto; /* Libera scroll do body no mobile */
+        overflow-y: auto; 
     }
 
     .card {
-        width: 100%; /* Card ocupa largura total no mobile */
+        width: 100%; 
     }
 }

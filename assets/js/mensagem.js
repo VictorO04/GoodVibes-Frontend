@@ -1,16 +1,16 @@
-// --- CONFIGURAÇÃO ---
+
 const API_URL = 'http://localhost:3000/confissoes';
 
-// Variável Global
+
 let todasMensagens = [];
 
-// Elementos
+
 const listaMensagensContainer = document.getElementById('msg');
 const selectFiltro = document.getElementById('selectFiltro');
 const inputBuscar = document.getElementById('inputBuscar');
 const btnBuscar = document.getElementById('btnBuscar');
 
-// Helper: Avatar no Header
+
 function carregarAvatarHeader() {
     const headerAvatar = document.getElementById('headerAvatar');
     if (headerAvatar) {
@@ -19,7 +19,7 @@ function carregarAvatarHeader() {
     }
 }
 
-// Helper: Formatar Data
+
 function formatarData(dataRaw) {
     const data = new Date(dataRaw);
     if (isNaN(data)) return '--/--/----';
@@ -28,9 +28,7 @@ function formatarData(dataRaw) {
     });
 }
 
-// ===================================================
-// LÓGICA DO MODAL
-// ===================================================
+
 function abrirModal(item) {
     if (!item) return;
 
@@ -53,9 +51,7 @@ window.fecharModal = function() {
     if(modal) modal.style.display = 'none';
 };
 
-// ===================================================
-// RENDERIZAÇÃO (GERA OS CARDS)
-// ===================================================
+
 function renderizarMensagens(lista) {
     if (!listaMensagensContainer) return;
     listaMensagensContainer.innerHTML = ''; 
@@ -67,16 +63,16 @@ function renderizarMensagens(lista) {
 
     lista.forEach(item => {
         const tipo = item.tipoMensagem || item.tipo || 'Geral';
-        // Cria classe para cor da tag (ex: tag-romantica)
+        
         const classeTipo = tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
         
         let nomeRemetente = item.autor ? (item.autor.anonimo ? 'Anônimo' : item.autor.nomeUsuario) : 'Anônimo';
         let nomeDestinatario = item.destinatario ? item.destinatario.nomeUsuario : 'Geral';
 
         const card = document.createElement('div');
-        card.className = 'card-mensagem glass-effect'; // Adiciona classe glass
+        card.className = 'card-mensagem glass-effect'; 
         
-        // Passa o objeto inteiro para o modal
+        
         card.onclick = () => abrirModal(item);
 
         card.innerHTML = `
@@ -99,9 +95,7 @@ function renderizarMensagens(lista) {
     });
 }
 
-// ===================================================
-// BUSCA (CORRIGIDA)
-// ===================================================
+
 function realizarBusca() {
     const filtro = selectFiltro.value; 
     const termo = inputBuscar.value.trim().toLowerCase();
@@ -120,8 +114,7 @@ function realizarBusca() {
             return itemTipo.includes(termoString);
         } 
         
-        // BUSCA POR ID DA MENSAGEM (ESTRITA)
-        // Isso corrige o problema de aparecer o 66 quando busca 67
+
         else if (filtro === 'id') {
             const idMsg = String(item.id || item._id || '');
             return idMsg === termoString; 
@@ -133,9 +126,7 @@ function realizarBusca() {
     renderizarMensagens(resultados);
 }
 
-// ===================================================
-// CARREGAMENTO E INICIALIZAÇÃO
-// ===================================================
+
 async function carregarTodasMensagens() {
     listaMensagensContainer.innerHTML = '<p style="color:white; text-align:center">Carregando...</p>';
     try {

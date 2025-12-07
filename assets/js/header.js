@@ -1,5 +1,4 @@
-// header.js
-// Shared header helpers: set CSS --header-height and mark active nav link
+
 (function(){
   function setHeaderHeight(){
     const header = document.querySelector('header');
@@ -27,18 +26,18 @@
     }catch(e){/* ignore */}
   }
 
-  // run on DOMContentLoaded
+
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', () => { setHeaderHeight(); markActiveNav(); });
   } else {
     setHeaderHeight(); markActiveNav();
   }
-  // também sincroniza a foto de perfil salva (fotoPerfil) para qualquer avatar no header
+  
   function syncHeaderAvatar(){
     try{
       const saved = localStorage.getItem('fotoPerfil');
       const defaultSrc = '/assets/img/perfil.png';
-      // seleciona imagens que normalmente representam o avatar no header
+      
       const imgs = Array.from(document.querySelectorAll('img#headerAvatar, img#preview, a.img-header img'));
       imgs.forEach(img => {
         if(!img || img.tagName !== 'IMG') return;

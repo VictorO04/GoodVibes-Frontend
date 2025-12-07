@@ -1,11 +1,11 @@
-// Handler para o botão "Publicar" e lógica da página escrita.html
+
 
 const btnPublicar = document.getElementById('btnPublicar');
 const campoEscrita = document.getElementById('campo-escrita');
 const pubStatus = document.getElementById('pubStatus');
 const saveRemetenteBtn = document.getElementById('saveRemetenteBtn');
 
-// --- 1. FUNÇÃO DE PUBLICAR ---
+
 async function publicarMensagem(){
     if(!campoEscrita) return;
     const texto = campoEscrita.value.trim();
@@ -13,7 +13,7 @@ async function publicarMensagem(){
     const destinatarioId = document.getElementById('destinatarioId')?.value?.trim();
     const tipo = (document.getElementById('tipoMensagem')?.value || '').toString().trim();
 
-    // Validações
+    
     if(!texto){
         pubStatus.textContent = 'Digite uma mensagem antes de publicar.';
         pubStatus.style.color = '#b33';
@@ -25,7 +25,7 @@ async function publicarMensagem(){
         return;
     }
 
-    // Feedback visual
+    
     btnPublicar.disabled = true;
     btnPublicar.textContent = 'Publicando...';
     pubStatus.textContent = '';
@@ -67,14 +67,14 @@ async function publicarMensagem(){
             throw new Error(msg || `HTTP ${res.status}`);
         }
 
-        // Sucesso
+        
         pubStatus.style.color = '#177a5b';
         pubStatus.textContent = 'Mensagem publicada com sucesso!';
         
-        // Limpar campo
+        
         campoEscrita.value = '';
 
-        // Renderizar a mensagem criada
+        
         try{
             const created = parsed && typeof parsed === 'object' ? parsed : null;
             if(created) renderCreatedMessage(created);
@@ -90,10 +90,10 @@ async function publicarMensagem(){
     }
 }
 
-// Adiciona o evento ao botão
+
 if(btnPublicar) btnPublicar.addEventListener('click', publicarMensagem);
 
-// --- 2. LÓGICA DE SALVAR ID (LocalStorage) ---
+
 if(saveRemetenteBtn){
     saveRemetenteBtn.addEventListener('click', ()=>{
         const remet = document.getElementById('remetenteId')?.value?.trim();
@@ -106,7 +106,7 @@ if(saveRemetenteBtn){
     });
 }
 
-// Carregar ID ao abrir a página
+
 try{
     const saved = localStorage.getItem('gv_userId');
     if(saved){
@@ -115,14 +115,14 @@ try{
     }
 }catch(e){}
 
-// Atalho Ctrl+Enter para publicar
+
 if(campoEscrita){
     campoEscrita.addEventListener('keydown', (e)=>{
         if((e.ctrlKey || e.metaKey) && e.key === 'Enter') publicarMensagem();
     });
 }
 
-// --- 3. LÓGICA DO BOTÃO "OCULTAR INSPIRAÇÕES" ---
+
 const togglePanelBtn = document.getElementById('togglePanel');
 const painel = document.querySelector('aside.panel');
 const gridContainer = document.querySelector('.write-grid'); // Seleciona o grid principal
@@ -131,24 +131,24 @@ if(togglePanelBtn && painel){
     togglePanelBtn.addEventListener('click', (e)=>{
         e.preventDefault();
         
-        // Alterna classe no painel (some)
+        
         painel.classList.toggle('collapsed');
         
-        // Alterna classe no grid (expande editor)
+        
         if(gridContainer) gridContainer.classList.toggle('one-column');
 
-        // Muda texto do botão
+    
         const isHidden = painel.classList.contains('collapsed');
         togglePanelBtn.textContent = isHidden ? 'Mostrar Inspirações' : 'Ocultar Inspirações';
     });
 }
 
-// --- 4. RENDERIZAR MENSAGEM CRIADA ---
+
 function renderCreatedMessage(confissao){
     const container = document.getElementById('ultimaMensagem');
     if(!container) return;
 
-    // Se o painel estiver oculto, reabre ele para o usuário ver a mensagem nova
+    
     if(painel && painel.classList.contains('collapsed')){
         painel.classList.remove('collapsed');
         if(gridContainer) gridContainer.classList.remove('one-column');
@@ -159,7 +159,7 @@ function renderCreatedMessage(confissao){
     const destinatario = (confissao.destinatario && (confissao.destinatario.nome || confissao.destinatario.username)) || confissao.destinatarioId || 'Alguém';
 
     const card = document.createElement('div');
-    card.className = 'post-it'; // Usa a classe CSS com animação
+    card.className = 'post-it'; 
     card.style.animation = 'fadeIn 0.5s ease-out';
 
     card.innerHTML = `
@@ -179,10 +179,10 @@ function renderCreatedMessage(confissao){
     `;
 
     container.style.display = 'block';
-    container.innerHTML = ''; // Limpa anterior
+    container.innerHTML = ''; 
     container.appendChild(card);
     
-    // Scroll suave até a mensagem
+    
     try{ container.scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){}
 }
 
@@ -190,24 +190,24 @@ function escapeHtml(str){
     if(!str) return '';
     return String(str).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]; });
 }
-// Função de Carregamento Global (para o avatar)
+
 function carregarAvatarHeader() {
     const headerAvatar = document.getElementById('headerAvatar'); 
     if (!headerAvatar) return;
 
     const avatarURL = localStorage.getItem('usuarioAvatarURL');
     
-    // Se encontrou a URL salva, usa ela. Senão, usa o SRC padrão do HTML.
+    
     if (avatarURL) {
         headerAvatar.src = avatarURL;
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. CARREGA AVATAR
+    
     carregarAvatarHeader(); 
 
-    // Elementos do formulário
+    
     const remetenteIdInput = document.getElementById('remetenteId');
     const saveRemetenteBtn = document.getElementById('saveRemetenteBtn');
     const destinatarioIdInput = document.getElementById('destinatarioId');
@@ -218,19 +218,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const togglePanelBtn = document.getElementById('togglePanel');
     const inspiracaoPanel = document.querySelector('.panel');
 
-    const API_URL = 'http://localhost:3000/confissoes'; // Ajuste conforme sua API
+    const API_URL = 'http://localhost:3000/confissoes'; 
 
-    // ===================================================
-    // LÓGICA DE SALVAR/CARREGAR ID DO REMETENTE
-    // ===================================================
 
-    // Carregar ID salvo
+
+    
     const savedRemetenteId = localStorage.getItem('remetenteIdSalvo');
     if (savedRemetenteId) {
         remetenteIdInput.value = savedRemetenteId;
     }
 
-    // Ação de salvar ID
+    
     saveRemetenteBtn.addEventListener('click', () => {
         const id = remetenteIdInput.value.trim();
         if (id) {
@@ -242,9 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // ===================================================
-    // LÓGICA DE PUBLICAÇÃO
-    // ===================================================
+   
     
     btnPublicar.addEventListener('click', async () => {
         const mensagem = campoEscrita.value.trim();
@@ -260,15 +256,15 @@ document.addEventListener('DOMContentLoaded', () => {
         pubStatus.innerText = 'Publicando... ⏳';
         btnPublicar.disabled = true;
 
-        // Construção dos dados a serem enviados (ajuste os nomes das chaves conforme sua API)
+        
         const payload = {
-            // O ID do usuário que está escrevendo
+            
             autorId: parseInt(remetenteId), 
-            // O ID do usuário que irá receber (pode ser null/undefined se for para o mural geral)
+            
             destinatarioId: destinatarioId ? parseInt(destinatarioId) : null,
             tipo: tipoMensagem,
             mensagem: mensagem,
-            // Outros campos como 'anonimo: true' se necessário
+            
         };
 
         try {
@@ -285,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(erro.message || `Erro de Servidor: ${resposta.status}`);
             }
 
-            // Sucesso!
+            
             pubStatus.innerText = 'Publicado com sucesso! 🎉';
             campoEscrita.value = ''; // Limpa o campo
             
@@ -299,11 +295,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ===================================================
-    // LÓGICA DO PAINEL DE INSPIRAÇÕES
-    // ===================================================
+    
 
-    // Alternar visibilidade do painel lateral
+    
     togglePanelBtn.addEventListener('click', () => {
         const isHidden = inspiracaoPanel.classList.toggle('hidden');
         if (isHidden) {
@@ -313,7 +307,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Adiciona uma classe inicial se você quer que ele comece escondido
-    // inspiracaoPanel.classList.add('hidden'); // Descomente se quiser começar escondido
-
+    
 });

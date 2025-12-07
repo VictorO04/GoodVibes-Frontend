@@ -1,16 +1,12 @@
-/* =========================================
-   HEADER.CSS - VERSÃO BLINDADA (ABSOLUTE)
-   ========================================= */
 
-/* Garante que o header ocupe espaço e fique no topo */
 header {
     height: 90px;
     width: 100%;
-    position: sticky; /* Fixo ao rolar */
+    position: sticky; 
     top: 0;
-    z-index: 9999; /* Fica acima de TUDO */
+    z-index: 9999; 
     
-    background: rgba(255, 255, 255, 0.35); /* Vidro mais visível */
+    background: rgba(255, 255, 255, 0.35); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -23,7 +19,7 @@ header {
     padding: 0 20px;
 }
 
-/* --- 1. LOGO (Travada na Esquerda) --- */
+
 .imagem {
     position: absolute !important;
     left: 40px !important;
@@ -42,7 +38,7 @@ header {
 }
 .logo:hover { transform: scale(1.1); }
 
-/* --- 2. MENU CENTRAL (Botões) --- */
+
 .teste, .cabecalho-box, nav {
     display: flex;
     justify-content: center;
@@ -53,7 +49,7 @@ header {
 
 .cabecalho {
     display: flex;
-    flex-direction: row-reverse; /* Ou 'row' normal */
+    flex-direction: row-reverse; 
     gap: 15px;
     list-style: none;
     align-items: center;
@@ -61,25 +57,24 @@ header {
     padding: 0;
 }
 
-/* --- 3. PERFIL (Travado na Direita) --- */
-/* Seletor específico para pegar o link solto na lista */
+
 .cabecalho > a.img-header {
     position: absolute !important;
     right: 40px !important;
-    left: auto !important; /* Anula qualquer esquerda */
+    left: auto !important; 
     top: 50%;
     transform: translateY(-50%);
     z-index: 10002;
     
-    /* Tamanho fixo do container da bola */
+    
     width: 50px; 
     height: 50px;
     display: block;
     border-radius: 50%;
     
-    /* Garante que a imagem não saia */
+    
     overflow: hidden; 
-    background: #ccc; /* Cor de fundo caso imagem falhe */
+    background: #ccc; 
     border: 2px solid rgba(255,255,255,0.9);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     transition: 0.3s;
@@ -90,18 +85,18 @@ header {
     border-color: #fff;
 }
 
-/* A imagem dentro da bolinha */
+
 .img-header img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cobre a bolinha sem distorcer */
+    object-fit: cover; 
     display: block;
 }
 
-/* --- 4. BOTÕES (.test) --- */
+
 .test {
     text-decoration: none !important;
-    color: white !important; /* Texto sempre branco */
+    color: white !important; 
     font-family: 'Segoe UI', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
@@ -114,7 +109,7 @@ header {
     border-radius: 50px;
     border: 1px solid rgba(255,255,255,0.3);
     transition: all 0.3s ease;
-    white-space: nowrap; /* Não quebra linha */
+    white-space: nowrap; 
 }
 
 .test:hover {
@@ -123,12 +118,12 @@ header {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Botão Início (Opcional se quiser diferente) */
+
 .inicio {
     background: rgba(255,255,255,0.35);
 }
 
-/* --- 5. RESPONSIVIDADE (Tablet) --- */
+
 @media (max-width: 1024px) {
     header { 
         padding: 0 30px;
@@ -141,7 +136,7 @@ header {
     }
 }
 
-/* --- 6. RESPONSIVIDADE (Tablet/Mobile) --- */
+
 @media (max-width: 900px) {
     header {
         height: 75px;
@@ -196,7 +191,7 @@ header {
     }
 }
 
-/* --- 7. RESPONSIVIDADE (Celular Pequeno) --- */
+
 @media (max-width: 480px) {
     header {
         height: 60px;
@@ -221,21 +216,21 @@ header {
         gap: 0;
     }
 }
-/* Container da imagem no Header (a tag <a>) */
+
 .img-header {
     display: block;
-    width: 50px;        /* Tamanho fixo do círculo */
-    height: 50px;       /* Altura igual para ficar redondo */
-    border-radius: 50%; /* Faz ficar redondo */
-    overflow: hidden;   /* CORTA tudo que passar do círculo */
-    border: 2px solid rgba(255, 255, 255, 0.8); /* Borda branca bonita */
-    flex-shrink: 0;     /* Garante que não amasse */
+    width: 50px;        
+    height: 50px;       
+    border-radius: 50%; 
+    overflow: hidden;   
+    border: 2px solid rgba(255, 255, 255, 0.8); 
+    flex-shrink: 0;     
 }
 
-/* A imagem dentro do círculo */
+
 .img-header img {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* Preenche todo o círculo sem esticar/deformar */
-    display: block;     /* Remove espaços brancos extras */
+    object-fit: cover;  
+    display: block;     
 }
