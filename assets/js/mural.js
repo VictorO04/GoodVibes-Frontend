@@ -1,38 +1,35 @@
-// Variável global para guardar os dados na memória do navegador
+
 let listaGlobalConfissoes = [];
 
-// ===============================================
-// FUNÇÃO GLOBAL: Carrega o avatar do header (NOVO)
-// ===============================================
-function carregarAvatarHeader() {
-    // 1. Encontra o elemento IMG no cabeçalho (precisa ter id="headerAvatar")
-    const headerAvatar = document.getElementById('headerAvatar'); 
-    if (!headerAvatar) return; // Se não encontrar, para.
 
-    // 2. Tenta obter o URL salvo no navegador (localStorage)
-    // A página de perfil salva a imagem em 'fotoPerfil'
+function carregarAvatarHeader() {
+    
+    const headerAvatar = document.getElementById('headerAvatar'); 
+    if (!headerAvatar) return; 
+
+    
     const avatarURL = localStorage.getItem('fotoPerfil');
     
-    // 3. Se um URL foi encontrado, substitui a imagem padrão
+    
     if (avatarURL) {
         headerAvatar.src = avatarURL;
     } else {
-        // Garante um fallback unificado (root-relative) caso não haja foto salva
+        
         headerAvatar.src = '/assets/img/perfil.png';
     }
-    // Deixamos a linha acima comentada para usar o src definido no HTML caso o localStorage esteja vazio.
+    
 }
-// ===============================================
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- CHAME A FUNÇÃO PARA CARREGAR O AVATAR NA PÁGINA ---
-    carregarAvatarHeader(); 
-    // --------------------------------------------------------
-
-    const gridMural = document.getElementById('muralGrid'); // Certifique-se que no HTML o ID é este, ou 'userConfissoes'
-    const loadingMsg = document.getElementById('loading-msg'); // Se existir elemento de loading
     
-    // Ajuste a URL conforme sua necessidade
+    carregarAvatarHeader(); 
+    
+
+    const gridMural = document.getElementById('muralGrid'); 
+    const loadingMsg = document.getElementById('loading-msg'); 
+    
+    
     const API_URL = 'http://localhost:3000/confissoes'; 
 
     async function buscarConfissoes() {
@@ -42,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const dados = await resposta.json();
             
-            // Verifica se a API retornou um array direto ou um objeto { confissoes: [] }
+            
             if (Array.isArray(dados)) {
                 listaGlobalConfissoes = dados;
             } else {
@@ -60,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderizarCards(lista) {
         if(loadingMsg) loadingMsg.style.display = 'none';
         
-        // Se o grid não existir (pode ser outra página), para por aqui
+        
         if(!gridMural) return;
 
         gridMural.innerHTML = ''; 
@@ -72,14 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lista.forEach((item, index) => {
             const tipo = item.tipoMensagem || item.tipo || 'Geral';
-            // Cria uma classe CSS baseada no tipo (ex: "confissao", "elogio")
+            
             const classeCategoria = tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
             
-            // --- LÓGICA DE NOMES (Compatível com Tabela Usuario) ---
+            
             let nomeRemetente = 'Anônimo';
             let nomeDestinatario = 'Geral';
 
-            // 1. Tenta pegar do objeto 'autor' (Prisma)
+            
             if (item.autor) {
                 if (item.autor.anonimo === true) {
                     nomeRemetente = 'Anônimo 🕵️';
@@ -87,22 +84,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     nomeRemetente = item.autor.nomeUsuario || 'Anônimo';
                 }
             } 
-            // 2. Fallback para 'remetente' (caso sua API use esse nome)
+            
             else if (item.remetente) {
                 nomeRemetente = item.remetente.nome || item.remetente.username || 'Anônimo';
             }
 
-            // 3. Tenta pegar do objeto 'destinatario'
+            
             if (item.destinatario) {
                 nomeDestinatario = item.destinatario.nomeUsuario || 'Geral';
             }
-            // -------------------------------------------------------
+            
 
             const dataObj = new Date(item.createdAt || item.data);
             const dataFormatada = isNaN(dataObj) ? 'Data inválida' : dataObj.toLocaleDateString('pt-BR');
 
-            // Renderiza o HTML do Card
-            // Note o onclick chamando a função global com o índice
+            
             const cardHTML = `
                 <div class="card" onclick="abrirModal(${index})" style="cursor: pointer;">
                     <div class="card-header">
@@ -127,13 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
     buscarConfissoes();
 });
 
-// --- FUNÇÕES DO MODAL (GLOBAIS) ---
+
 
 function abrirModal(index) {
     const item = listaGlobalConfissoes[index];
     if (!item) return;
 
-    // --- REPETE A LÓGICA DE NOMES PARA O MODAL ---
+    
     let nomeRemetente = 'Anônimo';
     let nomeDestinatario = 'Geral';
 
@@ -147,9 +143,9 @@ function abrirModal(index) {
     if (item.destinatario) {
         nomeDestinatario = item.destinatario.nomeUsuario || 'Geral';
     }
-    // ---------------------------------------------
+   
 
-    // Preenche os dados no HTML do Modal (Verifique se os IDs existem no seu HTML)
+    
     const elTipo = document.getElementById('modal-tipo');
     if(elTipo) elTipo.innerText = item.tipoMensagem || item.tipo || 'GERAL';
 
@@ -166,22 +162,22 @@ function abrirModal(index) {
         elData.innerText = d.toLocaleString('pt-BR');
     }
 
-    // Preenche nomes
+    
     const elRemetente = document.getElementById('modal-remetente');
     if(elRemetente) elRemetente.innerText = nomeRemetente;
 
     const elDestinatario = document.getElementById('modal-destinatario');
     if(elDestinatario) elDestinatario.innerText = nomeDestinatario;
     
-    // IDs técnicos (Opcional, só se existirem no HTML)
+    
     const elRemId = document.getElementById('modal-remetente-id');
     if(elRemId) elRemId.innerText = item.userId || item.autorId || '-';
 
-    // Mostra o Modal
+    
     const modal = document.getElementById('modalDetalhes');
     if(modal) {
-        modal.style.display = 'flex'; // ou 'block', dependendo do seu CSS
-        // Adiciona classe para animação se houver
+        modal.style.display = 'flex'; 
+        
         modal.classList.add('show');
     }
 }
@@ -194,7 +190,7 @@ function fecharModal() {
     }
 }
 
-// Fecha ao clicar fora
+
 window.onclick = function(event) {
     const modal = document.getElementById('modalDetalhes');
     if (event.target == modal) {

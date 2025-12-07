@@ -1,6 +1,4 @@
-/* =========================================================
-   ESCRITA.CSS - VERSÃO FINAL RESTAURADA
-   ========================================================= */
+
 
 :root {
     --accent-color: #F3CD88;
@@ -31,7 +29,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* --- HEADER FIXO NESTA PÁGINA --- */
+
 header {
     height: 90px; width: 100%; position: sticky; top: 0; z-index: 1000;
     background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(10px);
@@ -71,7 +69,7 @@ main { flex: 1; padding: 40px 20px; display: flex; justify-content: center; }
     max-width: 1200px; width: 100%; align-items: start;
 }
 
-/* --- EDITOR --- */
+
 .write-card.bloco-central {
     background: var(--card-bg); padding: 30px; border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -110,7 +108,7 @@ main { flex: 1; padding: 40px 20px; display: flex; justify-content: center; }
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(243, 205, 136, 0.5); background: var(--accent-hover); }
 
-/* --- PAINEL LATERAL --- */
+
 .panel {
     background: linear-gradient(180deg, #fffcf5, #fff8e8);
     padding: 25px; border-radius: 20px;
@@ -119,7 +117,7 @@ main { flex: 1; padding: 40px 20px; display: flex; justify-content: center; }
 }
 .panel-inner { display: flex; flex-direction: column; gap: 15px; }
 
-/* Botão Início Fantasma */
+
 .link-muted {
     display: block; text-align: center; text-decoration: none;
     font-weight: 700; font-size: 0.9rem; text-transform: uppercase; color: #d69e2e;
@@ -143,7 +141,7 @@ main { flex: 1; padding: 40px 20px; display: flex; justify-content: center; }
 .inspiracao h4 { margin: 0 0 5px 0; font-size: 0.85rem; color: #d69e2e; text-transform: uppercase; }
 .inspiracao p { margin: 0; font-size: 0.95rem; color: #555; font-style: italic; }
 
-/* Mobile */
+
 @media (max-width: 1024px) {
     .write-grid { 
         gap: 20px;
@@ -425,6 +423,6 @@ main { flex: 1; padding: 40px 20px; display: flex; justify-content: center; }
     }
 }
 
-/* Lógica Javascript */
+
 .panel.collapsed { display: none !important; }
 .write-grid.one-column { grid-template-columns: 1fr !important; }

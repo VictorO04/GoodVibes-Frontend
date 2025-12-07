@@ -1,9 +1,9 @@
-// --- CONFIGURAÇÃO ---
+
 const CONFIG = {
     API_URL: 'http://localhost:3000/confissoes'
 };
 
-// --- ELEMENTOS DO DOM ---
+
 const imgPreview = document.getElementById('preview');
 const imgHeader = document.getElementById('headerAvatar');
 const fileInput = document.getElementById('upload');
@@ -12,33 +12,33 @@ const inputBio = document.getElementById('userBio');
 const btnSalvar = document.getElementById('saveProfile');
 const containerConfissoes = document.getElementById('userConfissoes');
 
-// --- CHAVE PADRONIZADA DO AVATAR ---
-const AVATAR_KEY = 'usuarioAvatarURL'; // <-- A CHAVE USADA NAS OUTRAS PÁGINAS
 
-// --- 1. FUNÇÃO INICIAL: CARREGAR DADOS ---
+const AVATAR_KEY = 'usuarioAvatarURL'; 
+
+
 function iniciarPerfil() {
-    // Recupera dados salvos
+    
     const idSalvo = localStorage.getItem('usuario_id');
     const bioSalva = localStorage.getItem('usuario_bio');
-    // ATENÇÃO: Mudando de 'fotoPerfil' para a chave padronizada
+    
     const fotoSalva = localStorage.getItem(AVATAR_KEY); 
 
-    // Preenche os inputs
+    
     if (idSalvo) inputId.value = idSalvo;
     if (bioSalva) inputBio.value = bioSalva;
     
-    // Atualiza fotos
+    
     if (fotoSalva) {
         if(imgPreview) imgPreview.src = fotoSalva;
-        // O avatar do header é atualizado aqui
+        
         if(imgHeader) imgHeader.src = fotoSalva; 
     }
 
-    // Busca as mensagens usando o ID salvo
+    
     carregarMinhasConfissoes(idSalvo);
 }
 
-// --- 2. UPLOAD DE FOTO ---
+
 if (fileInput) {
     fileInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -49,7 +49,7 @@ if (fileInput) {
                 if(imgPreview) imgPreview.src = imagemBase64;
                 if(imgHeader) imgHeader.src = imagemBase64; 
                 
-                // SALVAMENTO CRÍTICO: Usando a chave padronizada
+                
                 localStorage.setItem(AVATAR_KEY, imagemBase64); 
             };
             reader.readAsDataURL(file);
@@ -57,7 +57,7 @@ if (fileInput) {
     });
 }
 
-// --- 3. SALVAR PERFIL (Nenhuma alteração crítica aqui, pois não envolve o avatar) ---
+
 if (btnSalvar) {
     btnSalvar.addEventListener('click', () => {
         const idUser = inputId.value.trim(); 
@@ -68,12 +68,12 @@ if (btnSalvar) {
             return;
         }
 
-        // Salva no LocalStorage
+        
         localStorage.setItem('usuario_id', idUser);
         localStorage.setItem('usuario_bio', bio);
-        // Note: A foto já foi salva no evento de 'change' do input file.
+        
 
-        // Feedback Visual
+        
         const textoOriginal = btnSalvar.innerText;
         btnSalvar.innerText = "Salvo! ✅";
         btnSalvar.style.backgroundColor = "#4caf50";
@@ -84,13 +84,13 @@ if (btnSalvar) {
             btnSalvar.style.backgroundColor = "";
             btnSalvar.style.color = "";
             
-            // Recarrega lista com o novo ID
+            
             carregarMinhasConfissoes(idUser);
         }, 1500);
     });
 }
 
-// --- 4. BUSCAR CONFISSÕES PELO ID (Mantido como estava) ---
+
 async function carregarMinhasConfissoes(idUsuario) {
     if (!containerConfissoes) return;
     
@@ -110,7 +110,7 @@ async function carregarMinhasConfissoes(idUsuario) {
         else if(dados.confissoes) lista = dados.confissoes;
         else if(dados.data) lista = dados.data;
 
-        // --- FILTRO POR ID ---
+        
         const minhasMensagens = lista.filter(item => {
             const busca = String(idUsuario);
             

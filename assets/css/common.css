@@ -1,6 +1,4 @@
-/* =========================================================
-   COMMON.CSS - ESTILOS GERAIS E HEADER CENTRALIZADO
-   ========================================================= */
+
 
 :root {
     --accent: #F3CD88;
@@ -9,11 +7,11 @@
     --bg-1: #FEFEEA;
     --glass: rgba(255, 255, 255, 0.25);
     --text-color: #333;
-    /* Gradiente Global */
+    
     --bg-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }
 
-/* --- RESET BÁSICO --- */
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 
@@ -37,9 +35,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* =========================================================
-   HEADER GLOBAL (CENTRALIZADO E MODERNO)
-   ========================================================= */
+
 header {
     background: var(--glass);
     backdrop-filter: blur(10px);
@@ -54,13 +50,13 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
-    /* Centralização */
+    
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* LOGO (Fixa na Esquerda) */
+
 .imagem, .logo-container {
     position: absolute;
     left: 40px;
@@ -79,7 +75,7 @@ header {
 }
 .logo:hover { transform: scale(1.1); }
 
-/* MENU CENTRAL (Os Botões) */
+
 nav {
     display: flex;
     justify-content: center;
@@ -96,16 +92,16 @@ nav ul {
     margin: 0;
 }
 
-/* BOTÕES DO MENU (Estilo Pílula Limpo) */
+
 nav a, .nav-btn {
     text-decoration: none;
-    color: white; /* Texto Branco */
+    color: white; 
     font-weight: 700;
     font-size: 0.95rem;
     text-transform: uppercase;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 
-    /* Forma do Botão */
+    
     background: rgba(255, 255, 255, 0.2);
     padding: 10px 25px;
     border-radius: 50px;
@@ -113,7 +109,7 @@ nav a, .nav-btn {
     transition: all 0.3s ease;
 }
 
-/* Remove qualquer linha ou detalhe estranho no hover */
+
 nav a:hover, .nav-btn:hover {
     background: rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
@@ -122,7 +118,7 @@ nav a:hover, .nav-btn:hover {
     border-color: #fff;
 }
 
-/* PERFIL (Fixo na Direita) */
+
 .user-menu, .img-header {
     position: absolute;
     right: 40px;
@@ -147,14 +143,10 @@ nav a:hover, .nav-btn:hover {
     box-shadow: 0 0 15px rgba(255,255,255,0.6);
 }
 
-/* =========================================================
-   ELEMENTOS GERAIS (Botões e Inputs)
-   ========================================================= */
 
-/* Main Container */
 main {
     flex: 1;
-    /* Ajuste de padding para não ficar colado no header */
+    
     padding: 40px 20px;
     display: flex;
     justify-content: center;
@@ -177,7 +169,7 @@ img {
     height: auto;
 }
 
-/* Botão Primário (Amarelo Tartaruga) */
+
 .btn-primary {
     background: var(--accent);
     color: #5a4b20;
@@ -197,20 +189,17 @@ img {
     background: var(--accent-hover);
 }
 
-/* =========================================================
-   DESIGN ESPECÍFICO: BOTÃO INÍCIO (Dentro do Painel)
-   ========================================================= */
-/* Aplica estilo Ghost Button apenas para links dentro de painéis laterais */
+
 .panel-inner a, .inspiracao a, a.inicio-btn {
     display: inline-block;
     text-decoration: none;
-    color: #d69e2e; /* Cor escura do tema */
+    color: #d69e2e; 
     font-weight: 700;
     font-size: 0.9rem;
     padding: 8px 24px;
     margin-top: 15px;
     
-    /* Estilo Fantasma (Borda colorida, fundo transparente) */
+    
     background: transparent;
     border: 2px solid var(--accent);
     border-radius: 30px;
@@ -221,13 +210,12 @@ img {
 
 .panel-inner a:hover, .inspiracao a:hover, a.inicio-btn:hover {
     background: var(--accent);
-    color: #fff; /* Texto fica branco */
+    color: #fff; 
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(243, 205, 136, 0.4);
 }
 
-/* Responsividade Global */
-/* Tablet (768px - 1024px) */
+
 @media (max-width: 1024px) {
     header { 
         padding: 0 30px; 
@@ -239,7 +227,7 @@ img {
     }
 }
 
-/* Tablet/Mobile (max 768px) */
+
 @media (max-width: 768px) {
     header { 
         justify-content: space-between; 
@@ -278,7 +266,7 @@ img {
     }
 }
 
-/* Celular Pequeno (max 480px) */
+
 @media (max-width: 480px) {
     header {
         height: 60px;
@@ -304,57 +292,57 @@ img {
         border-radius: 20px;
     }
 }
-/* --- Estilização do Dropdown "Tipo" --- */
+
 #tipoMensagem, #selectFiltro, select.input {
-    /* 1. Remove o visual padrão feio do navegador */
+    
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     
-    /* 2. Formato e Cores (baseado no seu common.css) */
+    
     background-color: #ffffff;
     color: #5b5b5b; /* var(--muted) */
     font-family: 'Segoe UI', Inter, sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
     
-    /* Borda arredondada (Pílula) */
+    
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     
-    /* Espaçamento */
-    padding: 10px 20px;
-    padding-right: 45px; /* Espaço extra na direita para a seta não ficar em cima do texto */
     
-    /* 3. Seta Personalizada (SVG embutido) */
+    padding: 10px 20px;
+    padding-right: 45px; 
+    
+    
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b5b5b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: 16px;
     
-    /* 4. Acabamento */
+    
     cursor: pointer;
     outline: none;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
-    min-width: 140px; /* Garante um tamanho mínimo elegante */
+    min-width: 140px; 
 }
 
-/* Efeito ao passar o mouse (Sobe levemente) */
+
 #tipoMensagem:hover, #selectFiltro:hover, select.input:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    border-color: #F3CD88; /* var(--accent) */
+    border-color: #F3CD88; 
 }
 
 /* Efeito ao clicar/focar */
 #tipoMensagem:focus, #selectFiltro:focus, select.input:focus {
-    border-color: #F3CD88; /* var(--accent) */
-    box-shadow: 0 0 0 3px rgba(243, 205, 136, 0.4); /* Brilho externo amarelo */
+    border-color: #F3CD88; 
+    box-shadow: 0 0 0 3px rgba(243, 205, 136, 0.4); 
     background-color: #fff;
 }
 
-/* Estilo das opções internas (Onde possível) */
+
 #tipoMensagem option {
     color: #333;
     padding: 10px;
